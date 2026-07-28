@@ -12,24 +12,6 @@ export default function StickyHelpWidget() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Main Small Lightbulb Icon Pill that Expands Text on Hover */}
-      <div className="flex items-center bg-[#1A1813] border-l-2 border-y border-[#B8860B] text-white rounded-l-full shadow-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_20px_rgba(184,134,11,0.5)]">
-        <div className="w-12 h-12 flex items-center justify-center text-[#B8860B] bg-[#1A1813] shrink-0">
-          <Lightbulb className="w-6 h-6 animate-pulse" />
-        </div>
-
-        {/* Hover-Revealed Text Letters */}
-        <div
-          className={`overflow-hidden transition-all duration-500 whitespace-nowrap ${
-            isHovered ? "max-w-xs px-3" : "max-w-0 px-0"
-          }`}
-        >
-          <span className="text-xs font-bold tracking-wider text-white">
-            Need Lighting Help?
-          </span>
-        </div>
-      </div>
-
       {/* Direct Open Action Buttons: Phone & WhatsApp */}
       <div
         className={`flex flex-col gap-2 transition-all duration-300 ${

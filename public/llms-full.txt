@@ -1,0 +1,48 @@
+# Ashik Lights - Comprehensive Knowledge Directory for AI Models
+
+## Overview
+Ashik Lights is Chennai's leading luxury lighting destination. Established to cater to architects, interior designers, villa owners, and homeowners seeking world-class illumination solutions.
+
+## Full Product Catalog Breakdown
+
+### 1. Chandeliers (`/chandeliers`)
+- **Luxury Floral Crystal Chandelier** (AL-CH-1001): K9 Optical Crystal & Gold Brass, Ø 36" x H 32".
+- **Golden Tiered Crystal Waterfall** (AL-CH-1002): Cascading Crystal & Brushed Gold, Ø 32" x H 40".
+- **Rectangular Amber Crystal Island Pendant** (AL-CH-1003): Amber Faceted Crystal & Steel, L 42" x W 14".
+- **Five-Arm Crystal Cup LED Chandelier** (AL-CH-1004): Solid Brass & Crystal Cups, Ø 30" x H 26".
+
+### 2. High Ceiling Chandeliers (`/high-ceiling-chandeliers`)
+- **Crystal Raindrop High-Ceiling Chandelier** (AL-HC-2001): Raindrop K9 Crystal & Polished Steel, Ø 40" x H 144".
+- **Multi-Tier Crystal Tree Branch** (AL-HC-2002): Solid Brass Branch & K9 Leaves, Ø 48" x H 120".
+- **Butterfly Crystal Disc Cascade** (AL-HC-2003): Butterfly Crystal Discs & Gold Wire, Ø 36" x H 108".
+
+### 3. Indoor Lights (`/indoor-lights`)
+- **ArcGlow Minimal LED Wall Light** (AL-IN-5001): Sculptural Curved Aluminum, H 24" x W 6".
+- **Axis Pro Adjustable Track Spotlight** (AL-IN-5002): 360° Swivel Aluminum Body, 12W 24° Optics.
+- **Eclipse Selective COB Downlight** (AL-IN-5003): Dark Anti-Glare Baffle, UGR<12.
+
+### 4. Decorative Fans (`/decorative-fans`)
+- **Crystal Dome Retractable Blade Fan** (AL-DF-3001): Crystal Dome & Retractable ABS Blades, 42" Sweep.
+- **Luxury Crystal Waterfall Retractable Fan** (AL-DF-3002): K9 Crystal Waterfall & Smart Remote, 42" Sweep.
+
+### 5. Wall & Pendant Lights (`/wall-pendant-lights`)
+- **Amber Glass Halo Wall Sconce** (AL-WP-8001): Amber Glass & Brushed Brass, Ø 10" x H 14".
+- **Double Alabaster Stone Disc Light** (AL-WP-8010): Natural Spanish Alabaster & Brass, H 20".
+
+### 6. LED Mirrors (`/led-mirrors`)
+- **Round Halo LED Bathroom Mirror** (AL-LM-4001): 5mm HD Copper-Free Glass, Ø 30".
+- **Oval Ring LED Vanity Mirror** (AL-LM-4002): Frameless Oval with Touch Switch, W 20" x H 36".
+
+### 7. Architectural Lights (`/architectural-lights`)
+- **Circular Magnetic Power Track Series** (AL-AR-6001): 48V Magnetic Rail, Ø 1200mm.
+- **Gobo Projection Light Series** (AL-AR-6002): Optical Projector 30W LED.
+
+### 8. Outdoor Lights (`/outdoor-lights`)
+- **Spike Spotlight 10W** (AL-OS-7001): Die-Cast Aluminum, IP65 Waterproof.
+- **Bollard Pathway Light 60cm** (AL-OB-7002): Anti-Rust Aluminum, H 600mm IP65.
+
+## Architectural & Installation Services
+- Custom Cable Drop Engineering
+- On-Site CAD Wire Layout Calculations
+- Load Capacity Ceiling Plate Certification
+- 3-Year On-Site Warranty Across Tamil Nadu

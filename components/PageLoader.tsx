@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function PageLoader() {
   const [loading, setLoading] = useState(true);
@@ -25,20 +26,20 @@ export default function PageLoader() {
       }`}
     >
       <div className="flex flex-col items-center space-y-4 animate-fade-in">
-        {/* Ashik Lights Logo Brand */}
-        <div className="flex flex-col items-center">
-          <span className="font-serif text-4xl font-bold tracking-[0.25em] text-white">
-            ASHIK
-          </span>
-          <div className="flex items-center gap-2 text-xs tracking-[0.4em] text-[#B8860B] font-semibold uppercase -mt-1">
-            <span className="h-[1px] w-4 bg-[#B8860B]/80" />
-            LIGHTS
-            <span className="h-[1px] w-4 bg-[#B8860B]/80" />
-          </div>
+        {/* Ashik Lights Official Logo from /public/logo.png */}
+        <div className="bg-white/90 p-4 rounded-2xl shadow-xl backdrop-blur-md">
+          <Image
+            src="/logo.png"
+            alt="Ashik Lights Logo"
+            width={200}
+            height={60}
+            priority
+            className="h-14 w-auto object-contain"
+          />
         </div>
 
         {/* 3 Pulsing Gold Loading Dots */}
-        <div className="flex items-center gap-2 pt-4">
+        <div className="flex items-center gap-2 pt-2">
           <div className="w-2.5 h-2.5 rounded-full bg-[#B8860B] animate-bounce" style={{ animationDelay: "0ms" }} />
           <div className="w-2.5 h-2.5 rounded-full bg-[#B8860B] animate-bounce" style={{ animationDelay: "150ms" }} />
           <div className="w-2.5 h-2.5 rounded-full bg-[#B8860B] animate-bounce" style={{ animationDelay: "300ms" }} />

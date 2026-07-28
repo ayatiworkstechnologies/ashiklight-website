@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, MapPin, Star } from "lucide-react";
 
 export default function Footer() {
@@ -9,17 +10,16 @@ export default function Footer() {
     <footer className="bg-[#1A1813] text-slate-300 pt-16 pb-8 border-t border-[#332D24]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#332D24]">
-          {/* Brand Info */}
+          {/* Brand Info with /public/logo.png */}
           <div className="lg:col-span-4 space-y-4">
-            <Link href="/" className="flex flex-col inline-block">
-              <span className="font-serif text-3xl font-bold tracking-[0.18em] text-white">
-                ASHIK
-              </span>
-              <div className="flex items-center gap-2 text-[10px] tracking-[0.35em] text-[#B8860B] font-semibold uppercase">
-                <span className="h-[1px] w-3 bg-[#B8860B]/60"></span>
-                LIGHTS
-                <span className="h-[1px] w-3 bg-[#B8860B]/60"></span>
-              </div>
+            <Link href="/" className="inline-block bg-white/90 p-3 rounded-xl shadow-md">
+              <Image
+                src="/logo.png"
+                alt="Ashik Lights Logo"
+                width={170}
+                height={50}
+                className="h-11 w-auto object-contain"
+              />
             </Link>
 
             <p className="text-xs text-slate-400 font-light leading-relaxed max-w-sm">

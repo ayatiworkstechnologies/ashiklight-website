@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronDown, Menu } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 
@@ -12,16 +13,16 @@ export default function Header() {
     <>
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#EAE3D2] transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-20 flex items-center justify-between gap-6">
-          {/* Brand Logo (Links to Home) */}
-          <Link href="/" className="flex flex-col items-center group shrink-0">
-            <span className="font-serif text-2xl sm:text-3xl font-bold tracking-[0.18em] text-[#1A1813] group-hover:text-[#B8860B] transition-colors">
-              ASHIK
-            </span>
-            <div className="flex items-center gap-2 text-[10px] tracking-[0.35em] text-[#B8860B] font-semibold uppercase -mt-1">
-              <span className="h-[1px] w-3 bg-[#B8860B]/60"></span>
-              LIGHTS
-              <span className="h-[1px] w-3 bg-[#B8860B]/60"></span>
-            </div>
+          {/* Official Brand Logo from /public/logo.png */}
+          <Link href="/" className="flex items-center group shrink-0 py-1">
+            <Image
+              src="/logo.png"
+              alt="Ashik Lights Logo"
+              width={160}
+              height={50}
+              priority
+              className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+            />
           </Link>
 
           {/* Desktop Navbar: Decorative Lighting ▼ | Technical Lighting ▼ | Outdoor Lights | About */}

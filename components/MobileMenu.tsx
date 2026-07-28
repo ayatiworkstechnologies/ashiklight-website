@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { X, ChevronDown, Phone, MessageSquare, MapPin } from "lucide-react";
 
 interface MobileMenuProps {
@@ -34,13 +35,14 @@ export default function MobileMenu({
         <div>
           {/* Header */}
           <div className="flex items-center justify-between p-5 border-b border-slate-100">
-            <Link href="/" onClick={onClose} className="flex flex-col">
-              <span className="font-serif text-xl font-bold tracking-widest text-[#1A1813]">
-                ASHIK
-              </span>
-              <span className="text-[10px] tracking-[0.3em] font-medium text-[#B8860B] border-t border-[#B8860B]/40 pt-0.5">
-                LIGHTS
-              </span>
+            <Link href="/" onClick={onClose} className="flex items-center">
+              <Image
+                src="/logo.png"
+                alt="Ashik Lights Logo"
+                width={140}
+                height={40}
+                className="h-10 w-auto object-contain"
+              />
             </Link>
             <button
               onClick={onClose}

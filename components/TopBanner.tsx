@@ -24,13 +24,13 @@ export default function TopBanner() {
 
         <div className="flex items-center gap-2">
           <a
-            href="tel:06754860555"
+            href="tel:08754860555"
             className="flex items-center gap-1.5 text-[#2C261E] hover:text-[#B8860B] font-semibold transition-colors"
           >
             <PhoneCall className="w-3.5 h-3.5 text-[#B8860B]" />
             <span>Call Us:</span>
             <span className="font-bold text-sm tracking-tight text-[#1A1813]">
-              067548 60555
+              087548 60555
             </span>
           </a>
         </div>

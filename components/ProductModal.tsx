@@ -102,7 +102,7 @@ export default function ProductModal({
           {/* Action CTAs */}
           <div className="space-y-2 pt-6">
             <a
-              href={`https://wa.me/9106754860555?text=${encodeURIComponent(
+              href={`https://wa.me/918754860555?text=${encodeURIComponent(
                 `Hi Ashik Lights, I am interested in ${product.title} (${product.category}). Please share pricing and details.`
               )}`}
               target="_blank"

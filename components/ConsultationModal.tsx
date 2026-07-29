@@ -17,7 +17,7 @@ export default function ConsultationModal({
     name: "",
     phone: "",
     email: "",
-    spaceType: "Residential",
+    spaceType: "Residential / Villa",
     showroom: "Teynampet",
     date: "",
   });
@@ -26,11 +26,23 @@ export default function ConsultationModal({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const message = [
+      "Hi Ashik Lights, I would like to book a lighting consultation.",
+      `Name: ${formData.name}`,
+      `Phone: ${formData.phone}`,
+      `Space: ${formData.spaceType}`,
+      `Preferred showroom: ${formData.showroom}`,
+      formData.date ? `Preferred date: ${formData.date}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    window.open(
+      `https://wa.me/918754860555?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
     setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      onClose();
-    }, 2500);
   };
 
   return (
@@ -63,10 +75,10 @@ export default function ConsultationModal({
                 <CheckCircle2 className="w-10 h-10" />
               </div>
               <h4 className="font-serif text-2xl font-bold text-slate-800">
-                Consultation Requested!
+                Consultation Ready to Send
               </h4>
               <p className="text-slate-600 text-sm max-w-xs mx-auto">
-                Thank you {formData.name || "valued customer"}. Our lighting specialist will contact you shortly.
+                Thank you {formData.name || "valued customer"}. Tap Send in WhatsApp to deliver your request to our lighting specialist.
               </p>
             </div>
           ) : (

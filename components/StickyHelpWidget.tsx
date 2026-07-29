@@ -29,7 +29,7 @@ export default function StickyHelpWidget() {
 
         {/* Direct WhatsApp Button */}
         <a
-          href="https://wa.me/9108754860555?text=Hi%20Ashik%20Lights%2C%20I%20need%20lighting%20help%20for%20my%20space."
+          href="https://wa.me/918754860555?text=Hi%20Ashik%20Lights%2C%20I%20need%20lighting%20help%20for%20my%20space."
           target="_blank"
           rel="noreferrer"
           className="w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center shadow-lg transition-transform hover:scale-110 cursor-pointer"

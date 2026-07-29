@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import TopBanner from "@/components/TopBanner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -19,6 +20,22 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const message = [
+      "Hi Ashik Lights, I would like a lighting consultation.",
+      `Name: ${formData.name}`,
+      `Phone: ${formData.phone}`,
+      formData.email ? `Email: ${formData.email}` : "",
+      `Preferred showroom: ${formData.showroom}`,
+      formData.message ? `Message: ${formData.message}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    window.open(
+      `https://wa.me/918754860555?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
     setFormSubmitted(true);
   };
 
@@ -30,9 +47,9 @@ export default function ContactPage() {
       {/* Breadcrumb */}
       <div className="bg-[#FAF6F0] border-b border-[#EAE3D2] py-3 px-4 sm:px-6 lg:px-12 text-xs text-slate-500">
         <div className="max-w-7xl mx-auto flex items-center gap-2">
-          <a href="/" className="hover:text-[#B8860B]">
+          <Link href="/" className="hover:text-[#B8860B]">
             Home
-          </a>
+          </Link>
           <ChevronRight className="w-3 h-3 text-slate-400" />
           <span className="text-[#B8860B] font-semibold">Contact Us</span>
         </div>
@@ -119,7 +136,7 @@ export default function ContactPage() {
                   <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
                   <h3 className="font-serif text-xl font-bold text-slate-900">Thank You!</h3>
                   <p className="text-xs text-slate-600">
-                    Your inquiry has been received. Our team will contact you at <strong>{formData.phone}</strong>.
+                    Your inquiry is ready in WhatsApp. Tap Send there to share it with our team from <strong>{formData.phone}</strong>.
                   </p>
                   <button
                     onClick={() => setFormSubmitted(false)}

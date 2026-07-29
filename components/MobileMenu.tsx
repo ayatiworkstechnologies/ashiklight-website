@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { X, ChevronDown, Phone, MessageSquare, MapPin } from "lucide-react";
 
 interface MobileMenuProps {
@@ -15,6 +16,31 @@ export default function MobileMenu({
   onClose,
 }: MobileMenuProps) {
   const [openSub, setOpenSub] = useState<string | null>(null);
+  const pathname = usePathname();
+  const isRouteActive = (route: string) =>
+    pathname === route || pathname.startsWith(`${route}/`);
+  const decorativeActive = [
+    "/chandeliers",
+    "/high-ceiling-chandeliers",
+    "/decorative-fans",
+    "/wall-pendant-lights",
+    "/led-mirrors",
+  ].some(isRouteActive);
+  const technicalActive = ["/indoor-lights", "/architectural-lights"].some(
+    isRouteActive
+  );
+  const submenuLinkClass = (route: string) =>
+    `block py-2 ${
+      isRouteActive(route)
+        ? "text-[#B8860B] font-semibold"
+        : "text-slate-700 hover:text-[#B8860B]"
+    }`;
+  const mobileLinkClass = (route: string) =>
+    `block px-4 py-3 font-medium rounded-xl transition ${
+      isRouteActive(route)
+        ? "bg-[#FAF6F0] text-[#B8860B]"
+        : "text-slate-800 hover:text-[#B8860B] hover:bg-[#FAF6F0]"
+    }`;
 
   if (!isOpen) return null;
 
@@ -58,7 +84,7 @@ export default function MobileMenu({
             <div>
               <button
                 onClick={() => toggleSub("decorative")}
-                className="w-full flex items-center justify-between px-4 py-3 text-slate-800 font-medium hover:text-[#B8860B] hover:bg-[#FAF6F0] rounded-xl transition"
+                className={`w-full flex items-center justify-between px-4 py-3 font-medium hover:text-[#B8860B] hover:bg-[#FAF6F0] rounded-xl transition ${decorativeActive ? "bg-[#FAF6F0] text-[#B8860B]" : "text-slate-800"}`}
               >
                 <span>Decorative Lighting</span>
                 <ChevronDown
@@ -72,35 +98,35 @@ export default function MobileMenu({
                   <Link
                     href="/chandeliers"
                     onClick={onClose}
-                    className="block py-2 text-slate-700 hover:text-[#B8860B]"
+                    className={submenuLinkClass("/chandeliers")}
                   >
                     Chandeliers
                   </Link>
                   <Link
                     href="/high-ceiling-chandeliers"
                     onClick={onClose}
-                    className="block py-2 text-slate-700 hover:text-[#B8860B]"
+                    className={submenuLinkClass("/high-ceiling-chandeliers")}
                   >
                     High Ceiling Chandeliers
                   </Link>
                   <Link
                     href="/decorative-fans"
                     onClick={onClose}
-                    className="block py-2 text-slate-700 hover:text-[#B8860B]"
+                    className={submenuLinkClass("/decorative-fans")}
                   >
                     Decorative Fan
                   </Link>
                   <Link
                     href="/wall-pendant-lights"
                     onClick={onClose}
-                    className="block py-2 text-slate-700 hover:text-[#B8860B]"
+                    className={submenuLinkClass("/wall-pendant-lights")}
                   >
                     Wall & Pendant Lights
                   </Link>
                   <Link
                     href="/led-mirrors"
                     onClick={onClose}
-                    className="block py-2 text-slate-700 hover:text-[#B8860B]"
+                    className={submenuLinkClass("/led-mirrors")}
                   >
                     LED Mirror
                   </Link>
@@ -112,7 +138,7 @@ export default function MobileMenu({
             <div>
               <button
                 onClick={() => toggleSub("technical")}
-                className="w-full flex items-center justify-between px-4 py-3 text-slate-800 font-medium hover:text-[#B8860B] hover:bg-[#FAF6F0] rounded-xl transition"
+                className={`w-full flex items-center justify-between px-4 py-3 font-medium hover:text-[#B8860B] hover:bg-[#FAF6F0] rounded-xl transition ${technicalActive ? "bg-[#FAF6F0] text-[#B8860B]" : "text-slate-800"}`}
               >
                 <span>Technical Lighting</span>
                 <ChevronDown
@@ -126,14 +152,14 @@ export default function MobileMenu({
                   <Link
                     href="/indoor-lights"
                     onClick={onClose}
-                    className="block py-2 text-slate-700 hover:text-[#B8860B]"
+                    className={submenuLinkClass("/indoor-lights")}
                   >
                     Indoor Lights
                   </Link>
                   <Link
                     href="/architectural-lights"
                     onClick={onClose}
-                    className="block py-2 text-slate-700 hover:text-[#B8860B]"
+                    className={submenuLinkClass("/architectural-lights")}
                   >
                     Architectural Lights
                   </Link>
@@ -144,7 +170,7 @@ export default function MobileMenu({
             <Link
               href="/outdoor-lights"
               onClick={onClose}
-              className="block px-4 py-3 text-slate-800 font-medium hover:text-[#B8860B] hover:bg-[#FAF6F0] rounded-xl transition"
+              className={mobileLinkClass("/outdoor-lights")}
             >
               Outdoor Lights
             </Link>
@@ -152,7 +178,7 @@ export default function MobileMenu({
             <Link
               href="/about"
               onClick={onClose}
-              className="block px-4 py-3 text-slate-800 font-medium hover:text-[#B8860B] hover:bg-[#FAF6F0] rounded-xl transition"
+              className={mobileLinkClass("/about")}
             >
               About
             </Link>
@@ -164,7 +190,7 @@ export default function MobileMenu({
           <Link
             href="/contact"
             onClick={onClose}
-            className="block w-full py-3 bg-[#B8860B] hover:bg-[#a3722a] text-white font-semibold rounded-xl text-center shadow-sm transition cursor-pointer"
+            className={`block w-full py-3 bg-[#B8860B] hover:bg-[#a3722a] text-white font-semibold rounded-xl text-center shadow-sm transition cursor-pointer ${isRouteActive("/contact") ? "ring-2 ring-[#B8860B] ring-offset-2" : ""}`}
           >
             Contact Us
           </Link>
@@ -176,7 +202,7 @@ export default function MobileMenu({
               <Phone className="w-3.5 h-3.5 text-[#B8860B]" /> Call Us
             </a>
             <a
-              href="https://wa.me/9108754860555"
+              href="https://wa.me/918754860555"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-1 hover:text-emerald-600"

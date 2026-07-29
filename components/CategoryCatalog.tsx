@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import type { LucideIcon } from "lucide-react";
 import TopBanner from "@/components/TopBanner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -38,7 +39,7 @@ export interface CategoryCatalogProps {
   tagline: string;
   description: string;
   heroImage: string;
-  badges: { icon: any; text: string }[];
+  badges: { icon: LucideIcon; text: string }[];
   subCategories: { id: string; label: string }[];
   products: CategoryProduct[];
   bottomTrustText?: string;
@@ -55,7 +56,7 @@ export default function CategoryCatalog({
   products,
 }: CategoryCatalogProps) {
   const [selectedSubCategory, setSelectedSubCategory] = useState("all");
-  const [selectedStyle, setSelectedStyle] = useState<string[]>([]);
+
   const [sortOption, setSortOption] = useState("popular");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [favorites, setFavorites] = useState<Record<string, boolean>>({});
@@ -67,12 +68,17 @@ export default function CategoryCatalog({
   };
 
   // Filter products based on subcategory
-  const filteredProducts = products.filter((p) => {
-    if (selectedSubCategory !== "all" && p.subCat) {
-      return p.subCat === selectedSubCategory;
-    }
-    return true;
-  });
+  const filteredProducts = products
+    .filter(
+      (product) =>
+        selectedSubCategory === "all" ||
+        product.subCat === selectedSubCategory
+    )
+    .sort((a, b) => {
+      if (sortOption === "name-asc") return a.title.localeCompare(b.title);
+      if (sortOption === "name-desc") return b.title.localeCompare(a.title);
+      return 0;
+    });
 
   return (
     <main className="min-h-screen flex flex-col bg-[#FAF8F5]">
@@ -153,7 +159,6 @@ export default function CategoryCatalog({
                 <button
                   onClick={() => {
                     setSelectedSubCategory("all");
-                    setSelectedStyle([]);
                   }}
                   className="text-xs font-semibold text-[#B8860B] hover:underline"
                 >
@@ -180,37 +185,6 @@ export default function CategoryCatalog({
                         className="accent-[#B8860B]"
                       />
                       <span>{item.label}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Style Checkboxes */}
-              <div className="space-y-3 border-t border-[#EAE3D2] pt-4">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-700">
-                  Style
-                </h4>
-                <div className="space-y-2 text-xs text-slate-700">
-                  {["Modern", "Classic", "Contemporary", "Luxury"].map((st) => (
-                    <label
-                      key={st}
-                      className="flex items-center gap-2 cursor-pointer hover:text-[#B8860B] transition-colors"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={selectedStyle.includes(st.toLowerCase())}
-                        onChange={(e) => {
-                          if (e.target.checked) {
-                            setSelectedStyle([...selectedStyle, st.toLowerCase()]);
-                          } else {
-                            setSelectedStyle(
-                              selectedStyle.filter((s) => s !== st.toLowerCase())
-                            );
-                          }
-                        }}
-                        className="accent-[#B8860B] rounded"
-                      />
-                      <span>{st}</span>
                     </label>
                   ))}
                 </div>
@@ -380,6 +354,7 @@ export default function CategoryCatalog({
         onClose={() => setSelectedProductModal(null)}
         onOpenConsultation={() => {
           setSelectedProductModal(null);
+          window.location.assign("/contact");
         }}
       />
     </main>

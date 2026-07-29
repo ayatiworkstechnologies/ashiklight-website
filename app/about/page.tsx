@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import TopBanner from "@/components/TopBanner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -16,9 +17,9 @@ export default function AboutPage() {
       {/* Breadcrumb */}
       <div className="bg-[#FAF6F0] border-b border-[#EAE3D2] py-3 px-4 sm:px-6 lg:px-12 text-xs text-slate-500">
         <div className="max-w-7xl mx-auto flex items-center gap-2">
-          <a href="/" className="hover:text-[#B8860B]">
+          <Link href="/" className="hover:text-[#B8860B]">
             Home
-          </a>
+          </Link>
           <ChevronRight className="w-3 h-3 text-slate-400" />
           <span className="text-[#B8860B] font-semibold">About Us</span>
         </div>

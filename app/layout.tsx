@@ -86,9 +86,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  alternates: {
-    canonical: "https://ashiklights.in",
-  },
 };
 
 // JSON-LD Structured Data

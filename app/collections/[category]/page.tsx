@@ -1,6 +1,9 @@
 "use client";
 
 import React, { useState, use } from "react";
+import Link from "next/link";
+import type { LucideIcon } from "lucide-react";
+import { notFound } from "next/navigation";
 import TopBanner from "@/components/TopBanner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -50,7 +53,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       tagline: string;
       desc: string;
       image: string;
-      badges: { icon: any; text: string }[];
+      badges: { icon: LucideIcon; text: string }[];
       subCategories: { id: string; label: string }[];
       products: {
         id: string;
@@ -94,8 +97,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     },
   };
 
-  const currentConfig =
-    categoryConfigs[rawCategory] || categoryConfigs["chandeliers"];
+  const currentConfig = categoryConfigs[rawCategory];
+  if (!currentConfig) notFound();
 
   return (
     <main className="min-h-screen flex flex-col bg-[#FAF8F5]">
@@ -105,13 +108,13 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       {/* Breadcrumb */}
       <div className="bg-[#FAF6F0] border-b border-[#EAE3D2] py-3 px-4 sm:px-6 lg:px-12 text-xs text-slate-500">
         <div className="max-w-7xl mx-auto flex items-center gap-2">
-          <a href="/" className="hover:text-[#B8860B]">
+          <Link href="/" className="hover:text-[#B8860B]">
             Home
-          </a>
+          </Link>
           <ChevronRight className="w-3 h-3 text-slate-400" />
-          <a href="/#collections" className="hover:text-[#B8860B]">
+          <Link href="/#collections" className="hover:text-[#B8860B]">
             Collections
-          </a>
+          </Link>
           <ChevronRight className="w-3 h-3 text-slate-400" />
           <span className="text-[#B8860B] font-semibold">
             {currentConfig.title}

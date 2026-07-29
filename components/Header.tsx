@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu } from "lucide-react";
+import { ChevronDown, Grid2X2, Home, MapPin, Menu, MessageCircle, Phone } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 
 export default function Header() {
@@ -38,8 +38,8 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#EAE3D2] transition-all">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-20 flex items-center justify-between gap-6">
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-[#EAE3D2] transition-all">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-16 lg:h-20 flex items-center justify-between gap-6">
           {/* Official Brand Logo from /public/logo.png */}
           <Link href="/" className="flex items-center group shrink-0 py-1">
             <Image
@@ -48,7 +48,7 @@ export default function Header() {
               width={160}
               height={50}
               priority
-              className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+              className="h-10 lg:h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
             />
           </Link>
 
@@ -138,7 +138,7 @@ export default function Header() {
             {/* Single High-Visibility Contact CTA Button */}
             <Link
               href="/contact"
-              className={`btn-shimmer hidden sm:inline-flex items-center justify-center px-6 py-2.5 text-white text-xs sm:text-sm font-semibold rounded-full shadow-sm hover:shadow-md transition-all cursor-pointer whitespace-nowrap ${isRouteActive("/contact") ? "ring-2 ring-[#B8860B] ring-offset-2" : ""}`}
+              className={`btn-shimmer hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-white text-xs sm:text-sm font-semibold rounded-full shadow-sm hover:shadow-md transition-all cursor-pointer whitespace-nowrap ${isRouteActive("/contact") ? "ring-2 ring-[#B8860B] ring-offset-2" : ""}`}
             >
               Contact Us
             </Link>
@@ -146,7 +146,7 @@ export default function Header() {
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="lg:hidden p-2 text-slate-700 hover:text-[#B8860B] rounded-lg"
+              className="lg:hidden w-10 h-10 flex items-center justify-center text-[#2C261E] bg-[#FAF6F0] border border-[#EAE3D2] rounded-xl active:scale-95 transition"
               aria-label="Toggle menu"
             >
               <Menu className="w-6 h-6" />
@@ -154,6 +154,56 @@ export default function Header() {
           </div>
         </div>
       </header>
+
+      {/* Mobile app-style bottom navigation */}
+      <nav
+        className="fixed inset-x-3 bottom-3 z-50 lg:hidden h-[68px] rounded-2xl border border-[#EAE3D2] bg-white/95 backdrop-blur-xl shadow-[0_12px_40px_rgba(26,24,19,0.18)] px-2 grid grid-cols-5 items-center"
+        aria-label="Mobile navigation"
+      >
+        <Link
+          href="/"
+          className={`flex h-14 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold transition ${
+            pathname === "/" ? "bg-[#FAF6F0] text-[#B8860B]" : "text-slate-500"
+          }`}
+        >
+          <Home className="h-5 w-5" />
+          <span>Home</span>
+        </Link>
+        <Link
+          href="/#collections"
+          className="flex h-14 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-slate-500 active:bg-[#FAF6F0] active:text-[#B8860B]"
+        >
+          <Grid2X2 className="h-5 w-5" />
+          <span>Explore</span>
+        </Link>
+        <a
+          href="https://wa.me/918754860555?text=Hi%20Ashik%20Lights%2C%20I%20need%20lighting%20help."
+          target="_blank"
+          rel="noreferrer"
+          className="-mt-7 flex h-14 w-14 justify-self-center flex-col items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-lg shadow-emerald-600/25 active:scale-95 transition"
+          aria-label="Chat on WhatsApp"
+        >
+          <MessageCircle className="h-6 w-6" />
+        </a>
+        <Link
+          href="/#showrooms"
+          className="flex h-14 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-slate-500 active:bg-[#FAF6F0] active:text-[#B8860B]"
+        >
+          <MapPin className="h-5 w-5" />
+          <span>Stores</span>
+        </Link>
+        <Link
+          href="/contact"
+          className={`flex h-14 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold transition ${
+            isRouteActive("/contact")
+              ? "bg-[#FAF6F0] text-[#B8860B]"
+              : "text-slate-500"
+          }`}
+        >
+          <Phone className="h-5 w-5" />
+          <span>Contact</span>
+        </Link>
+      </nav>
 
       {/* Mobile Drawer Menu */}
       <MobileMenu

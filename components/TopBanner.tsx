@@ -5,7 +5,7 @@ import { Store, Lightbulb, Building2, PhoneCall } from "lucide-react";
 
 export default function TopBanner() {
   return (
-    <div className="bg-[#FAF6F0] border-b border-[#EAE3D2] text-[#4A4538] text-xs py-2 px-4 sm:px-6 lg:px-12 transition-all">
+    <div className="hidden md:block bg-[#FAF6F0] border-b border-[#EAE3D2] text-[#4A4538] text-xs py-2 px-4 sm:px-6 lg:px-12 transition-all">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
         <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-8">
           <div className="flex items-center gap-1.5 font-medium hover:text-[#B8860B] transition-colors cursor-pointer">

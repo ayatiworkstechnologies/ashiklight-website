@@ -8,7 +8,7 @@ export default function StickyHelpWidget() {
 
   return (
     <div
-      className="fixed right-0 top-1/2 -translate-y-1/2 z-40 flex flex-col items-end gap-2 pr-2"
+      className="hidden lg:flex fixed right-0 top-1/2 -translate-y-1/2 z-40 flex flex-col items-end gap-2 pr-2"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

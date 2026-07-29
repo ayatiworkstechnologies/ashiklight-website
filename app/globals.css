@@ -132,6 +132,13 @@
   border-color: #B8860B;
 }
 
+/* Reserve space for the mobile app navigation. */
+@media (max-width: 1023px) {
+  body {
+    padding-bottom: 88px;
+  }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

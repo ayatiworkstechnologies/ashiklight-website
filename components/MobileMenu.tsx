@@ -57,10 +57,10 @@ export default function MobileMenu({
       />
 
       {/* Drawer */}
-      <div className="fixed inset-y-0 right-0 w-full max-w-xs bg-white shadow-2xl flex flex-col justify-between overflow-y-auto">
+      <div className="fixed inset-y-0 right-0 w-[92%] max-w-sm bg-white shadow-2xl flex flex-col justify-between overflow-y-auto rounded-l-3xl border-l border-[#EAE3D2]">
         <div>
           {/* Header */}
-          <div className="flex items-center justify-between p-5 border-b border-slate-100">
+          <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-[#FAF8F5]">
             <Link href="/" onClick={onClose} className="flex items-center">
               <Image
                 src="/logo.png"

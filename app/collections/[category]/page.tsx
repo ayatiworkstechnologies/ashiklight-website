@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, use } from "react";
+import React, { useState, use, useRef } from "react";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -40,6 +40,17 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [favorites, setFavorites] = useState<Record<string, boolean>>({});
   const [selectedProductModal, setSelectedProductModal] = useState<ProductModalData | null>(null);
+
+  const catalogRef = useRef<HTMLDivElement>(null);
+
+  const handleSubCategoryChange = (id: string) => {
+    setSelectedSubCategory(id);
+    if (catalogRef.current) {
+      catalogRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.scrollTo({ top: 300, behavior: "smooth" });
+    }
+  };
 
   const toggleFavorite = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -172,11 +183,11 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         </section>
 
         {/* Main Catalog View: Left Filter + Right Product Grid */}
-        <section className="py-12 bg-white">
+        <section ref={catalogRef} className="py-12 lg:py-16 bg-white scroll-mt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               {/* Left Sidebar Filter Panel */}
-              <div className="lg:col-span-3 bg-[#FAF6F0] rounded-2xl p-5 border border-[#EAE3D2] space-y-6" data-reveal="left">
+              <div className="lg:col-span-3 bg-[#FAF6F0] rounded-2xl p-6 border border-[#EAE3D2] space-y-6" data-reveal="left">
                 <div className="flex items-center justify-between border-b border-[#EAE3D2] pb-3">
                   <div className="flex items-center gap-2 font-semibold text-slate-900 text-sm">
                     <Filter className="w-4 h-4 text-[#B8860B]" />
@@ -184,7 +195,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                   </div>
                   <button
                     onClick={() => {
-                      setSelectedSubCategory("all");
+                      handleSubCategoryChange("all");
                       setSelectedStyle([]);
                     }}
                     className="text-xs font-semibold text-[#B8860B] hover:underline cursor-pointer"
@@ -208,7 +219,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                           type="radio"
                           name="subCat"
                           checked={selectedSubCategory === item.id}
-                          onChange={() => setSelectedSubCategory(item.id)}
+                          onChange={() => handleSubCategoryChange(item.id)}
                           className="accent-[#B8860B]"
                         />
                         <span>{item.label}</span>

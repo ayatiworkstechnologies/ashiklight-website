@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { LucideIcon } from "lucide-react";
@@ -61,6 +61,17 @@ export default function CategoryCatalog({
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [favorites, setFavorites] = useState<Record<string, boolean>>({});
   const [selectedProductModal, setSelectedProductModal] = useState<ProductModalData | null>(null);
+
+  const catalogRef = useRef<HTMLDivElement>(null);
+
+  const handleSubCategoryChange = (id: string) => {
+    setSelectedSubCategory(id);
+    if (catalogRef.current) {
+      catalogRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.scrollTo({ top: 300, behavior: "smooth" });
+    }
+  };
 
   const toggleFavorite = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -179,7 +190,7 @@ export default function CategoryCatalog({
         </section>
 
         {/* Main Catalog View: Left Filter + Right Product Grid */}
-        <section className="py-12 lg:py-16 bg-white">
+        <section ref={catalogRef} className="py-12 lg:py-16 bg-white scroll-mt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               {/* Left Sidebar Filter Panel — Luxury Styling */}
@@ -196,7 +207,7 @@ export default function CategoryCatalog({
                   </div>
                   {selectedSubCategory !== "all" && (
                     <button
-                      onClick={() => setSelectedSubCategory("all")}
+                      onClick={() => handleSubCategoryChange("all")}
                       className="text-xs font-bold text-[#B8860B] hover:underline cursor-pointer transition-all"
                     >
                       Reset Filter
@@ -216,7 +227,7 @@ export default function CategoryCatalog({
                       return (
                         <button
                           key={item.id}
-                          onClick={() => setSelectedSubCategory(item.id)}
+                          onClick={() => handleSubCategoryChange(item.id)}
                           className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl border text-left transition-all duration-300 cursor-pointer ${
                             isSelected
                               ? "bg-[#B8860B] text-white border-[#B8860B] font-semibold shadow-sm"

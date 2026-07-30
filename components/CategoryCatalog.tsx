@@ -7,6 +7,7 @@ import type { LucideIcon } from "lucide-react";
 import TopBanner from "@/components/TopBanner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollRevealProvider from "@/components/ScrollRevealProvider";
 import ProductModal, { ProductModalData } from "@/components/ProductModal";
 import {
   ChevronRight,
@@ -19,6 +20,7 @@ import {
   Grid,
   List,
   Eye,
+  ArrowRight,
 } from "lucide-react";
 
 export interface CategoryProduct {
@@ -27,7 +29,6 @@ export interface CategoryProduct {
   code?: string;
   material?: string;
   dimensions?: string;
-  price?: string;
   image: string;
   subCat?: string;
   style?: string;
@@ -56,7 +57,6 @@ export default function CategoryCatalog({
   products,
 }: CategoryCatalogProps) {
   const [selectedSubCategory, setSelectedSubCategory] = useState("all");
-
   const [sortOption, setSortOption] = useState("popular");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [favorites, setFavorites] = useState<Record<string, boolean>>({});
@@ -65,6 +65,12 @@ export default function CategoryCatalog({
   const toggleFavorite = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
     setFavorites((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  // Count items per subcategory
+  const getSubCategoryCount = (subId: string) => {
+    if (subId === "all") return products.length;
+    return products.filter((p) => p.subCat === subId).length;
   };
 
   // Filter products based on subcategory
@@ -81,282 +87,322 @@ export default function CategoryCatalog({
     });
 
   return (
-    <main className="min-h-screen flex flex-col bg-[#FAF8F5]">
-      <TopBanner />
-      <Header />
+    <ScrollRevealProvider>
+      <main className="min-h-screen flex flex-col bg-[#FAF8F5]">
+        <TopBanner />
+        <Header />
 
-      {/* Breadcrumb */}
-      <div className="bg-[#FAF6F0] border-b border-[#EAE3D2] py-3 px-4 sm:px-6 lg:px-12 text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto flex items-center gap-2">
-          <Link href="/" className="hover:text-[#B8860B]">
-            Home
-          </Link>
-          <ChevronRight className="w-3 h-3 text-slate-400" />
-          <span className="text-[#B8860B] font-semibold">{title}</span>
-        </div>
-      </div>
-
-      {/* Category Hero Banner */}
-      <section className="relative py-12 lg:py-16 bg-[#FAF6F0] border-b border-[#EAE3D2] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Left Info */}
-            <div className="lg:col-span-6 space-y-4 animate-fadeIn">
-              <h1 className="font-serif text-4xl sm:text-5xl font-semibold text-[#1A1813]">
-                {title}
-              </h1>
-
-              <p className="font-serif italic text-lg sm:text-xl text-[#B8860B] font-medium">
-                {tagline}
-              </p>
-
-              <p className="text-slate-600 text-xs sm:text-sm font-light leading-relaxed max-w-lg">
-                {description}
-              </p>
-
-              {/* Feature Badges */}
-              <div className="flex flex-wrap items-center gap-3 pt-2">
-                {badges.map((b, i) => {
-                  const BIcon = b.icon;
-                  return (
-                    <div
-                      key={i}
-                      className="flex items-center gap-2 text-xs font-semibold text-slate-800 bg-white px-3.5 py-2 rounded-xl border border-[#EAE3D2] shadow-2xs hover:border-[#B8860B] transition-colors"
-                    >
-                      <BIcon className="w-4 h-4 text-[#B8860B]" />
-                      <span>{b.text}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Right Banner Photo */}
-            <div className="lg:col-span-6 rounded-3xl overflow-hidden border border-[#EAE3D2] shadow-md aspect-16/9 lg:aspect-2/1 group relative">
-              <Image
-                src={heroImage}
-                alt={title}
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-            </div>
+        {/* Breadcrumb */}
+        <div className="bg-[#FAF6F0] border-b border-[#EAE3D2] py-3 px-4 sm:px-6 lg:px-12 text-xs text-slate-500">
+          <div className="max-w-7xl mx-auto flex items-center gap-2">
+            <Link href="/" className="hover:text-[#B8860B] transition-colors duration-300">
+              Home
+            </Link>
+            <ChevronRight className="w-3 h-3 text-slate-400" />
+            <Link href="/#collections" className="hover:text-[#B8860B] transition-colors duration-300">
+              Collections
+            </Link>
+            <ChevronRight className="w-3 h-3 text-slate-400" />
+            <span className="text-[#B8860B] font-semibold">{title}</span>
           </div>
         </div>
-      </section>
 
-      {/* Main Catalog View: Left Filter + Right Product Grid */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Left Sidebar Filter Panel */}
-            <div className="lg:col-span-3 bg-[#FAF6F0] rounded-2xl p-5 border border-[#EAE3D2] space-y-6">
-              <div className="flex items-center justify-between border-b border-[#EAE3D2] pb-3">
-                <div className="flex items-center gap-2 font-semibold text-slate-900 text-sm">
-                  <Filter className="w-4 h-4 text-[#B8860B]" />
-                  <span>Filter</span>
+        {/* Category Hero Banner — Luxury Design */}
+        <section className="relative py-14 lg:py-20 bg-gradient-to-b from-[#FAF6F0] via-[#F6F0E6] to-[#FAF8F5] border-b border-[#EAE3D2] overflow-hidden">
+          {/* Subtle Glow Background Elements */}
+          <div className="absolute -top-24 right-10 w-96 h-96 bg-[#B8860B]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-20 left-10 w-80 h-80 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              {/* Left Info — slide from left */}
+              <div className="lg:col-span-6 space-y-5" data-reveal="left">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B8860B]/10 border border-[#B8860B]/30 text-[#B8860B] text-xs font-semibold tracking-wider uppercase backdrop-blur-xs">
+                  <Sparkles className="w-3.5 h-3.5 text-[#B8860B]" />
+                  <span>EXCLUSIVE COLLECTION</span>
                 </div>
-                <button
-                  onClick={() => {
-                    setSelectedSubCategory("all");
-                  }}
-                  className="text-xs font-semibold text-[#B8860B] hover:underline"
-                >
-                  Clear All
-                </button>
+
+                <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1A1813] leading-tight">
+                  {title}
+                </h1>
+
+                <p className="font-serif italic text-lg sm:text-xl text-[#B8860B] font-medium">
+                  &ldquo;{tagline}&rdquo;
+                </p>
+
+                <p className="text-slate-600 text-sm font-light leading-relaxed max-w-lg">
+                  {description}
+                </p>
+
+                {/* Feature Badges — staggered */}
+                <div className="flex flex-wrap items-center gap-3 pt-2" data-reveal-stagger>
+                  {badges.map((b, i) => {
+                    const BIcon = b.icon;
+                    return (
+                      <div
+                        key={i}
+                        data-reveal="up"
+                        data-reveal-delay={String(i * 100)}
+                        className="flex items-center gap-2 text-xs font-semibold text-slate-800 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-xl border border-[#EAE3D2] shadow-2xs hover:border-[#B8860B] hover:-translate-y-0.5 transition-all duration-300"
+                      >
+                        <BIcon className="w-4 h-4 text-[#B8860B]" />
+                        <span>{b.text}</span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
 
-              {/* Category Radio Filters */}
-              <div className="space-y-3">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-700">
-                  Category
-                </h4>
-                <div className="space-y-2 text-xs text-slate-700">
-                  {subCategories.map((item) => (
-                    <label
-                      key={item.id}
-                      className="flex items-center gap-2 cursor-pointer hover:text-[#B8860B] transition-colors"
-                    >
-                      <input
-                        type="radio"
-                        name="subCat"
-                        checked={selectedSubCategory === item.id}
-                        onChange={() => setSelectedSubCategory(item.id)}
-                        className="accent-[#B8860B]"
-                      />
-                      <span>{item.label}</span>
-                    </label>
-                  ))}
+              {/* Right Banner Photo — scale reveal */}
+              <div
+                className="lg:col-span-6 rounded-3xl overflow-hidden border border-[#EAE3D2] shadow-xl aspect-16/9 lg:aspect-2/1 group relative"
+                data-reveal="scale"
+              >
+                <Image
+                  src={heroImage}
+                  alt={title}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs font-medium backdrop-blur-sm bg-black/30 p-3 rounded-2xl border border-white/10">
+                  <span className="font-serif italic text-amber-200">Handcrafted Luxury Fixtures</span>
+                  <span className="bg-[#B8860B] text-white px-2.5 py-0.5 rounded-full text-[10px] font-bold">
+                    {products.length} Products
+                  </span>
                 </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* Right Product Grid Area */}
-            <div className="lg:col-span-9 space-y-6">
-              {/* Toolbar */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#FAF6F0] p-4 rounded-2xl border border-[#EAE3D2]">
-                <div className="text-xs font-medium text-slate-700">
-                  <span className="font-bold text-slate-900">
-                    {filteredProducts.length}
-                  </span>{" "}
-                  Items
+        {/* Main Catalog View: Left Filter + Right Product Grid */}
+        <section className="py-12 lg:py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              {/* Left Sidebar Filter Panel — Luxury Styling */}
+              <div
+                className="lg:col-span-3 bg-[#FAF6F0] rounded-3xl p-6 border border-[#EAE3D2] shadow-2xs space-y-6 sticky top-24"
+                data-reveal="left"
+              >
+                <div className="flex items-center justify-between border-b border-[#EAE3D2] pb-4">
+                  <div className="flex items-center gap-2.5 font-semibold text-slate-900 text-sm">
+                    <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-[#B8860B] border border-[#EAE3D2] shadow-2xs">
+                      <Filter className="w-4 h-4" />
+                    </div>
+                    <span className="font-serif font-bold text-base">Filter Catalog</span>
+                  </div>
+                  {selectedSubCategory !== "all" && (
+                    <button
+                      onClick={() => setSelectedSubCategory("all")}
+                      className="text-xs font-bold text-[#B8860B] hover:underline cursor-pointer transition-all"
+                    >
+                      Reset Filter
+                    </button>
+                  )}
                 </div>
 
-                <div className="flex items-center gap-4">
-                  {/* Sort */}
-                  <div className="flex items-center gap-2 text-xs">
-                    <span className="text-slate-500">Sort by:</span>
-                    <select
-                      value={sortOption}
-                      onChange={(e) => setSortOption(e.target.value)}
-                      className="bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-[#B8860B]"
-                    >
-                      <option value="popular">Popular</option>
-                      <option value="name-asc">Name: A to Z</option>
-                      <option value="name-desc">Name: Z to A</option>
-                    </select>
-                  </div>
-
-                  {/* Grid/List View Switch */}
-                  <div className="flex items-center gap-1 bg-white p-1 rounded-lg border border-slate-200">
-                    <button
-                      onClick={() => setViewMode("grid")}
-                      className={`p-1 rounded ${
-                        viewMode === "grid"
-                          ? "bg-[#B8860B] text-white"
-                          : "text-slate-500 hover:text-slate-900"
-                      }`}
-                    >
-                      <Grid className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={() => setViewMode("list")}
-                      className={`p-1 rounded ${
-                        viewMode === "list"
-                          ? "bg-[#B8860B] text-white"
-                          : "text-slate-500 hover:text-slate-900"
-                      }`}
-                    >
-                      <List className="w-4 h-4" />
-                    </button>
+                {/* Category Radio / Pill Filters */}
+                <div className="space-y-3">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                    Sub-Categories
+                  </h4>
+                  <div className="space-y-1.5 text-xs text-slate-700">
+                    {subCategories.map((item) => {
+                      const isSelected = selectedSubCategory === item.id;
+                      const count = getSubCategoryCount(item.id);
+                      return (
+                        <button
+                          key={item.id}
+                          onClick={() => setSelectedSubCategory(item.id)}
+                          className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl border text-left transition-all duration-300 cursor-pointer ${
+                            isSelected
+                              ? "bg-[#B8860B] text-white border-[#B8860B] font-semibold shadow-sm"
+                              : "bg-white text-slate-800 border-[#EAE3D2] hover:border-[#B8860B]/60 hover:bg-[#FAF6F0]"
+                          }`}
+                        >
+                          <span className="truncate">{item.label}</span>
+                          <span
+                            className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
+                              isSelected
+                                ? "bg-white/20 text-white"
+                                : "bg-[#FAF6F0] text-slate-500 border border-[#EAE3D2]"
+                            }`}
+                          >
+                            {count}
+                          </span>
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
 
-              {/* Product Cards Grid: IMAGE + NAME ONLY WITH ALL ANIMATIONS */}
-              <div
-                className={
-                  viewMode === "grid"
-                    ? "grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
-                    : "space-y-4"
-                }
-              >
-                {filteredProducts.map((p) => {
-                  const isFav = !!favorites[p.id];
-                  return (
-                    <div
-                      key={p.id}
-                      onClick={() =>
-                        setSelectedProductModal({
-                          title: p.title,
-                          category: p.code || title,
-                          image: p.image,
-                          description: `${p.title} - Ashik Lights Premium Collection.`,
-                          specs: [
-                            { label: "Product Name", value: p.title },
-                            { label: "Collection", value: title },
-                            { label: "Material", value: p.material || "Premium Quality" },
-                            { label: "Warranty", value: "3-Year On-Site" },
-                          ],
-                        })
-                      }
-                      className="group bg-white rounded-2xl overflow-hidden border border-[#EAE3D2] shadow-2xs hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between cursor-pointer"
-                    >
-                      {/* Top Image with Zoom Hover & Dark Lightbox Overlay */}
-                      <div className="relative aspect-4/3 sm:aspect-square overflow-hidden bg-slate-100">
-                        <Image
-                          src={p.image}
-                          alt={p.title}
-                          fill
-                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 25vw"
-                          className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
-                        />
-                        {/* Hover Overlay with Eye Icon */}
-                        <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <span className="px-3 py-1.5 bg-white/90 backdrop-blur-md text-slate-900 text-xs font-bold rounded-full shadow-md flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                            <Eye className="w-3.5 h-3.5 text-[#B8860B]" /> Quick View
-                          </span>
+              {/* Right Product Grid Area */}
+              <div className="lg:col-span-9 space-y-6">
+                {/* Toolbar */}
+                <div
+                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#FAF6F0] p-4 rounded-2xl border border-[#EAE3D2] shadow-2xs"
+                  data-reveal="up"
+                >
+                  <div className="text-xs font-medium text-slate-700 flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#B8860B]" />
+                    Showing <span className="font-bold text-slate-900">{filteredProducts.length}</span> of {products.length} Products
+                  </div>
+
+                  <div className="flex items-center gap-4">
+                    {/* Sort */}
+                    <div className="flex items-center gap-2 text-xs">
+                      <span className="text-slate-500 font-medium">Sort:</span>
+                      <select
+                        value={sortOption}
+                        onChange={(e) => setSortOption(e.target.value)}
+                        className="bg-white border border-[#EAE3D2] rounded-xl px-3 py-1.5 text-xs font-medium text-slate-800 focus:outline-none focus:border-[#B8860B] transition-colors duration-300 cursor-pointer shadow-2xs"
+                      >
+                        <option value="popular">Most Popular</option>
+                        <option value="name-asc">Name: A to Z</option>
+                        <option value="name-desc">Name: Z to A</option>
+                      </select>
+                    </div>
+
+                    {/* Grid/List View Switch */}
+                    <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-[#EAE3D2]">
+                      <button
+                        onClick={() => setViewMode("grid")}
+                        className={`p-1.5 rounded-lg transition-all duration-300 cursor-pointer ${
+                          viewMode === "grid"
+                            ? "bg-[#B8860B] text-white shadow-2xs"
+                            : "text-slate-500 hover:text-slate-900"
+                        }`}
+                        title="Grid View"
+                      >
+                        <Grid className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => setViewMode("list")}
+                        className={`p-1.5 rounded-lg transition-all duration-300 cursor-pointer ${
+                          viewMode === "list"
+                            ? "bg-[#B8860B] text-white shadow-2xs"
+                            : "text-slate-500 hover:text-slate-900"
+                        }`}
+                        title="List View"
+                      >
+                        <List className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Product Cards Grid — 3 Large Cards Per Row */}
+                <div
+                  className={
+                    viewMode === "grid"
+                      ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+                      : "space-y-4"
+                  }
+                  data-reveal-stagger
+                >
+                  {filteredProducts.map((p, index) => {
+                    return (
+                      <div
+                        key={p.id}
+                        data-reveal="up"
+                        data-reveal-delay={String(Math.min(index, 7) * 60)}
+                        onClick={() =>
+                          setSelectedProductModal({
+                            title: p.title,
+                            category: p.code || title,
+                            image: p.image,
+                            description: `${p.title} - Ashik Lights Premium Collection. Built with finest craftsmanship, K9 crystal purity & optical efficiency.`,
+                            specs: [
+                              { label: "Product Name", value: p.title },
+                              { label: "Collection", value: title },
+                              { label: "Material", value: p.material || "Premium K9 Crystal & Brass" },
+                              { label: "Warranty", value: "3-Year On-Site" },
+                            ],
+                          })
+                        }
+                        className="group bg-white rounded-3xl overflow-hidden border border-[#EAE3D2] shadow-2xs hover:shadow-2xl hover-border-glow transition-all duration-400 transform hover:-translate-y-2 flex flex-col justify-between cursor-pointer relative"
+                      >
+                        {/* Top Accent Line on Hover */}
+                        <div className="h-1 bg-gradient-to-r from-transparent via-[#B8860B] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                        {/* Top Image with Zoom Hover & Dark Lightbox Overlay */}
+                        <div className="relative aspect-4/3 sm:aspect-square overflow-hidden bg-slate-100">
+                          <Image
+                            src={p.image}
+                            alt={p.title}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                          />
+                          {/* Hover Overlay with Eye Icon */}
+                          <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span className="px-4 py-2 bg-white/95 backdrop-blur-md text-slate-900 text-xs font-bold rounded-full shadow-lg flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                              <Eye className="w-4 h-4 text-[#B8860B]" /> View Specifications
+                            </span>
+                          </div>
                         </div>
 
-                        {/* Favorite Heart Button */}
-                        <button
-                          onClick={(e) => toggleFavorite(p.id, e)}
-                          className="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 backdrop-blur-xs flex items-center justify-center shadow-xs text-slate-400 hover:text-red-500 transition-colors z-10"
-                        >
-                          <Heart
-                            className={`w-4 h-4 ${
-                              isFav ? "fill-red-[#B8860B] text-red-500" : ""
-                            }`}
-                          />
-                        </button>
+                        {/* Card Content */}
+                        <div className="p-4 text-center bg-white border-t border-slate-100 flex flex-col justify-between flex-grow">
+                          <h3 className="font-semibold text-xs sm:text-sm text-slate-900 group-hover:text-[#B8860B] transition-colors duration-300 leading-snug line-clamp-2">
+                            {p.title}
+                          </h3>
+                          <div className="mt-3 pt-2 border-t border-slate-50 inline-flex items-center justify-center gap-1 text-[11px] font-bold text-[#B8860B] opacity-80 group-hover:opacity-100 transition-opacity">
+                            <span>Explore Details</span>
+                            <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                          </div>
+                        </div>
                       </div>
-
-                      {/* Card Content: ONLY PRODUCT NAME */}
-                      <div className="p-3.5 sm:p-4 text-center bg-white border-t border-slate-100">
-                        <h3 className="font-semibold text-xs sm:text-sm text-slate-900 group-hover:text-[#B8860B] transition-colors leading-snug line-clamp-2">
-                          {p.title}
-                        </h3>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Bottom Consultation Box */}
-              <div className="bg-[#FAF6F0] rounded-3xl p-6 sm:p-8 border border-[#EAE3D2] flex flex-col md:flex-row items-center justify-between gap-6">
-                <div className="flex flex-wrap items-center gap-6 text-xs text-slate-700">
-                  <div className="flex items-center gap-2">
-                    <SlidersHorizontal className="w-4 h-4 text-[#B8860B]" />
-                    <span>
-                      <strong>Custom Sizes</strong> Available
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <UserCheck className="w-4 h-4 text-[#B8860B]" />
-                    <span>
-                      <strong>Installation Support</strong> Team
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-[#B8860B]" />
-                    <span>
-                      <strong>Safe & Secure</strong> Packaging
-                    </span>
-                  </div>
+                    );
+                  })}
                 </div>
 
-                <Link
-                  href="/contact"
-                  className="px-6 py-3 bg-[#B8860B] hover:bg-[#a3722a] text-white font-semibold text-xs sm:text-sm rounded-xl shadow-sm hover:shadow-md transition-all whitespace-nowrap cursor-pointer"
+                {/* Bottom Consultation Box — Dark Luxury Container */}
+                <div
+                  className="bg-gradient-to-r from-[#1A1813] via-[#2C261E] to-[#1A1813] text-white rounded-3xl p-8 sm:p-10 border border-[#332D24] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden"
+                  data-reveal="up"
                 >
-                  Contact Lighting Specialist →
-                </Link>
+                  <div className="space-y-3 text-center md:text-left z-10">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-amber-300 text-xs font-semibold uppercase tracking-wider border border-white/10">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      Need Tailored Lighting Specs?
+                    </div>
+                    <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+                      Custom Size & CAD Layout Support
+                    </h3>
+                    <p className="text-slate-300 text-xs sm:text-sm font-light max-w-xl">
+                      Visit our flagship showroom in Teynampet, Chennai or speak directly with our lighting architects for on-site load calculations & layout advice.
+                    </p>
+                  </div>
+
+                  <Link
+                    href="/contact"
+                    className="btn-shimmer px-8 py-4 text-white text-xs sm:text-sm font-bold rounded-full shadow-xl hover:shadow-2xl transition-all whitespace-nowrap cursor-pointer z-10 shrink-0 flex items-center gap-2"
+                  >
+                    <span>Talk to Architect</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <Footer />
+        <Footer />
 
-      <ProductModal
-        product={selectedProductModal}
-        onClose={() => setSelectedProductModal(null)}
-        onOpenConsultation={() => {
-          setSelectedProductModal(null);
-          window.location.assign("/contact");
-        }}
-      />
-    </main>
+        <ProductModal
+          product={selectedProductModal}
+          onClose={() => setSelectedProductModal(null)}
+          onOpenConsultation={() => {
+            setSelectedProductModal(null);
+            window.location.assign("/contact");
+          }}
+        />
+      </main>
+    </ScrollRevealProvider>
   );
 }

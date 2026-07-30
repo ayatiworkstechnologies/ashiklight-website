@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Grid2X2, Home, MapPin, Menu, MessageCircle, Phone } from "lucide-react";
+import { ChevronDown, Grid2X2, Home, MapPin, Menu, Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa6";
 import MobileMenu from "./MobileMenu";
 
 export default function Header() {
@@ -40,15 +41,15 @@ export default function Header() {
     <>
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-[#EAE3D2] transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-16 lg:h-20 flex items-center justify-between gap-6">
-          {/* Official Brand Logo from /public/logo.png */}
+          {/* Official Brand Logo from /public/logo.png — Golden Luxury Tint, Larger Size, No Outline */}
           <Link href="/" className="flex items-center group shrink-0 py-1">
             <Image
               src="/logo.png"
               alt="Ashik Lights Logo"
-              width={160}
-              height={50}
+              width={200}
+              height={60}
               priority
-              className="h-10 lg:h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+              className="h-12 lg:h-15 w-auto object-contain gold-logo-tint group-hover:scale-105 transition-transform duration-300"
             />
           </Link>
 
@@ -180,10 +181,10 @@ export default function Header() {
           href="https://wa.me/918754860555?text=Hi%20Ashik%20Lights%2C%20I%20need%20lighting%20help."
           target="_blank"
           rel="noreferrer"
-          className="-mt-7 flex h-14 w-14 justify-self-center flex-col items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-lg shadow-emerald-600/25 active:scale-95 transition"
+          className="-mt-7 flex h-14 w-14 justify-self-center flex-col items-center justify-center rounded-2xl bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-lg shadow-emerald-600/30 active:scale-95 transition"
           aria-label="Chat on WhatsApp"
         >
-          <MessageCircle className="h-6 w-6" />
+          <FaWhatsapp className="h-7 w-7" />
         </a>
         <Link
           href="/#showrooms"

@@ -65,9 +65,9 @@ export default function MobileMenu({
               <Image
                 src="/logo.png"
                 alt="Ashik Lights Logo"
-                width={140}
-                height={40}
-                className="h-10 w-auto object-contain"
+                width={170}
+                height={50}
+                className="h-11 w-auto object-contain gold-logo-tint"
               />
             </Link>
             <button

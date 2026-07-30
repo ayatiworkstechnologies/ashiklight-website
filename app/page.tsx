@@ -13,6 +13,7 @@ import Testimonials from "@/components/Testimonials";
 import Showrooms from "@/components/Showrooms";
 import Footer from "@/components/Footer";
 import ConsultationModal from "@/components/ConsultationModal";
+import ScrollRevealProvider from "@/components/ScrollRevealProvider";
 
 export default function Home() {
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
@@ -21,45 +22,47 @@ export default function Home() {
   const handleCloseConsultation = () => setIsConsultationOpen(false);
 
   return (
-    <main className="min-h-screen flex flex-col bg-[#FAF8F5]">
-      {/* Top Banner */}
-      <TopBanner />
+    <ScrollRevealProvider>
+      <main className="min-h-screen flex flex-col bg-[#FAF8F5]">
+        {/* Top Banner */}
+        <TopBanner />
 
-      {/* Navigation Header */}
-      <Header />
+        {/* Navigation Header */}
+        <Header />
 
-      {/* Hero Section */}
-      <Hero onOpenConsultation={handleOpenConsultation} />
+        {/* Hero Section */}
+        <Hero onOpenConsultation={handleOpenConsultation} />
 
-      {/* Explore Our Collections */}
-      <Collections onOpenConsultation={handleOpenConsultation} />
+        {/* Explore Our Collections */}
+        <Collections onOpenConsultation={handleOpenConsultation} />
 
-      {/* Shop by Space */}
-      <ShopBySpace />
+        {/* Shop by Space */}
+        <ShopBySpace />
 
-      {/* Featured Collection: High-Ceiling Chandeliers */}
-      <FeaturedBanner onOpenConsultation={handleOpenConsultation} />
+        {/* Featured Collection: High-Ceiling Chandeliers */}
+        <FeaturedBanner onOpenConsultation={handleOpenConsultation} />
 
-      {/* Why Choose Ashik Lights */}
-      <WhyChooseUs onOpenConsultation={handleOpenConsultation} />
+        {/* Why Choose Ashik Lights */}
+        <WhyChooseUs onOpenConsultation={handleOpenConsultation} />
 
-      {/* Our Projects */}
-      <Projects onOpenConsultation={handleOpenConsultation} />
+        {/* Our Projects */}
+        <Projects onOpenConsultation={handleOpenConsultation} />
 
-      {/* Customer Reviews & Testimonials */}
-      <Testimonials />
+        {/* Customer Reviews & Testimonials */}
+        <Testimonials />
 
-      {/* Showroom Locations & Map */}
-      <Showrooms />
+        {/* Showroom Locations & Map */}
+        <Showrooms />
 
-      {/* Footer */}
-      <Footer />
+        {/* Footer */}
+        <Footer />
 
-      {/* Global Consultation Modal */}
-      <ConsultationModal
-        isOpen={isConsultationOpen}
-        onClose={handleCloseConsultation}
-      />
-    </main>
+        {/* Global Consultation Modal */}
+        <ConsultationModal
+          isOpen={isConsultationOpen}
+          onClose={handleCloseConsultation}
+        />
+      </main>
+    </ScrollRevealProvider>
   );
 }

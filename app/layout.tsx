@@ -127,18 +127,6 @@ const jsonLdStoreSchema = {
       closes: "21:30",
     },
   ],
-  department: [
-    {
-      "@type": "LightingStore",
-      name: "Ashik Lights - Anna Nagar Showroom",
-      address: "2nd Avenue, Anna Nagar, Chennai, Tamil Nadu",
-    },
-    {
-      "@type": "LightingStore",
-      name: "Ashik Lights - ECR Showroom",
-      address: "East Coast Road, Uthandi, Chennai, Tamil Nadu",
-    },
-  ],
   sameAs: [
     "https://www.facebook.com/ashiklights",
     "https://www.instagram.com/ashik_lights",

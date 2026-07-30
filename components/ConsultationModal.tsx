@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { X, Calendar, Clock, Sparkles, CheckCircle2 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa6";
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -46,17 +47,17 @@ export default function ConsultationModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden border border-[#EBE3D5]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md animate-fade-in">
+      <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden border border-[#EBE3D5] animate-fade-in-up transition-all duration-400">
         {/* Header decoration */}
         <div className="bg-gradient-to-r from-[#2A2318] via-[#1A1813] to-[#2A2318] text-white p-6 sm:p-8 relative">
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-full hover:bg-white/10 transition"
+            className="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-110 cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#B8860B]/20 text-[#E6C675] text-xs font-semibold uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#B8860B]/20 text-[#E6C675] text-xs font-semibold uppercase tracking-wider mb-2 border border-[#B8860B]/30">
             <Sparkles className="w-3.5 h-3.5" /> Premium Service
           </div>
           <h3 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#FAF6F0]">
@@ -70,7 +71,7 @@ export default function ConsultationModal({
         {/* Content */}
         <div className="p-6 sm:p-8">
           {submitted ? (
-            <div className="py-12 text-center space-y-4">
+            <div className="py-12 text-center space-y-4 animate-slide-carousel">
               <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto border border-emerald-200 animate-bounce">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
@@ -95,7 +96,7 @@ export default function ConsultationModal({
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#B8860B]/50 focus:border-[#B8860B]"
+                  className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#B8860B]/50 focus:border-[#B8860B] transition-colors duration-300"
                 />
               </div>
 
@@ -112,7 +113,7 @@ export default function ConsultationModal({
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })
                     }
-                    className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#B8860B]/50 focus:border-[#B8860B]"
+                    className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#B8860B]/50 focus:border-[#B8860B] transition-colors duration-300"
                   />
                 </div>
                 <div>
@@ -124,7 +125,7 @@ export default function ConsultationModal({
                     onChange={(e) =>
                       setFormData({ ...formData, spaceType: e.target.value })
                     }
-                    className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#B8860B]/50 focus:border-[#B8860B]"
+                    className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#B8860B]/50 focus:border-[#B8860B] transition-colors duration-300"
                   >
                     <option>Residential / Villa</option>
                     <option>Commercial / Office</option>
@@ -144,12 +145,9 @@ export default function ConsultationModal({
                     onChange={(e) =>
                       setFormData({ ...formData, showroom: e.target.value })
                     }
-                    className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#B8860B]/50 focus:border-[#B8860B]"
+                    className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#B8860B]/50 focus:border-[#B8860B] transition-colors duration-300"
                   >
-                    <option>Teynampet (Anna Salai)</option>
-                    <option>Anna Nagar</option>
-                    <option>ECR (East Coast Road)</option>
-                    <option>Velachery</option>
+                    <option>Teynampet Flagship Store (#313, Anna Salai)</option>
                     <option>Virtual / Online Consultation</option>
                   </select>
                 </div>
@@ -163,16 +161,17 @@ export default function ConsultationModal({
                     onChange={(e) =>
                       setFormData({ ...formData, date: e.target.value })
                     }
-                    className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#B8860B]/50 focus:border-[#B8860B]"
+                    className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#B8860B]/50 focus:border-[#B8860B] transition-colors duration-300"
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full mt-2 py-3 px-6 bg-[#B8860B] hover:bg-[#a3722a] text-white font-semibold text-sm rounded-lg shadow-md transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full mt-2 py-3.5 px-6 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer flex items-center justify-center gap-2.5"
               >
-                <span>Confirm Consultation Booking</span>
+                <FaWhatsapp className="w-5 h-5" />
+                <span>Book Consultation via WhatsApp</span>
               </button>
             </form>
           )}

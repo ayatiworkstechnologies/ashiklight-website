@@ -75,9 +75,12 @@ export default function Collections({ onOpenConsultation }: CollectionsProps) {
   return (
     <>
       <section id="collections" className="py-16 lg:py-24 bg-[#FAF8F5]">
-        <div className="max-[#FAF8F5] max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-          {/* Title Block */}
-          <div className="text-center max-w-2xl mx-auto mb-12 space-y-3 animate-fade-in-up">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+          {/* Title Block — scroll reveal */}
+          <div
+            className="text-center max-w-2xl mx-auto mb-12 space-y-3"
+            data-reveal="up"
+          >
             <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#1A1813] tracking-tight">
               Explore Our Collections
             </h2>
@@ -92,13 +95,18 @@ export default function Collections({ onOpenConsultation }: CollectionsProps) {
             </p>
           </div>
 
-          {/* 8 Cards Grid with Silky Smooth Hover Lift and Image Zoom */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            {collections.map((item) => (
+          {/* 8 Cards Grid with staggered scroll reveal */}
+          <div
+            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
+            data-reveal-stagger
+          >
+            {collections.map((item, index) => (
               <Link
                 key={item.id}
                 href={item.href}
-                className="group block bg-white rounded-2xl overflow-hidden border border-[#EAE3D2] shadow-2xs card-hover-lift cursor-pointer"
+                data-reveal="up"
+                data-reveal-delay={String(index * 80)}
+                className="group block bg-white rounded-2xl overflow-hidden border border-[#EAE3D2] shadow-2xs card-hover-lift hover-border-glow cursor-pointer"
               >
                 {/* Image Container with Zoom & Floating Quick Badge */}
                 <div className="relative aspect-4/3 sm:aspect-square overflow-hidden bg-slate-100">
@@ -107,7 +115,7 @@ export default function Collections({ onOpenConsultation }: CollectionsProps) {
                     alt={item.name}
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 25vw"
-                    className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
+                    className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <span className="px-3 py-1.5 bg-white/90 backdrop-blur-md text-slate-900 text-xs font-bold rounded-full shadow-md flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
@@ -118,12 +126,12 @@ export default function Collections({ onOpenConsultation }: CollectionsProps) {
 
                 {/* Text Footer */}
                 <div className="p-4 text-center space-y-1 bg-white border-t border-slate-100">
-                  <h3 className="font-semibold text-sm sm:text-base text-slate-900 group-hover:text-[#B8860B] transition-colors">
+                  <h3 className="font-semibold text-sm sm:text-base text-slate-900 group-hover:text-[#B8860B] transition-colors duration-300">
                     {item.name}
                   </h3>
-                  <div className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 group-hover:text-[#B8860B] transition-colors">
+                  <div className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 group-hover:text-[#B8860B] transition-colors duration-300">
                     <span>Explore Catalog</span>
-                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
                   </div>
                 </div>
               </Link>

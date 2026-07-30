@@ -10,7 +10,7 @@ export default function TopBanner() {
         <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-8">
           <div className="flex items-center gap-1.5 font-medium hover:text-[#B8860B] transition-colors cursor-pointer">
             <Store className="w-3.5 h-3.5 text-[#B8860B]" />
-            <span>6 Showrooms Across Chennai</span>
+            <span>Flagship Store, Teynampet, Chennai</span>
           </div>
           <div className="flex items-center gap-1.5 font-medium hover:text-[#B8860B] transition-colors cursor-pointer">
             <Lightbulb className="w-3.5 h-3.5 text-[#B8860B]" />

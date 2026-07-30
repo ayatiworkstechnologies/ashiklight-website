@@ -98,9 +98,9 @@ export default function Projects({ onOpenConsultation }: ProjectsProps) {
     <>
       <section id="projects" className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-          {/* Header Block with View All link */}
+          {/* Header Block — split directional reveal */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-            <div>
+            <div data-reveal="left">
               <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#1A1813] tracking-tight">
                 Our Projects
               </h2>
@@ -111,18 +111,24 @@ export default function Projects({ onOpenConsultation }: ProjectsProps) {
 
             <Link
               href="/#projects"
+              data-reveal="right"
               className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#B8860B] hover:text-[#a3722a] transition-colors group cursor-pointer"
             >
               <span>View All Projects</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </div>
 
-          {/* 6 Project Showcase Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project) => (
+          {/* 6 Project Showcase Cards — staggered scale reveal */}
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            data-reveal-stagger
+          >
+            {projects.map((project, index) => (
               <div
                 key={project.id}
+                data-reveal="scale"
+                data-reveal-delay={String(index * 100)}
                 onClick={() =>
                   setSelectedProject({
                     title: project.title,
@@ -132,7 +138,7 @@ export default function Projects({ onOpenConsultation }: ProjectsProps) {
                     specs: project.specs,
                   })
                 }
-                className="group bg-white rounded-2xl overflow-hidden border border-[#EAE3D2] shadow-2xs hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                className="group bg-white rounded-2xl overflow-hidden border border-[#EAE3D2] shadow-2xs hover-border-glow transition-all duration-400 transform hover:-translate-y-2 cursor-pointer"
               >
                 {/* Image Box */}
                 <div className="relative aspect-16/10 overflow-hidden bg-slate-100">
@@ -141,10 +147,10 @@ export default function Projects({ onOpenConsultation }: ProjectsProps) {
                     alt={project.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover object-center group-hover:scale-108 transition-transform duration-700"
+                    className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300">
                     <span className="px-2.5 py-1 bg-black/70 backdrop-blur-xs text-[10px] font-bold text-white rounded-full">
                       View Project
                     </span>
@@ -153,7 +159,7 @@ export default function Projects({ onOpenConsultation }: ProjectsProps) {
 
                 {/* Title & Location Footer */}
                 <div className="p-4 text-center space-y-1 bg-white">
-                  <h3 className="font-medium text-slate-900 text-sm sm:text-base group-hover:text-[#B8860B] transition-colors">
+                  <h3 className="font-medium text-slate-900 text-sm sm:text-base group-hover:text-[#B8860B] transition-colors duration-300">
                     {project.title}
                   </h3>
                   <div className="flex items-center justify-center gap-1 text-xs text-slate-500 font-light">

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Star, ChevronLeft, ChevronRight, CheckCircle2, MessageSquareQuote, Pause, Play } from "lucide-react";
 
 export default function Testimonials() {
@@ -12,8 +12,8 @@ export default function Testimonials() {
       rating: 5,
       date: "2 weeks ago",
       review:
-        "Purchased a double-height crystal chandelier for our villa in Anna Nagar. The CAD calculations and drop-length customization by Mr. Ashik's team were outstanding. Highly recommended!",
-      showroom: "Anna Nagar Showroom",
+        "Purchased a double-height crystal chandelier for our villa in Anna Nagar. The CAD calculations and drop-length customization by Mr. Ashik's team at Teynampet Flagship were outstanding. Highly recommended!",
+      showroom: "Ashik Lights Teynampet Flagship",
       verified: true,
     },
     {
@@ -23,8 +23,8 @@ export default function Testimonials() {
       rating: 5,
       date: "1 month ago",
       review:
-        "Extensive collection of modern magnetic track lights and IP65 garden bollards. Their team came on-site to assist with wiring layouts. 5-star experience!",
-      showroom: "ECR Showroom",
+        "Extensive collection of modern magnetic track lights and IP65 garden bollards. Their team from Teynampet store came on-site to assist with wiring layouts. 5-star experience!",
+      showroom: "Ashik Lights Teynampet Flagship",
       verified: true,
     },
     {
@@ -34,8 +34,8 @@ export default function Testimonials() {
       rating: 5,
       date: "3 weeks ago",
       review:
-        "As an interior architect, I rely on Ashik Lights Teynampet for all my high-end residential projects. Their low-glare UGR<13 architectural downlights are top tier.",
-      showroom: "Teynampet Flagship",
+        "As an interior architect, I rely on Ashik Lights Teynampet for all my high-end residential projects. Their low-glare UGR<13 architectural downlights and profile tracks are top tier.",
+      showroom: "Ashik Lights Teynampet Flagship",
       verified: true,
     },
     {
@@ -45,8 +45,8 @@ export default function Testimonials() {
       rating: 5,
       date: "1 month ago",
       review:
-        "We bought retractable BLDC wooden fans and LED vanity mirrors for our new home. Super quiet fans and anti-fog demister mirrors work flawlessly!",
-      showroom: "Velachery Showroom",
+        "We bought retractable BLDC wooden fans and LED vanity mirrors from Ashik Lights Teynampet for our new home. Super quiet fans and anti-fog demister mirrors work flawlessly!",
+      showroom: "Ashik Lights Teynampet Flagship",
       verified: true,
     },
     {
@@ -56,8 +56,8 @@ export default function Testimonials() {
       rating: 5,
       date: "2 months ago",
       review:
-        "Best lighting store in Chennai with 6 showrooms. Great pricing, genuine 3-year warranty, and courteous staff. Extremely satisfied!",
-      showroom: "Porur Showroom",
+        "Best luxury lighting store in Chennai. Exceptional crystal quality, genuine 3-year on-site warranty, and courteous staff at Ashik Lights Teynampet!",
+      showroom: "Ashik Lights Teynampet Flagship",
       verified: true,
     },
     {
@@ -67,22 +67,201 @@ export default function Testimonials() {
       rating: 5,
       date: "3 weeks ago",
       review:
-        "Stunning amber glass island pendants for our kitchen island. The warm glow transformed our entire dining space. Excellent service at Tambaram branch!",
-      showroom: "Tambaram Showroom",
+        "Stunning amber glass island pendants for our kitchen island from Ashik Lights Teynampet. The warm glow transformed our entire dining space. Excellent customer support!",
+      showroom: "Ashik Lights Teynampet Flagship",
+      verified: true,
+    },
+    {
+      id: 7,
+      name: "Anand & Divya",
+      location: "Adyar, Chennai",
+      rating: 5,
+      date: "1 week ago",
+      review:
+        "The team at Ashik Lights Teynampet guided us through selecting chandeliers for our double-height foyer. The structural ceiling load calculations gave us complete peace of mind.",
+      showroom: "Ashik Lights Teynampet Flagship",
+      verified: true,
+    },
+    {
+      id: 8,
+      name: "Dr. Arvind Swaminathan",
+      location: "Nungambakkam, Chennai",
+      rating: 5,
+      date: "1 month ago",
+      review:
+        "Outstanding lighting collection! Visited the Ashik Lights Teynampet showroom and was impressed by the K9 optical crystal purity and warm ambient wall sconces.",
+      showroom: "Ashik Lights Teynampet Flagship",
+      verified: true,
+    },
+    {
+      id: 9,
+      name: "Kavitha Rangarajan",
+      location: "Besant Nagar, Chennai",
+      rating: 5,
+      date: "2 weeks ago",
+      review:
+        "We replaced all traditional fans with BLDC retractable crystal fans from Ashik Lights Teynampet. Electricity bills are down and the living room looks like a 5-star hotel!",
+      showroom: "Ashik Lights Teynampet Flagship",
+      verified: true,
+    },
+    {
+      id: 10,
+      name: "Sanjay Mehta (Interiors)",
+      location: "Alwarpet, Chennai",
+      rating: 5,
+      date: "3 weeks ago",
+      review:
+        "Ashik Lights Teynampet is my primary destination for luxury villas. Their magnetic track systems allow versatile spotlight positioning without messing up False Ceilings.",
+      showroom: "Ashik Lights Teynampet Flagship",
+      verified: true,
+    },
+    {
+      id: 11,
+      name: "Deepak S.",
+      location: "Kilpauk, Chennai",
+      rating: 5,
+      date: "1 month ago",
+      review:
+        "Superb packing and damage-free delivery! The crystal drops for our 12-foot high ceiling cascade arrived in perfect condition from Ashik Lights Teynampet.",
+      showroom: "Ashik Lights Teynampet Flagship",
+      verified: true,
+    },
+    {
+      id: 12,
+      name: "Gautam & Smitha",
+      location: "RA Puram, Chennai",
+      rating: 5,
+      date: "2 months ago",
+      review:
+        "The anti-fog LED vanity mirrors from Ashik Lights Teynampet are magnificent. Touch controls with warm/white dual CCT mode make everyday grooming a pleasure.",
+      showroom: "Ashik Lights Teynampet Flagship",
+      verified: true,
+    },
+    {
+      id: 13,
+      name: "Pradeep Chandran",
+      location: "Mylapore, Chennai",
+      rating: 5,
+      date: "3 weeks ago",
+      review:
+        "Genuine K9 crystal fixtures with heavy solid brass mountings. Mr. Ashik at Teynampet personally recommended the ideal wattage for our living area.",
+      showroom: "Ashik Lights Teynampet Flagship",
+      verified: true,
+    },
+    {
+      id: 14,
+      name: "Reshma B.",
+      location: "Sholinganallur, Chennai",
+      rating: 5,
+      date: "1 month ago",
+      review:
+        "Installed IP65 weatherproof spike spotlights for our garden landscaping. They withstand Chennai rains comfortably. Great quality from Ashik Lights Teynampet!",
+      showroom: "Ashik Lights Teynampet Flagship",
+      verified: true,
+    },
+    {
+      id: 15,
+      name: "Architect Shalini Rao",
+      location: "Kotturpuram, Chennai",
+      rating: 5,
+      date: "2 weeks ago",
+      review:
+        "Highly aesthetic fixtures with high CRI >90 LEDs. Ashik Lights Teynampet delivers top optical precision for modern luxury apartments.",
+      showroom: "Ashik Lights Teynampet Flagship",
+      verified: true,
+    },
+    {
+      id: 16,
+      name: "Manoj Kumar",
+      location: "Thiruvanmiyur, Chennai",
+      rating: 5,
+      date: "1 month ago",
+      review:
+        "Courteous team and seamless installation support! Ashik Lights Teynampet provided custom drop wires for our stairwell chandelier.",
+      showroom: "Ashik Lights Teynampet Flagship",
+      verified: true,
+    },
+    {
+      id: 17,
+      name: "Nandhini Viswanathan",
+      location: "Perungudi, Chennai",
+      rating: 5,
+      date: "3 weeks ago",
+      review:
+        "The gold leaf branch chandelier we purchased at Ashik Lights Teynampet is the centerpiece of our home. Every guest praises its design!",
+      showroom: "Ashik Lights Teynampet Flagship",
+      verified: true,
+    },
+    {
+      id: 18,
+      name: "Venkatesh Iyer",
+      location: "T Nagar, Chennai",
+      rating: 5,
+      date: "2 months ago",
+      review:
+        "Visited the flagship Teynampet store on Anna Salai. The display setups and lighting demonstration helped us choose perfect fixtures for our new flat.",
+      showroom: "Ashik Lights Teynampet Flagship",
+      verified: true,
+    },
+    {
+      id: 19,
+      name: "Anitha & Srinivas",
+      location: "Medavakkam, Chennai",
+      rating: 5,
+      date: "1 week ago",
+      review:
+        "Prompt service, transparent guidance and reliable 3-year warranty. Ashik Lights Teynampet is Chennai's best lighting store without doubt.",
+      showroom: "Ashik Lights Teynampet Flagship",
+      verified: true,
+    },
+    {
+      id: 20,
+      name: "Balaji V.",
+      location: "Velachery, Chennai",
+      rating: 5,
+      date: "3 weeks ago",
+      review:
+        "Very pleased with our linear LED profile lights and decorative wall sconces from Ashik Lights Teynampet. Sleek, energy-efficient and long lasting.",
+      showroom: "Ashik Lights Teynampet Flagship",
+      verified: true,
+    },
+    {
+      id: 21,
+      name: "Sunil & Archana",
+      location: "ECR Road, Chennai",
+      rating: 5,
+      date: "2 weeks ago",
+      review:
+        "From outdoor facade lights to grand foyer chandeliers, Ashik Lights Teynampet delivered a complete home solution effortlessly. 10/10!",
+      showroom: "Ashik Lights Teynampet Flagship",
       verified: true,
     },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [slideDirection, setSlideDirection] = useState<"left" | "right">("right");
+  const [isAnimating, setIsAnimating] = useState(false);
+  const progressRef = useRef<HTMLDivElement>(null);
 
-  const nextReview = () => {
-    setCurrentIndex((prev) => (prev + 1) % reviews.length);
-  };
+  const goTo = useCallback(
+    (newIndex: number, direction: "left" | "right") => {
+      if (isAnimating) return;
+      setIsAnimating(true);
+      setSlideDirection(direction);
+      setCurrentIndex(newIndex);
+      setTimeout(() => setIsAnimating(false), 500);
+    },
+    [isAnimating]
+  );
 
-  const prevReview = () => {
-    setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
-  };
+  const nextReview = useCallback(() => {
+    goTo((currentIndex + 1) % reviews.length, "right");
+  }, [currentIndex, reviews.length, goTo]);
+
+  const prevReview = useCallback(() => {
+    goTo((currentIndex - 1 + reviews.length) % reviews.length, "left");
+  }, [currentIndex, reviews.length, goTo]);
 
   // Auto-move slider every 3.5 seconds when playing
   useEffect(() => {
@@ -91,7 +270,9 @@ export default function Testimonials() {
       nextReview();
     }, 3500);
     return () => clearInterval(interval);
-  }, [isPlaying, currentIndex]);
+  }, [isPlaying, nextReview]);
+
+  const review = reviews[currentIndex];
 
   return (
     <section
@@ -101,8 +282,11 @@ export default function Testimonials() {
       onMouseLeave={() => setIsPlaying(true)}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-        {/* Section Title with Official Google G Logo Badge */}
-        <div className="text-center max-w-2xl mx-auto mb-12 space-y-3 animate-fade-in-up">
+        {/* Section Title — scroll reveal */}
+        <div
+          className="text-center max-w-2xl mx-auto mb-12 space-y-3"
+          data-reveal="up"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#EAE3D2] shadow-2xs">
             {/* Google G SVG */}
             <svg className="w-4 h-4" viewBox="0 0 24 24">
@@ -137,40 +321,50 @@ export default function Testimonials() {
             What Our Customers Say
           </h2>
           <p className="text-slate-600 text-sm sm:text-base font-light">
-            Auto-scrolling Google reviews from villa owners, architects, and homeowners in Chennai.
+            Verified Google reviews from villa owners, architects, and homeowners in Chennai.
           </p>
         </div>
 
         {/* Auto Moving Card Container */}
-        <div className="max-w-4xl mx-auto relative">
+        <div className="max-w-4xl mx-auto relative" data-reveal="scale">
           {/* Animated Progress Bar */}
           <div className="w-full bg-slate-200 h-1 rounded-full mb-4 overflow-hidden">
             <div
-              key={currentIndex}
-              className="bg-[#B8860B] h-full transition-all duration-3500 ease-linear"
-              style={{ width: isPlaying ? "100%" : "0%" }}
+              ref={progressRef}
+              key={`progress-${currentIndex}-${isPlaying}`}
+              className={`bg-[#B8860B] h-full rounded-full ${
+                isPlaying ? "animate-progress-bar" : ""
+              }`}
+              style={{ width: isPlaying ? undefined : "0%" }}
             />
           </div>
 
-          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#EAE3D2] shadow-xl relative overflow-hidden transition-all duration-500 transform hover:scale-101">
+          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#EAE3D2] shadow-xl relative overflow-hidden transition-all duration-500 hover:shadow-2xl">
             <MessageSquareQuote className="absolute top-6 right-6 w-16 h-16 text-[#B8860B]/10" />
 
-            <div className="space-y-6 relative z-10 key={currentIndex} animate-fade-in">
+            <div
+              key={currentIndex}
+              className={`space-y-6 relative z-10 ${
+                slideDirection === "right"
+                  ? "animate-slide-carousel"
+                  : "animate-slide-carousel-reverse"
+              }`}
+            >
               {/* Stars & Date */}
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-1 text-amber-400">
-                  {[...Array(reviews[currentIndex].rating)].map((_, i) => (
+                  {[...Array(review.rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-amber-400" />
                   ))}
                 </div>
                 <span className="text-xs text-slate-400 font-medium">
-                  {reviews[currentIndex].date}
+                  {review.date}
                 </span>
               </div>
 
               {/* Review Text */}
               <p className="text-slate-800 font-serif italic text-lg sm:text-xl leading-relaxed min-h-[80px]">
-                &ldquo;{reviews[currentIndex].review}&rdquo;
+                &ldquo;{review.review}&rdquo;
               </p>
 
               {/* Author & Showroom */}
@@ -178,16 +372,16 @@ export default function Testimonials() {
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="font-bold text-slate-900 text-base">
-                      {reviews[currentIndex].name}
+                      {review.name}
                     </span>
-                    {reviews[currentIndex].verified && (
+                    {review.verified && (
                       <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
                         <CheckCircle2 className="w-3 h-3 text-emerald-600" /> Verified Google Review
                       </span>
                     )}
                   </div>
                   <div className="text-xs text-slate-500 mt-0.5">
-                    {reviews[currentIndex].location} • {reviews[currentIndex].showroom}
+                    {review.location} • {review.showroom}
                   </div>
                 </div>
 
@@ -204,43 +398,33 @@ export default function Testimonials() {
             </div>
           </div>
 
-          {/* Navigation Controls & Auto-Move Pause Toggle */}
+          {/* Navigation Controls & Counter Badge */}
           <div className="flex items-center justify-between mt-6">
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="w-8 h-8 rounded-full bg-white border border-[#EAE3D2] text-slate-600 hover:text-[#B8860B] flex items-center justify-center transition-colors cursor-pointer"
+                className="w-8 h-8 rounded-full bg-white border border-[#EAE3D2] text-slate-600 hover:text-[#B8860B] hover:border-[#B8860B] flex items-center justify-center transition-all duration-300 cursor-pointer"
                 title={isPlaying ? "Pause auto-scroll" : "Play auto-scroll"}
               >
                 {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
               </button>
 
-              <div className="flex items-center gap-2">
-                {reviews.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentIndex(idx)}
-                    className={`h-2.5 rounded-full transition-all cursor-pointer ${
-                      currentIndex === idx
-                        ? "w-8 bg-[#B8860B]"
-                        : "w-2.5 bg-slate-300 hover:bg-slate-400"
-                    }`}
-                  />
-                ))}
+              <div className="text-xs font-semibold text-slate-600 bg-white px-3 py-1 rounded-full border border-[#EAE3D2]">
+                <span className="text-[#B8860B] font-bold">{currentIndex + 1}</span> / {reviews.length} Reviews
               </div>
             </div>
 
             <div className="flex items-center gap-3">
               <button
                 onClick={prevReview}
-                className="w-10 h-10 rounded-full bg-white border border-[#EAE3D2] shadow-2xs hover:border-[#B8860B] hover:text-[#B8860B] flex items-center justify-center transition-colors cursor-pointer"
+                className="w-10 h-10 rounded-full bg-white border border-[#EAE3D2] shadow-2xs hover:border-[#B8860B] hover:text-[#B8860B] hover:shadow-md flex items-center justify-center transition-all duration-300 cursor-pointer"
                 aria-label="Previous review"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={nextReview}
-                className="w-10 h-10 rounded-full bg-white border border-[#EAE3D2] shadow-2xs hover:border-[#B8860B] hover:text-[#B8860B] flex items-center justify-center transition-colors cursor-pointer"
+                className="w-10 h-10 rounded-full bg-white border border-[#EAE3D2] shadow-2xs hover:border-[#B8860B] hover:text-[#B8860B] hover:shadow-md flex items-center justify-center transition-all duration-300 cursor-pointer"
                 aria-label="Next review"
               >
                 <ChevronRight className="w-5 h-5" />

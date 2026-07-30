@@ -16,18 +16,13 @@ export async function GET() {
 - [Architectural Lights](https://ashiklights.in/architectural-lights): Magnetic 48V track spotlights, low-glare UGR<13 recessed downlights, and linear LED channels.
 - [Outdoor Lights](https://ashiklights.in/outdoor-lights): Weatherproof IP65 outdoor wall sconces, garden bollards, spike spotlights, and facade wall washers.
 
-## Showroom Locations (Chennai)
+## Flagship Showroom Location (Chennai)
 
-- **Teynampet Showroom**: Anna Salai, Teynampet, Chennai, Tamil Nadu
-- **Anna Nagar Showroom**: 2nd Avenue, Anna Nagar, Chennai, Tamil Nadu
-- **ECR Showroom**: East Coast Road, Uthandi / Palavakkam, Chennai, Tamil Nadu
-- **Velachery Showroom**: Bypass Road, Velachery, Chennai, Tamil Nadu
-- **Tambaram Showroom**: GST Road, Tambaram, Chennai, Tamil Nadu
-- **Porur Showroom**: Mount-Poonamallee Road, Porur, Chennai, Tamil Nadu
+- **Teynampet Flagship Store**: #313, Anna Salai, Opposite to Kamaraj Arangam, Teynampet, Chennai, Tamil Nadu 600006
 
 ## Contact Information
 
-- Phone: +91 067548 60555
+- Phone: +91 087548 60555
 - Email: info@ashiklights.in
 - Website: https://ashiklights.in
 `;
@@ -35,7 +30,7 @@ export async function GET() {
   return new NextResponse(content, {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
-      "Cache-Control": "public, max-age=86400, s-maxage=86400",
+      "Cache-Control": "public, max-age=3600, s-maxage=86400",
     },
   });
 }

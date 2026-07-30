@@ -4,21 +4,25 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin, Star } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa6";
 
 export default function Footer() {
   return (
     <footer className="bg-[#1A1813] text-slate-300 pt-16 pb-8 border-t border-[#332D24]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#332D24]">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#332D24]"
+          data-reveal-stagger
+        >
           {/* Brand Info with /public/logo.png */}
-          <div className="lg:col-span-4 space-y-4">
-            <Link href="/" className="inline-block bg-white/90 p-3 rounded-xl shadow-md">
+          <div className="lg:col-span-4 space-y-4" data-reveal="up">
+            <Link href="/" className="inline-block group">
               <Image
                 src="/logo.png"
                 alt="Ashik Lights Logo"
-                width={170}
-                height={50}
-                className="h-11 w-auto object-contain"
+                width={220}
+                height={65}
+                className="h-13 sm:h-14 w-auto object-contain brightness-0 invert opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
               />
             </Link>
 
@@ -41,48 +45,48 @@ export default function Footer() {
           </div>
 
           {/* Core Categories */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="lg:col-span-4 space-y-4" data-reveal="up" data-reveal-delay="100">
             <h4 className="font-serif text-sm font-semibold uppercase tracking-wider text-white border-b border-[#332D24] pb-2 inline-block">
               Collections
             </h4>
             <ul className="grid grid-cols-2 gap-2 text-xs text-slate-400">
               <li>
-                <Link href="/chandeliers" className="hover:text-[#B8860B] transition-colors">
+                <Link href="/chandeliers" className="link-underline hover:text-[#B8860B] transition-colors duration-300">
                   Chandeliers
                 </Link>
               </li>
               <li>
-                <Link href="/high-ceiling-chandeliers" className="hover:text-[#B8860B] transition-colors">
+                <Link href="/high-ceiling-chandeliers" className="link-underline hover:text-[#B8860B] transition-colors duration-300">
                   High Ceiling
                 </Link>
               </li>
               <li>
-                <Link href="/indoor-lights" className="hover:text-[#B8860B] transition-colors">
+                <Link href="/indoor-lights" className="link-underline hover:text-[#B8860B] transition-colors duration-300">
                   Indoor Lights
                 </Link>
               </li>
               <li>
-                <Link href="/decorative-fans" className="hover:text-[#B8860B] transition-colors">
+                <Link href="/decorative-fans" className="link-underline hover:text-[#B8860B] transition-colors duration-300">
                   Decorative Fan
                 </Link>
               </li>
               <li>
-                <Link href="/wall-pendant-lights" className="hover:text-[#B8860B] transition-colors">
+                <Link href="/wall-pendant-lights" className="link-underline hover:text-[#B8860B] transition-colors duration-300">
                   Wall & Pendant
                 </Link>
               </li>
               <li>
-                <Link href="/led-mirrors" className="hover:text-[#B8860B] transition-colors">
+                <Link href="/led-mirrors" className="link-underline hover:text-[#B8860B] transition-colors duration-300">
                   LED Mirror
                 </Link>
               </li>
               <li>
-                <Link href="/architectural-lights" className="hover:text-[#B8860B] transition-colors">
+                <Link href="/architectural-lights" className="link-underline hover:text-[#B8860B] transition-colors duration-300">
                   Architectural
                 </Link>
               </li>
               <li>
-                <Link href="/outdoor-lights" className="hover:text-[#B8860B] transition-colors">
+                <Link href="/outdoor-lights" className="link-underline hover:text-[#B8860B] transition-colors duration-300">
                   Outdoor Lights
                 </Link>
               </li>
@@ -90,7 +94,7 @@ export default function Footer() {
           </div>
 
           {/* Head Office Location */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="lg:col-span-4 space-y-4" data-reveal="up" data-reveal-delay="200">
             <h4 className="font-serif text-sm font-semibold uppercase tracking-wider text-white border-b border-[#332D24] pb-2 inline-block">
               Flagship Store
             </h4>
@@ -101,13 +105,24 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#B8860B] shrink-0" />
-                <a href="tel:08754860555" className="hover:text-white transition-colors">
+                <a href="tel:08754860555" className="hover:text-white transition-colors duration-300">
                   087548 60555
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
+                <FaWhatsapp className="w-4 h-4 text-[#25D366] shrink-0" />
+                <a
+                  href="https://wa.me/918754860555?text=Hi%20Ashik%20Lights%2C%20I%20need%20lighting%20help."
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-white transition-colors duration-300 font-medium"
+                >
+                  WhatsApp: +91 87548 60555
+                </a>
+              </div>
+              <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#B8860B] shrink-0" />
-                <a href="mailto:info@ashiklights.in" className="hover:text-white transition-colors">
+                <a href="mailto:info@ashiklights.in" className="hover:text-white transition-colors duration-300">
                   info@ashiklights.in
                 </a>
               </div>
@@ -116,7 +131,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500" data-reveal="fade">
           <div>Copyright © 2026 Ashik Lights. All rights reserved.</div>
           <div className="flex items-center gap-2">
             <span>Designed and Developed by</span>

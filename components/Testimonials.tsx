@@ -242,33 +242,40 @@ export default function Testimonials() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [slideDirection, setSlideDirection] = useState<"left" | "right">("right");
   const [isAnimating, setIsAnimating] = useState(false);
+  const isAnimatingRef = useRef(false);
   const progressRef = useRef<HTMLDivElement>(null);
 
   const goTo = useCallback(
     (newIndex: number, direction: "left" | "right") => {
-      if (isAnimating) return;
+      if (isAnimatingRef.current) return;
+      isAnimatingRef.current = true;
       setIsAnimating(true);
       setSlideDirection(direction);
       setCurrentIndex(newIndex);
-      setTimeout(() => setIsAnimating(false), 500);
+      setTimeout(() => {
+        setIsAnimating(false);
+        isAnimatingRef.current = false;
+      }, 400);
     },
-    [isAnimating]
+    []
   );
 
   const nextReview = useCallback(() => {
-    goTo((currentIndex + 1) % reviews.length, "right");
-  }, [currentIndex, reviews.length, goTo]);
+    setCurrentIndex((prev) => (prev + 1) % reviews.length);
+    setSlideDirection("right");
+  }, [reviews.length]);
 
   const prevReview = useCallback(() => {
-    goTo((currentIndex - 1 + reviews.length) % reviews.length, "left");
-  }, [currentIndex, reviews.length, goTo]);
+    setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
+    setSlideDirection("left");
+  }, [reviews.length]);
 
-  // Auto-move slider every 3.5 seconds when playing
+  // Auto-move slider every 3.0 seconds when playing
   useEffect(() => {
     if (!isPlaying) return;
     const interval = setInterval(() => {
       nextReview();
-    }, 3500);
+    }, 3000);
     return () => clearInterval(interval);
   }, [isPlaying, nextReview]);
 

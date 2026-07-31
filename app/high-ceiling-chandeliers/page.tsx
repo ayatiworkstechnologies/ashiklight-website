@@ -212,7 +212,7 @@ export default function HighCeilingChandeliersPage() {
       title="High Ceiling Chandeliers"
       tagline="Designed for dramatic double-height spaces."
       description="Custom multi-tier crystal statement chandeliers engineered with structural ceiling plates for foyers and stairwells."
-      heroImage="/assets/High Ceiling Chandeliers/Crystal Raindrop High-Ceiling Chandelier.webp"
+      heroImage="/banner/High Ceiling Chandeliers.webp"
       badges={[
         { icon: SlidersHorizontal, text: "Custom Cable Drops" },
         { icon: UserCheck, text: "Structural CAD Support" },

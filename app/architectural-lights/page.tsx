@@ -68,7 +68,7 @@ export default function ArchitecturalLightsPage() {
       title="Architectural Lights"
       tagline="Precision beam control, glare-free downlights and tracks."
       description="Magnetic track spotlights, trimless recessed architectural downlights (UGR<13), wall washers and linear profile LED channels."
-      heroImage="/assets/Architecture Light/Circular Magnetic Power Track Series.webp"
+      heroImage="/banner/Architectural Lights.webp"
       badges={[
         { icon: Sparkles, text: "Low Glare UGR < 13" },
         { icon: SlidersHorizontal, text: "15°/24°/36° Optics" },

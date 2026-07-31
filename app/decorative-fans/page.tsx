@@ -83,10 +83,10 @@ export default function DecorativeFansPage() {
   return (
     <CategoryCatalog
       categorySlug="decorative-fans"
-      title="Decorative Fan"
+      title="Decorative Fans"
       tagline="Whisper-quiet air delivery with integrated light rings."
       description="Energy-saving BLDC motor ceiling fans crafted with retractable blades, crystal shades, and dimmable LED halos."
-      heroImage="/assets/Decorative Fan/Crystal Dome Retractable Blade Ceiling Fan.webp"
+      heroImage="/banner/Decorative Fan.webp"
       badges={[
         { icon: Fan, text: "Super Efficient BLDC Motor" },
         { icon: Award, text: "Retractable Hideaway Blades" },

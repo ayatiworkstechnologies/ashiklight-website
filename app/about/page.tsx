@@ -8,7 +8,21 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Showrooms from "@/components/Showrooms";
 import ScrollRevealProvider from "@/components/ScrollRevealProvider";
-import { Award, ShieldCheck, Sparkles, UserCheck, ChevronRight, Users, Star, ArrowRight, MessageSquareQuote, Trophy, Compass, Building2, Lightbulb } from "lucide-react";
+import {
+  Award,
+  ShieldCheck,
+  Sparkles,
+  UserCheck,
+  ChevronRight,
+  Users,
+  Star,
+  ArrowRight,
+  MessageSquareQuote,
+  Trophy,
+  Compass,
+  Building2,
+  Lightbulb,
+} from "lucide-react";
 
 export default function AboutPage() {
   const foundationPillars = [
@@ -72,53 +86,80 @@ export default function AboutPage() {
 
                 <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1A1813] leading-tight">
                   Illuminating spaces <br />
-                  with <span className="italic text-[#B8860B] font-medium">timeless elegance.</span>
+                  with{" "}
+                  <span className="italic text-[#B8860B] font-medium">
+                    timeless elegance.
+                  </span>
                 </h1>
 
                 <p className="text-slate-700 text-sm sm:text-base font-light leading-relaxed max-w-xl">
-                  Established in 2016 by our founder, <strong>Mr. Abdul Hameed Ashik</strong>. ASHIK LIGHTS is a leading lights retail showroom, proudly serving our valued customers since 2016. Dedicated to providing complete lighting solutions to all sectors.
+                  Established in 2016 by our founder,{" "}
+                  <strong>Mr. Abdul Hameed Ashik</strong>. ASHIK LIGHTS is a
+                  leading lights retail showroom, proudly serving our valued
+                  customers since 2016. Dedicated to providing complete lighting
+                  solutions to all sectors.
                 </p>
 
                 {/* Stat Cards Grid */}
-                <div className="grid grid-cols-3 gap-4 pt-4" data-reveal-stagger>
-                  <div data-reveal="up" data-reveal-delay="100" className="bg-white/90 backdrop-blur-md p-4.5 rounded-2xl border border-[#EAE3D2] shadow-2xs hover-border-glow transition-all duration-300 text-center">
-                    <div className="font-serif text-2xl sm:text-3xl font-bold text-[#B8860B]">Flagship</div>
-                    <div className="text-[11px] text-slate-600 font-semibold mt-1">Teynampet Store</div>
+                <div
+                  className="grid grid-cols-3 gap-4 pt-4"
+                  data-reveal-stagger
+                >
+                  <div
+                    data-reveal="up"
+                    data-reveal-delay="100"
+                    className="bg-white/90 backdrop-blur-md p-4.5 rounded-2xl border border-[#EAE3D2] shadow-2xs hover-border-glow transition-all duration-300 text-center"
+                  >
+                    <div className="font-serif text-2xl sm:text-3xl font-bold text-[#B8860B]">
+                      Flagship
+                    </div>
+                    <div className="text-[11px] text-slate-600 font-semibold mt-1">
+                      Teynampet Store
+                    </div>
                   </div>
-                  <div data-reveal="up" data-reveal-delay="200" className="bg-white/90 backdrop-blur-md p-4.5 rounded-2xl border border-[#EAE3D2] shadow-2xs hover-border-glow transition-all duration-300 text-center">
-                    <div className="font-serif text-2xl sm:text-3xl font-bold text-[#B8860B]">10,000+</div>
-                    <div className="text-[11px] text-slate-600 font-semibold mt-1">Homes Illuminated</div>
+                  <div
+                    data-reveal="up"
+                    data-reveal-delay="200"
+                    className="bg-white/90 backdrop-blur-md p-4.5 rounded-2xl border border-[#EAE3D2] shadow-2xs hover-border-glow transition-all duration-300 text-center"
+                  >
+                    <div className="font-serif text-2xl sm:text-3xl font-bold text-[#B8860B]">
+                      10,000+
+                    </div>
+                    <div className="text-[11px] text-slate-600 font-semibold mt-1">
+                      Homes Illuminated
+                    </div>
                   </div>
-                  <div data-reveal="up" data-reveal-delay="300" className="bg-white/90 backdrop-blur-md p-4.5 rounded-2xl border border-[#EAE3D2] shadow-2xs hover-border-glow transition-all duration-300 text-center">
-                    <div className="font-serif text-2xl sm:text-3xl font-bold text-[#B8860B]">4.9 ★</div>
-                    <div className="text-[11px] text-slate-600 font-semibold mt-1">Google Rating</div>
+                  <div
+                    data-reveal="up"
+                    data-reveal-delay="300"
+                    className="bg-white/90 backdrop-blur-md p-4.5 rounded-2xl border border-[#EAE3D2] shadow-2xs hover-border-glow transition-all duration-300 text-center"
+                  >
+                    <div className="font-serif text-2xl sm:text-3xl font-bold text-[#B8860B]">
+                      4.9 ★
+                    </div>
+                    <div className="text-[11px] text-slate-600 font-semibold mt-1">
+                      Google Rating
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Right Showcase Photo Frame */}
+              {/* Right Showcase Photo Frame — Full Size */}
               <div className="lg:col-span-6 relative" data-reveal="scale">
-                <div className="rounded-3xl overflow-hidden border border-[#EAE3D2] shadow-2xl aspect-4/3 group relative">
+                <div className="rounded-3xl overflow-hidden border border-[#EAE3D2] shadow-2xl min-h-[440px] sm:min-h-[500px] lg:min-h-[540px] w-full group relative">
                   <img
-                    src="/assets/banner.webp"
-                    alt="Ashik Lights Showroom"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    src="/banner/ashik shop-image.webp"
+                    alt="Ashik Lights Flagship Showroom Teynampet"
+                    className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
                   <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
-                    <div className="text-xs font-bold text-[#D4AF37] uppercase tracking-wider">Flagship Showroom</div>
-                    <div className="font-serif text-xl font-bold">#313, Anna Salai, Teynampet, Chennai</div>
-                  </div>
-                </div>
-
-                {/* Floating Badge */}
-                <div className="absolute -bottom-6 -left-6 bg-white/95 backdrop-blur-md p-5 rounded-2xl border border-[#EAE3D2] shadow-xl hidden sm:flex items-center gap-4 animate-float-slow">
-                  <div className="w-12 h-12 rounded-xl bg-[#FAF6F0] flex items-center justify-center text-[#B8860B] border border-[#EAE3D2]">
-                    <Award className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-slate-900">100% Quality Guarantee</div>
-                    <div className="text-[11px] text-slate-500">K9 Optical Crystal & Solid Brass</div>
+                    <div className="text-xs font-bold text-[#D4AF37] uppercase tracking-wider">
+                      Flagship Showroom
+                    </div>
+                    <div className="font-serif text-xl font-bold">
+                      #313, Anna Salai, Teynampet, Chennai
+                    </div>
                   </div>
                 </div>
               </div>
@@ -129,7 +170,10 @@ export default function AboutPage() {
         {/* Breadcrumb — Positioned AFTER Hero */}
         <div className="bg-[#FAF6F0] border-b border-[#EAE3D2] py-3.5 px-4 sm:px-6 lg:px-12 text-xs text-slate-500 shadow-2xs">
           <div className="max-w-7xl mx-auto flex items-center gap-2">
-            <Link href="/" className="hover:text-[#B8860B] transition-colors duration-300">
+            <Link
+              href="/"
+              className="hover:text-[#B8860B] transition-colors duration-300"
+            >
               Home
             </Link>
             <ChevronRight className="w-3 h-3 text-slate-400" />
@@ -140,7 +184,10 @@ export default function AboutPage() {
         {/* Our Foundation Cards Grid */}
         <section className="py-16 lg:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-            <div className="text-center max-w-2xl mx-auto mb-16 space-y-3" data-reveal="up">
+            <div
+              className="text-center max-w-2xl mx-auto mb-16 space-y-3"
+              data-reveal="up"
+            >
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF6F0] border border-[#EAE3D2] text-[#B8860B] text-xs font-bold uppercase tracking-wider">
                 <Sparkles className="w-4 h-4" />
                 OUR BRAND FOUNDATION
@@ -149,11 +196,15 @@ export default function AboutPage() {
                 Driven by Passion & Precision
               </h2>
               <p className="text-slate-600 text-sm font-light">
-                Delivering complete lighting solutions to residential, commercial, and industrial sectors.
+                Delivering complete lighting solutions to residential,
+                commercial, and industrial sectors.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-reveal-stagger>
+            <div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              data-reveal-stagger
+            >
               {foundationPillars.map((item, idx) => {
                 const IconComp = item.icon;
                 return (
@@ -185,7 +236,9 @@ export default function AboutPage() {
 
                     <div className="pt-4 border-t border-[#EAE3D2]/60 flex items-center justify-between text-xs font-semibold text-[#B8860B]">
                       <span>ASHIK LIGHTS EXCELLENCE</span>
-                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                      <span className="group-hover:translate-x-1 transition-transform">
+                        →
+                      </span>
                     </div>
                   </div>
                 );
@@ -197,18 +250,27 @@ export default function AboutPage() {
         {/* Founder Quote Card — Dark Luxury Style */}
         <section className="py-20 bg-[#1A1813] text-white border-t border-[#332D24] relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#B8860B]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12 text-center space-y-6 relative z-10" data-reveal="scale">
+          <div
+            className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12 text-center space-y-6 relative z-10"
+            data-reveal="scale"
+          >
             <div className="w-16 h-16 rounded-full bg-[#B8860B]/20 text-[#D4AF37] flex items-center justify-center mx-auto border border-[#B8860B]/40 shadow-xl">
               <Star className="w-8 h-8 fill-amber-400" />
             </div>
 
             <blockquote className="font-serif italic text-xl sm:text-2xl lg:text-3xl text-slate-200 leading-relaxed max-w-3xl mx-auto">
-              &ldquo;Lighting is not merely about brightness — it is the soul of architecture. Every fixture we curate is crafted to elevate human experience.&rdquo;
+              &ldquo;Lighting is not merely about brightness — it is the soul of
+              architecture. Every fixture we curate is crafted to elevate human
+              experience.&rdquo;
             </blockquote>
 
             <div className="pt-2 space-y-1">
-              <div className="font-bold text-lg text-[#D4AF37]">Mr. Abdul Hameed Ashik</div>
-              <div className="text-xs text-slate-400">Founder & Managing Director, Ashik Lights</div>
+              <div className="font-bold text-lg text-[#D4AF37]">
+                Mr. Abdul Hameed Ashik
+              </div>
+              <div className="text-xs text-slate-400">
+                Founder & Managing Director, Ashik Lights
+              </div>
             </div>
           </div>
         </section>
@@ -219,11 +281,18 @@ export default function AboutPage() {
         {/* Bottom Consultation CTA */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-            <div className="bg-gradient-to-r from-[#1A1813] via-[#2C261E] to-[#1A1813] rounded-3xl p-8 sm:p-12 text-white shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 border border-[#332D24]" data-reveal="up">
+            <div
+              className="bg-gradient-to-r from-[#1A1813] via-[#2C261E] to-[#1A1813] rounded-3xl p-8 sm:p-12 text-white shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 border border-[#332D24]"
+              data-reveal="up"
+            >
               <div className="space-y-3 text-center md:text-left">
-                <h3 className="font-serif text-3xl font-bold text-white">Experience Our Flagship Store</h3>
+                <h3 className="font-serif text-3xl font-bold text-white">
+                  Experience Our Flagship Store
+                </h3>
                 <p className="text-slate-300 text-xs sm:text-sm max-w-xl font-light">
-                  Visit our flagship Teynampet showroom to feel the warmth of our statement chandeliers and consult with our lighting architects.
+                  Visit our flagship Teynampet showroom to feel the warmth of
+                  our statement chandeliers and consult with our lighting
+                  architects.
                 </p>
               </div>
 

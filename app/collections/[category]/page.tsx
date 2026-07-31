@@ -116,60 +116,61 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         <TopBanner />
         <Header />
 
-        {/* Category Hero Banner */}
-        <section className="relative py-12 lg:py-16 bg-[#FAF6F0] border-b border-[#EAE3D2] overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              {/* Left Info */}
-              <div className="lg:col-span-6 space-y-4" data-reveal="left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B8860B]/10 text-[#B8860B] text-xs font-semibold uppercase tracking-wider">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>Category Catalog</span>
-                </div>
-                <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1813]">
-                  {currentConfig.title}
-                </h1>
-                <p className="font-serif italic text-base sm:text-lg text-[#B8860B]">
-                  &ldquo;{currentConfig.tagline}&rdquo;
-                </p>
-                <p className="text-slate-600 text-xs sm:text-sm font-light leading-relaxed">
-                  {currentConfig.desc}
-                </p>
-                <div className="flex flex-wrap items-center gap-3 pt-2" data-reveal-stagger>
-                  {currentConfig.badges.map((b, i) => {
-                    const BIcon = b.icon;
-                    return (
-                      <div
-                        key={i}
-                        data-reveal="up"
-                        data-reveal-delay={String(i * 80)}
-                        className="flex items-center gap-2 text-xs font-medium text-slate-700 bg-white px-3 py-1.5 rounded-lg border border-[#EAE3D2]"
-                      >
-                        <BIcon className="w-3.5 h-3.5 text-[#B8860B]" />
-                        <span>{b.text}</span>
-                      </div>
-                    );
-                  })}
-                </div>
+        {/* Category Hero Banner — Exact Homepage Hero Design */}
+        <section className="relative min-h-[60vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FAF6F0] border-b border-[#EAE3D2]">
+          {/* Full Width Background Image — Bright & Unzoomed */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src={currentConfig.image}
+              alt={currentConfig.title}
+              className="w-full h-full object-cover object-right lg:object-center brightness-105 contrast-[1.02]"
+            />
+            {/* Subtle left-side shade overlay ONLY for text contrast; Right side is 100% bright & unshaded */}
+            <div className="absolute inset-y-0 left-0 w-full md:w-[58%] lg:w-[48%] bg-gradient-to-r from-[#FAF6F0] via-[#FAF6F0]/90 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#FAF6F0] to-transparent md:hidden pointer-events-none" />
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-14 lg:py-20 w-full">
+            <div className="max-w-xl lg:max-w-2xl space-y-5">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#B8860B]/10 border border-[#B8860B]/30 text-[#B8860B] text-xs font-semibold uppercase tracking-wider backdrop-blur-sm shadow-2xs">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>CATEGORY COLLECTION</span>
               </div>
 
-              {/* Right Photo */}
-              <div
-                className="lg:col-span-6 rounded-3xl overflow-hidden border border-[#EAE3D2] shadow-2xl relative group min-h-[380px] sm:min-h-[440px] lg:min-h-[460px] w-full"
-                data-reveal="scale"
-              >
-                <img
-                  src={currentConfig.image}
-                  alt={currentConfig.title}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1A1813] leading-[1.1]">
+                {currentConfig.title}
+              </h1>
+
+              <p className="font-serif italic text-lg sm:text-xl text-[#B8860B] font-medium">
+                &ldquo;{currentConfig.tagline}&rdquo;
+              </p>
+
+              <p className="text-slate-700 text-sm sm:text-base font-light leading-relaxed max-w-lg">
+                {currentConfig.desc}
+              </p>
+
+              {/* Feature Badges */}
+              <div className="flex flex-wrap items-center gap-3 pt-2" data-reveal-stagger>
+                {currentConfig.badges.map((b, i) => {
+                  const BIcon = b.icon;
+                  return (
+                    <div
+                      key={i}
+                      data-reveal="up"
+                      data-reveal-delay={String(i * 80)}
+                      className="flex items-center gap-2 text-xs font-semibold text-slate-800 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-xl border border-[#EAE3D2] shadow-2xs hover:border-[#B8860B] hover:-translate-y-0.5 transition-all duration-300"
+                    >
+                      <BIcon className="w-4 h-4 text-[#B8860B]" />
+                      <span>{b.text}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
         </section>
 
-        {/* Breadcrumb — Positioned AFTER Hero */}
+        {/* Breadcrumb — Positioned AFTER / AT BOTTOM OF HERO */}
         <div className="bg-[#FAF6F0] border-b border-[#EAE3D2] py-3.5 px-4 sm:px-6 lg:px-12 text-xs text-slate-500 shadow-2xs">
           <div className="max-w-7xl mx-auto flex items-center gap-2">
             <Link href="/" className="hover:text-[#B8860B] transition-colors duration-300">

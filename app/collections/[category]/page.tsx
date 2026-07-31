@@ -116,8 +116,61 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         <TopBanner />
         <Header />
 
-        {/* Breadcrumb */}
-        <div className="bg-[#FAF6F0] border-b border-[#EAE3D2] py-3 px-4 sm:px-6 lg:px-12 text-xs text-slate-500">
+        {/* Category Hero Banner */}
+        <section className="relative py-12 lg:py-16 bg-[#FAF6F0] border-b border-[#EAE3D2] overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Left Info */}
+              <div className="lg:col-span-6 space-y-4" data-reveal="left">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B8860B]/10 text-[#B8860B] text-xs font-semibold uppercase tracking-wider">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Category Catalog</span>
+                </div>
+                <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1813]">
+                  {currentConfig.title}
+                </h1>
+                <p className="font-serif italic text-base sm:text-lg text-[#B8860B]">
+                  &ldquo;{currentConfig.tagline}&rdquo;
+                </p>
+                <p className="text-slate-600 text-xs sm:text-sm font-light leading-relaxed">
+                  {currentConfig.desc}
+                </p>
+                <div className="flex flex-wrap items-center gap-3 pt-2" data-reveal-stagger>
+                  {currentConfig.badges.map((b, i) => {
+                    const BIcon = b.icon;
+                    return (
+                      <div
+                        key={i}
+                        data-reveal="up"
+                        data-reveal-delay={String(i * 80)}
+                        className="flex items-center gap-2 text-xs font-medium text-slate-700 bg-white px-3 py-1.5 rounded-lg border border-[#EAE3D2]"
+                      >
+                        <BIcon className="w-3.5 h-3.5 text-[#B8860B]" />
+                        <span>{b.text}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Right Photo */}
+              <div
+                className="lg:col-span-6 rounded-3xl overflow-hidden border border-[#EAE3D2] shadow-2xl relative group min-h-[380px] sm:min-h-[440px] lg:min-h-[460px] w-full"
+                data-reveal="scale"
+              >
+                <img
+                  src={currentConfig.image}
+                  alt={currentConfig.title}
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Breadcrumb — Positioned AFTER Hero */}
+        <div className="bg-[#FAF6F0] border-b border-[#EAE3D2] py-3.5 px-4 sm:px-6 lg:px-12 text-xs text-slate-500 shadow-2xs">
           <div className="max-w-7xl mx-auto flex items-center gap-2">
             <Link href="/" className="hover:text-[#B8860B] transition-colors duration-300">
               Home
@@ -127,60 +180,11 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               Collections
             </Link>
             <ChevronRight className="w-3 h-3 text-slate-400" />
-            <span className="text-[#B8860B] font-semibold">
+            <span className="text-[#B8860B] font-bold">
               {currentConfig.title}
             </span>
           </div>
         </div>
-
-        {/* Category Hero Banner */}
-        <section className="relative py-12 lg:py-16 bg-[#FAF6F0] border-b border-[#EAE3D2] overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              {/* Left Info */}
-              <div className="lg:col-span-6 space-y-4" data-reveal="left">
-                <h1 className="font-serif text-4xl sm:text-5xl font-semibold text-[#1A1813]">
-                  {currentConfig.title}
-                </h1>
-
-                <p className="font-serif italic text-lg sm:text-xl text-[#B8860B] font-medium">
-                  {currentConfig.tagline}
-                </p>
-
-                <p className="text-slate-600 text-xs sm:text-sm font-light leading-relaxed max-w-lg">
-                  {currentConfig.desc}
-                </p>
-
-                {/* Feature Badges */}
-                <div className="flex flex-wrap items-center gap-3 pt-2" data-reveal-stagger>
-                  {currentConfig.badges.map((b, i) => {
-                    const BIcon = b.icon;
-                    return (
-                      <div
-                        key={i}
-                        data-reveal="up"
-                        data-reveal-delay={String(i * 100)}
-                        className="flex items-center gap-2 text-xs font-semibold text-slate-800 bg-white px-3 py-2 rounded-xl border border-[#EAE3D2] shadow-2xs hover-border-glow transition-all duration-300"
-                      >
-                        <BIcon className="w-4 h-4 text-[#B8860B]" />
-                        <span>{b.text}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Right Banner Photo */}
-              <div className="lg:col-span-6 rounded-3xl overflow-hidden border border-[#EAE3D2] shadow-md aspect-16/9 lg:aspect-2/1 group" data-reveal="scale">
-                <img
-                  src={currentConfig.image}
-                  alt={currentConfig.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Main Catalog View: Left Filter + Right Product Grid */}
         <section ref={catalogRef} className="py-12 lg:py-16 bg-white scroll-mt-24">

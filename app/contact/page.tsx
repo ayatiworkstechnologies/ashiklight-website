@@ -16,7 +16,6 @@ export default function ContactPage() {
     name: "",
     phone: "",
     email: "",
-    showroom: "Teynampet (Anna Salai)",
     message: "",
   });
 
@@ -27,7 +26,6 @@ export default function ContactPage() {
       `Name: ${formData.name}`,
       `Phone: ${formData.phone}`,
       formData.email ? `Email: ${formData.email}` : "",
-      `Preferred showroom: ${formData.showroom}`,
       formData.message ? `Message: ${formData.message}` : "",
     ]
       .filter(Boolean)
@@ -46,17 +44,6 @@ export default function ContactPage() {
       <main className="min-h-screen flex flex-col bg-[#FAF8F5]">
         <TopBanner />
         <Header />
-
-        {/* Breadcrumb */}
-        <div className="bg-[#FAF6F0] border-b border-[#EAE3D2] py-3 px-4 sm:px-6 lg:px-12 text-xs text-slate-500">
-          <div className="max-w-7xl mx-auto flex items-center gap-2">
-            <Link href="/" className="hover:text-[#B8860B] transition-colors duration-300">
-              Home
-            </Link>
-            <ChevronRight className="w-3 h-3 text-slate-400" />
-            <span className="text-[#B8860B] font-semibold">Contact Us</span>
-          </div>
-        </div>
 
         {/* Contact Hero & Cards — Luxury Layout */}
         <section className="relative py-14 lg:py-20 bg-gradient-to-b from-[#FAF6F0] via-[#F6F0E6] to-[#FAF8F5] border-b border-[#EAE3D2] overflow-hidden">
@@ -135,6 +122,17 @@ export default function ContactPage() {
           </div>
         </section>
 
+        {/* Breadcrumb — Positioned AFTER Hero */}
+        <div className="bg-[#FAF6F0] border-b border-[#EAE3D2] py-3.5 px-4 sm:px-6 lg:px-12 text-xs text-slate-500 shadow-2xs">
+          <div className="max-w-7xl mx-auto flex items-center gap-2">
+            <Link href="/" className="hover:text-[#B8860B] transition-colors duration-300">
+              Home
+            </Link>
+            <ChevronRight className="w-3 h-3 text-slate-400" />
+            <span className="text-[#B8860B] font-bold">Contact Us</span>
+          </div>
+        </div>
+
         {/* Form & Map Section — Sleek Layout */}
         <section className="py-16 lg:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
@@ -204,17 +202,6 @@ export default function ContactPage() {
                           className="w-full px-4 py-3.5 rounded-xl border border-[#EAE3D2] focus:outline-none focus:border-[#B8860B] bg-white text-slate-900 shadow-2xs transition-colors duration-300"
                         />
                       </div>
-                    </div>
-
-                    <div>
-                      <label className="block font-bold text-slate-800 mb-1.5">Store Location</label>
-                      <select
-                        value={formData.showroom}
-                        onChange={(e) => setFormData({ ...formData, showroom: e.target.value })}
-                        className="w-full px-4 py-3.5 rounded-xl border border-[#EAE3D2] focus:outline-none focus:border-[#B8860B] bg-white text-slate-900 shadow-2xs transition-colors duration-300 cursor-pointer"
-                      >
-                        <option value="Teynampet Flagship Store (Anna Salai)">Teynampet Flagship Store (#313, Anna Salai, Chennai)</option>
-                      </select>
                     </div>
 
                     <div>

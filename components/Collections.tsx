@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Eye } from "lucide-react";
 import ProductModal, { ProductModalData } from "./ProductModal";
+import { VectorDiamondGrid, VectorCornerMotif } from "@/components/VectorAccents";
 
 interface CollectionsProps {
   onOpenConsultation?: () => void;
@@ -29,39 +30,39 @@ export default function Collections({ onOpenConsultation }: CollectionsProps) {
       desc: "Custom multi-tier and long cable drop chandeliers created for double-height foyers, staircases and villas.",
     },
     {
+      id: "wall-pendant-lights",
+      href: "/wall-pendant-lights",
+      name: "Wall & Pendant Lights",
+      image: "/assets/Wall & Pendant Lights/Clustered Textured Glass Bud Pendant Light.webp",
+      desc: "Architectural wall sconces and artistic pendant lights designed for modern spaces.",
+    },
+    {
       id: "indoor-lights",
       href: "/indoor-lights",
       name: "Indoor Lights",
       image: "/assets/Indoor light catalog/ArcGlow Minimal LED Wall Light.webp",
-      desc: "Warm ceiling flush mounts, surface downlights and cove luminaires for modern bedrooms and halls.",
-    },
-    {
-      id: "decorative-fans",
-      href: "/decorative-fans",
-      name: "Decorative Fan",
-      image: "/assets/Decorative Fan/Crystal Dome Retractable Blade Ceiling Fan.webp",
-      desc: "Whisper-quiet BLDC motor ceiling fans with natural wood blades, LED light ring, and smart remote.",
-    },
-    {
-      id: "wall-pendant-lights",
-      href: "/wall-pendant-lights",
-      name: "Wall & Pendant Lights",
-      image: "/assets/Wall & Pendant Lights/Amber Glass Halo Wall Sconce.webp",
-      desc: "Artisanal blown-glass island pendants and elegant brass wall sconces for ambient bedside & dining accent.",
+      desc: "Premium recessed spotlights, magnetic track lights, surface COBs, and Linear LED profile lights.",
     },
     {
       id: "led-mirrors",
       href: "/led-mirrors",
       name: "LED Mirror",
       image: "/assets/Led Mirror/Round Halo LED Bathroom Mirror.webp",
-      desc: "Frameless vanity LED mirrors with touch dimming, anti-fog demister pads, and dual warm/white lighting halo.",
+      desc: "High-definition vanity LED mirrors featuring touch sensors, anti-fog demisters, and dual CCT.",
     },
     {
       id: "architectural-lights",
       href: "/architectural-lights",
       name: "Architectural Lights",
       image: "/assets/Architecture Light/Circular Magnetic Power Track Series.webp",
-      desc: "Magnetic track spotlights, trimless recessed downlights, glare-free optics, and aluminum linear channels.",
+      desc: "Precision beam architectural lighting, trimless channels, and magnetic track systems.",
+    },
+    {
+      id: "decorative-fans",
+      href: "/decorative-fans",
+      name: "Decorative Fans",
+      image: "/assets/Decorative Fan/Crystal Dome Retractable Blade Ceiling Fan.webp",
+      desc: "Luxury ceiling fans featuring retractable blades, integrated LED lighting, and whisper-quiet BLDC motors.",
     },
     {
       id: "outdoor-lights",
@@ -74,8 +75,12 @@ export default function Collections({ onOpenConsultation }: CollectionsProps) {
 
   return (
     <>
-      <section id="collections" className="py-16 lg:py-24 bg-[#FAF8F5]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+      <section id="collections" className="relative py-16 lg:py-24 bg-[#FAF8F5] overflow-hidden">
+        <VectorDiamondGrid className="opacity-[0.03]" />
+        <VectorCornerMotif position="top-right" />
+        <VectorCornerMotif position="bottom-left" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
           {/* Title Block — scroll reveal */}
           <div
             className="text-center max-w-2xl mx-auto mb-12 space-y-3"

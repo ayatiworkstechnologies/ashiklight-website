@@ -157,7 +157,7 @@ export default function ChandeliersPage() {
       material: "Crystal Beaded Drum & Brass",
       dimensions: "Ø 24\" x H 10\"",
       image: "/assets/chandeliers/Round Crystal Drum Flush-Mount Ceiling Light.webp",
-      subCat: "brass",
+      subCat: "classic",
     },
     {
       id: "ch-18",
@@ -193,7 +193,7 @@ export default function ChandeliersPage() {
       material: "Dual Concentric Crystal Rings",
       dimensions: "Ø 26\" x H 6\"",
       image: "/assets/chandeliers/Double Concentric Crystal Ring Ceiling Light.webp",
-      subCat: "brass",
+      subCat: "minimal",
     },
     {
       id: "ch-22",
@@ -202,7 +202,7 @@ export default function ChandeliersPage() {
       material: "Interlocked Crystal Bands",
       dimensions: "Ø 22\" x H 7\"",
       image: "/assets/chandeliers/Interlocking Crystal Ring LED Ceiling Light.webp",
-      subCat: "brass",
+      subCat: "minimal",
     },
     {
       id: "ch-23",

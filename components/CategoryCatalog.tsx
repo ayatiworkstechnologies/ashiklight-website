@@ -103,21 +103,6 @@ export default function CategoryCatalog({
         <TopBanner />
         <Header />
 
-        {/* Breadcrumb */}
-        <div className="bg-[#FAF6F0] border-b border-[#EAE3D2] py-3 px-4 sm:px-6 lg:px-12 text-xs text-slate-500">
-          <div className="max-w-7xl mx-auto flex items-center gap-2">
-            <Link href="/" className="hover:text-[#B8860B] transition-colors duration-300">
-              Home
-            </Link>
-            <ChevronRight className="w-3 h-3 text-slate-400" />
-            <Link href="/#collections" className="hover:text-[#B8860B] transition-colors duration-300">
-              Collections
-            </Link>
-            <ChevronRight className="w-3 h-3 text-slate-400" />
-            <span className="text-[#B8860B] font-semibold">{title}</span>
-          </div>
-        </div>
-
         {/* Category Hero Banner — Luxury Design */}
         <section className="relative py-14 lg:py-20 bg-gradient-to-b from-[#FAF6F0] via-[#F6F0E6] to-[#FAF8F5] border-b border-[#EAE3D2] overflow-hidden">
           {/* Subtle Glow Background Elements */}
@@ -166,7 +151,7 @@ export default function CategoryCatalog({
 
               {/* Right Banner Photo — scale reveal */}
               <div
-                className="lg:col-span-6 rounded-3xl overflow-hidden border border-[#EAE3D2] shadow-xl aspect-16/9 lg:aspect-2/1 group relative"
+                className="lg:col-span-6 rounded-3xl overflow-hidden border border-[#EAE3D2] shadow-2xl relative group min-h-[380px] sm:min-h-[440px] lg:min-h-[460px] w-full"
                 data-reveal="scale"
               >
                 <Image
@@ -175,19 +160,42 @@ export default function CategoryCatalog({
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs font-medium backdrop-blur-sm bg-black/30 p-3 rounded-2xl border border-white/10">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-70" />
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs font-medium backdrop-blur-md bg-black/40 px-4 py-2.5 rounded-2xl border border-white/20 shadow-lg">
                   <span className="font-serif italic text-amber-200">Handcrafted Luxury Fixtures</span>
-                  <span className="bg-[#B8860B] text-white px-2.5 py-0.5 rounded-full text-[10px] font-bold">
-                    {products.length} Products
+                  <span className="bg-[#B8860B] text-white px-3 py-1 rounded-full text-[11px] font-bold shadow-xs">
+                    {filteredProducts.length} Products
                   </span>
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Breadcrumb — Positioned AFTER Hero */}
+        <div className="bg-[#FAF6F0] border-b border-[#EAE3D2] py-3.5 px-4 sm:px-6 lg:px-12 text-xs text-slate-500 shadow-2xs">
+          <div className="max-w-7xl mx-auto flex items-center gap-2">
+            <Link href="/" className="hover:text-[#B8860B] transition-colors duration-300">
+              Home
+            </Link>
+            <ChevronRight className="w-3 h-3 text-slate-400" />
+            <Link href="/#collections" className="hover:text-[#B8860B] transition-colors duration-300">
+              Collections
+            </Link>
+            <ChevronRight className="w-3 h-3 text-slate-400" />
+            <span className="text-[#B8860B] font-bold">{title}</span>
+            {selectedSubCategory !== "all" && (
+              <>
+                <ChevronRight className="w-3 h-3 text-slate-400" />
+                <span className="text-slate-700 font-medium capitalize">
+                  {subCategories.find((s) => s.id === selectedSubCategory)?.label || selectedSubCategory}
+                </span>
+              </>
+            )}
+          </div>
+        </div>
 
         {/* Main Catalog View: Left Filter + Right Product Grid */}
         <section ref={catalogRef} className="py-12 lg:py-16 bg-white scroll-mt-24">

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Star, ShieldCheck, Award } from "lucide-react";
+import { VectorDiamondGrid, VectorLightRays } from "@/components/VectorAccents";
 
 interface HeroProps {
   onOpenConsultation?: () => void;
@@ -34,6 +35,10 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
         <div className="absolute inset-y-0 left-0 w-full md:w-[65%] lg:w-[55%] bg-gradient-to-r from-[#FAF6F0] via-[#FAF6F0]/95 to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#FAF6F0] to-transparent md:hidden pointer-events-none" />
       </div>
+
+      {/* Vector Diamond Grid Background Pattern */}
+      <VectorDiamondGrid className="opacity-[0.04] z-[1]" />
+      <VectorLightRays className="-top-20 -left-20 z-[1] hidden lg:block" />
 
       {/* Floating Sparkle Particles */}
       <div className="absolute inset-0 z-[1] pointer-events-none hidden lg:block">

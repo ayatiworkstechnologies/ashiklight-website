@@ -138,7 +138,7 @@ export default function ConsultationModal({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
-                    Preferred Showroom
+                    Consultation Type
                   </label>
                   <select
                     value={formData.showroom}
@@ -147,8 +147,8 @@ export default function ConsultationModal({
                     }
                     className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#B8860B]/50 focus:border-[#B8860B] transition-colors duration-300"
                   >
-                    <option>Teynampet Flagship Store (#313, Anna Salai)</option>
-                    <option>Virtual / Online Consultation</option>
+                    <option value="In-Person at Teynampet Flagship Store">In-Person at Teynampet Flagship Store</option>
+                    <option value="Virtual / Online Lighting Consultation">Virtual / Online Lighting Consultation</option>
                   </select>
                 </div>
                 <div>

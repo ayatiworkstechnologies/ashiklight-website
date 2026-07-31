@@ -22,7 +22,7 @@ export default function ArchitecturalLightsPage() {
       material: "Precision Pattern Optical Projector",
       dimensions: "30W LED • Custom Gobo",
       image: "/assets/Architecture Light/Gobo Light.webp",
-      subCat: "spotlight",
+      subCat: "trimless",
     },
     {
       id: "ar-3",

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Award, ShieldCheck, UserCheck, Wrench, Sparkles, Truck, SlidersHorizontal, ArrowRight } from "lucide-react";
 import ProductModal, { ProductModalData } from "./ProductModal";
+import { VectorDiamondGrid, VectorLightRays } from "@/components/VectorAccents";
 
 interface WhyChooseUsProps {
   onOpenConsultation?: () => void;
@@ -24,42 +25,45 @@ export default function WhyChooseUs({ onOpenConsultation }: WhyChooseUsProps) {
       title: "Custom Size Engineering",
       desc: "Multi-tier and long cable drop chandeliers tailored to your foyer height with structural CAD load calculations.",
       icon: SlidersHorizontal,
-      tag: "Tailored to Your Height",
+      tag: "Custom Tailoring",
     },
     {
-      id: "guidance",
-      title: "Expert Lighting Architects",
-      desc: "Our lighting specialists help you select the exact lumen output, CRI > 90 color rendering, and beam angle for your space.",
+      id: "architect",
+      title: "Expert Architectural Guidance",
+      desc: "Free 1-on-1 consultation with certified lighting architects who calculate lux levels, beam angles, and color rendering.",
       icon: UserCheck,
       tag: "Free Consultation",
     },
     {
-      id: "installation",
-      title: "Professional Installation",
-      desc: "Experienced installation support across Chennai and Tamil Nadu ensuring safe ceiling mounting and smart automation setup.",
-      icon: Wrench,
-      tag: "Safe Ceiling Mounting",
-    },
-    {
       id: "warranty",
-      title: "3-Year On-Site Warranty",
-      desc: "Complete peace of mind with 3-year on-site warranty coverage and genuine replacement LED drivers and parts.",
+      title: "3-Year Comprehensive Warranty",
+      desc: "On-site warranty cover on all LED drivers, solid brass finishes, and structural components for total peace of mind.",
       icon: ShieldCheck,
-      tag: "Complete Guarantee",
+      tag: "Complete Protection",
     },
     {
-      id: "packaging",
-      title: "Safe Multi-Layer Transport",
-      desc: "Reinforced wooden crate and custom foam packaging to guarantee 100% damage-free delivery across India.",
+      id: "installation",
+      title: "White-Glove Installation",
+      desc: "Skilled technicians handle double-height ceiling mounting, scaffolding setup, dimming controls, and crystal assembly.",
+      icon: Wrench,
+      tag: "Turnkey Execution",
+    },
+    {
+      id: "delivery",
+      title: "Safe Multi-Layer Shipping",
+      desc: "Custom timber crating and shock-absorbing foam packaging ensure 100% damage-free transit across South India.",
       icon: Truck,
-      tag: "Damage-Free Delivery",
+      tag: "Transit Insured",
     },
   ];
 
   return (
     <>
-      <section id="why-us" className="py-16 lg:py-24 bg-[#FAF6F0] border-t border-[#EAE3D2]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+      <section className="relative py-16 lg:py-24 bg-white overflow-hidden">
+        <VectorDiamondGrid className="opacity-[0.03]" />
+        <VectorLightRays className="-bottom-20 -right-20 pointer-events-none hidden lg:block opacity-10" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
           {/* Title Block — scroll reveal */}
           <div
             className="text-center max-w-2xl mx-auto mb-16 space-y-3"

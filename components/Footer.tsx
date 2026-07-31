@@ -5,11 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin, Star } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa6";
+import { VectorCornerMotif, VectorDiamondGrid } from "@/components/VectorAccents";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1A1813] text-slate-300 pt-16 pb-8 border-t border-[#332D24]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+    <footer className="bg-[#1A1813] text-slate-300 pt-16 pb-8 border-t border-[#332D24] relative overflow-hidden">
+      <VectorDiamondGrid className="opacity-[0.03]" />
+      <VectorCornerMotif position="top-right" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         <div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#332D24]"
           data-reveal-stagger
@@ -20,9 +23,9 @@ export default function Footer() {
               <Image
                 src="/logo.png"
                 alt="Ashik Lights Logo"
-                width={220}
-                height={65}
-                className="h-13 sm:h-14 w-auto object-contain brightness-0 invert opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                width={280}
+                height={80}
+                className="h-16 sm:h-20 lg:h-22 w-auto object-contain brightness-0 invert opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
               />
             </Link>
 
@@ -133,9 +136,23 @@ export default function Footer() {
         {/* Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500" data-reveal="fade">
           <div>Copyright © 2026 Ashik Lights. All rights reserved.</div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <span>Designed and Developed by</span>
-            <span className="font-semibold text-slate-300">Ayati Works</span>
+            <a
+              href="https://www.ayatiworks.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center hover:opacity-100 transition-all duration-300 group"
+              title="Visit Ayati Works Official Website"
+            >
+              <Image
+                src="/ayati-logo.png"
+                alt="Ayati Works Logo"
+                width={160}
+                height={45}
+                className="h-8 sm:h-9 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+              />
+            </a>
           </div>
         </div>
       </div>

@@ -76,8 +76,8 @@ export default function WhyChooseUs({ onOpenConsultation }: WhyChooseUsProps) {
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1A1813]">
               Why Choose Ashik Lights
             </h2>
-            <p className="text-slate-600 text-sm sm:text-base font-light">
-              Chennai&apos;s trusted luxury lighting flagship showroom in Teynampet, offering expert guidance and custom design engineering.
+            <p className="text-slate-600 text-sm sm:text-base font-light leading-relaxed max-w-xl mx-auto">
+              Since 2016, our founder Mr. Abdul Hameed Ashik and our lighting team in Teynampet have personally guided thousands of homeowners, interior designers, and architects in choosing the right lights for every room.
             </p>
           </div>
 

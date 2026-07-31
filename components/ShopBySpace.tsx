@@ -83,8 +83,8 @@ export default function ShopBySpace() {
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#1A1813]">
             Shop by Space
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base font-light">
-            Discover tailored lighting fixtures engineered specifically for every room in your home.
+          <p className="text-slate-600 text-sm sm:text-base font-light leading-relaxed max-w-xl mx-auto">
+            Whether you are designing a double-height living room or outfitting a cozy bedroom, discover lights curated for every corner of your home.
           </p>
         </div>
 

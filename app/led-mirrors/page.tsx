@@ -1,8 +1,18 @@
-"use client";
-
-import React from "react";
+import type { Metadata } from "next";
 import CategoryCatalog from "@/components/CategoryCatalog";
-import { Maximize2, Award, ShieldCheck } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "LED Vanity Mirrors Chennai",
+  description:
+    "Frameless high-definition vanity LED mirrors featuring feather touch switches, integrated demister pads and dual CCT lighting. Shop at Ashik Lights, Chennai.",
+  alternates: { canonical: "/led-mirrors" },
+  openGraph: {
+    title: "LED Vanity Mirrors Chennai | Ashik Lights",
+    description:
+      "Touch-sensor anti-fog LED bathroom and vanity mirrors with dual color temperature control.",
+    url: "https://ashiklights.in/led-mirrors",
+  },
+};
 
 export default function LedMirrorsPage() {
   const products = [
@@ -61,9 +71,9 @@ export default function LedMirrorsPage() {
       description="Frameless high-definition vanity LED mirrors featuring feather touch switches, integrated demister pads and dual CCT lighting."
       heroImage="/banner/LED Mirror.webp"
       badges={[
-        { icon: Maximize2, text: "5mm HD Copper-Free Glass" },
-        { icon: Award, text: "Smart Anti-Fog Demister" },
-        { icon: ShieldCheck, text: "2-Year Warranty" },
+        { icon: "Maximize2", text: "5mm HD Copper-Free Glass" },
+        { icon: "Award", text: "Smart Anti-Fog Demister" },
+        { icon: "ShieldCheck", text: "2-Year Warranty" },
       ]}
       subCategories={[
         { id: "all", label: "All LED Mirrors" },

@@ -1,8 +1,18 @@
-"use client";
-
-import React from "react";
+import type { Metadata } from "next";
 import CategoryCatalog from "@/components/CategoryCatalog";
-import { Fan, Award, ShieldCheck } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Decorative BLDC Ceiling Fans Chennai",
+  description:
+    "Energy-saving BLDC motor ceiling fans crafted with retractable blades, crystal shades, and dimmable LED halos. Shop decorative fans at Ashik Lights, Chennai.",
+  alternates: { canonical: "/decorative-fans" },
+  openGraph: {
+    title: "Decorative BLDC Ceiling Fans Chennai | Ashik Lights",
+    description:
+      "Whisper-quiet BLDC decorative ceiling fans with retractable blades and integrated LED lighting.",
+    url: "https://ashiklights.in/decorative-fans",
+  },
+};
 
 export default function DecorativeFansPage() {
   const products = [
@@ -88,9 +98,9 @@ export default function DecorativeFansPage() {
       description="Energy-saving BLDC motor ceiling fans crafted with retractable blades, crystal shades, and dimmable LED halos."
       heroImage="/banner/Decorative Fan.webp"
       badges={[
-        { icon: Fan, text: "Super Efficient BLDC Motor" },
-        { icon: Award, text: "Retractable Hideaway Blades" },
-        { icon: ShieldCheck, text: "2-Year Warranty" },
+        { icon: "Fan", text: "Super Efficient BLDC Motor" },
+        { icon: "Award", text: "Retractable Hideaway Blades" },
+        { icon: "ShieldCheck", text: "2-Year Warranty" },
       ]}
       subCategories={[
         { id: "all", label: "All Decorative Fans" },

@@ -1,8 +1,18 @@
-"use client";
-
-import React from "react";
+import type { Metadata } from "next";
 import CategoryCatalog from "@/components/CategoryCatalog";
-import { Sun, Award, ShieldCheck } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Outdoor Lights Chennai",
+  description:
+    "Weather-resistant IP65 outdoor wall sconces, garden bollards, spike spotlights, and facade wall washers. Shop outdoor lighting at Ashik Lights, Chennai.",
+  alternates: { canonical: "/outdoor-lights" },
+  openGraph: {
+    title: "Outdoor Lights Chennai | Ashik Lights",
+    description:
+      "Heavy-duty IP65 landscape bollards, spike spotlights, and facade wall washers built for Chennai's climate.",
+    url: "https://ashiklights.in/outdoor-lights",
+  },
+};
 
 export default function OutdoorLightsPage() {
   const products = [
@@ -70,9 +80,9 @@ export default function OutdoorLightsPage() {
       description="Weather-resistant IP65 outdoor wall sconces, garden bollards, spike spotlights, and facade wall washers."
       heroImage="/banner/Outdoor Lights.webp"
       badges={[
-        { icon: Sun, text: "Weather Resistant IP65" },
-        { icon: Award, text: "Corrosion Proof Body" },
-        { icon: ShieldCheck, text: "3-Year Warranty" },
+        { icon: "Sun", text: "Weather Resistant IP65" },
+        { icon: "Award", text: "Corrosion Proof Body" },
+        { icon: "ShieldCheck", text: "3-Year Warranty" },
       ]}
       subCategories={[
         { id: "all", label: "All Outdoor Lights" },

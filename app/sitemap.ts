@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/about",
     "/contact",
+    "/collections",
     "/chandeliers",
     "/high-ceiling-chandeliers",
     "/indoor-lights",

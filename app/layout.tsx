@@ -121,10 +121,9 @@ const jsonLdStoreSchema = {
         "Thursday",
         "Friday",
         "Saturday",
-        "Sunday",
       ],
       opens: "10:00",
-      closes: "21:30",
+      closes: "22:00",
     },
   ],
   sameAs: [

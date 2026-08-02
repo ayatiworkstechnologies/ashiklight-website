@@ -1,8 +1,18 @@
-"use client";
-
-import React from "react";
+import type { Metadata } from "next";
 import CategoryCatalog from "@/components/CategoryCatalog";
-import { Sparkles, Award, ShieldCheck } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Indoor Lights Chennai",
+  description:
+    "Flush mount ceiling luminaires, surface downlights, magnetic track modules and cove profile lights for modern homes. Shop indoor lighting at Ashik Lights, Chennai.",
+  alternates: { canonical: "/indoor-lights" },
+  openGraph: {
+    title: "Indoor Lights Chennai | Ashik Lights",
+    description:
+      "Premium recessed spotlights, magnetic track lights, surface COBs, and linear LED profile lights.",
+    url: "https://ashiklights.in/indoor-lights",
+  },
+};
 
 export default function IndoorLightsPage() {
   const products = [
@@ -70,9 +80,9 @@ export default function IndoorLightsPage() {
       description="Flush mount ceiling luminaires, surface downlights, magnetic track modules and cove profile lights for modern homes."
       heroImage="/banner/Indoor Lights.webp"
       badges={[
-        { icon: Sparkles, text: "Ultra Slim Profile" },
-        { icon: Award, text: "TrueColor >90 CRI" },
-        { icon: ShieldCheck, text: "3-Year Warranty" },
+        { icon: "Sparkles", text: "Ultra Slim Profile" },
+        { icon: "Award", text: "TrueColor >90 CRI" },
+        { icon: "ShieldCheck", text: "3-Year Warranty" },
       ]}
       subCategories={[
         { id: "all", label: "All Indoor Lights" },

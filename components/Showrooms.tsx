@@ -9,7 +9,7 @@ export default function Showrooms() {
     address: "#313, Anna Salai, Opposite to Kamaraj Arangam, Teynampet, Chennai, Tamil Nadu 600006",
     phone: "087548 60555",
     email: "info@ashiklights.in",
-    timing: "10:00 AM - 9:30 PM (Open 7 Days a Week)",
+    timing: "10:00 AM - 10:00 PM (Mon - Sat, Closed Sunday)",
     mapQuery: "ASHIK+LIGHTS+Teynampet+Chennai",
     features: [
       "Exclusive K9 Crystal Chandelier Gallery",

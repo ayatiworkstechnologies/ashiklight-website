@@ -1,8 +1,18 @@
-"use client";
-
-import React from "react";
+import type { Metadata } from "next";
 import CategoryCatalog from "@/components/CategoryCatalog";
-import { Sparkles, UserCheck, ShieldCheck } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Wall & Pendant Lights Chennai",
+  description:
+    "Elevate your bedside, dining nook, corridor or feature wall with hand-blown glass island pendants and solid brass sconces from Ashik Lights, Chennai.",
+  alternates: { canonical: "/wall-pendant-lights" },
+  openGraph: {
+    title: "Wall & Pendant Lights Chennai | Ashik Lights",
+    description:
+      "Architectural wall sconces and artistic pendant lights designed for modern Chennai homes.",
+    url: "https://ashiklights.in/wall-pendant-lights",
+  },
+};
 
 export default function WallPendantLightsPage() {
   const products = [
@@ -304,9 +314,9 @@ export default function WallPendantLightsPage() {
       description="Elevate your bedside, dining nook, corridor or feature wall with hand-blown glass island pendants and solid brass sconces."
       heroImage="/banner/Wall & Pendant Lights.webp"
       badges={[
-        { icon: Sparkles, text: "Handblown Glass" },
-        { icon: UserCheck, text: "Solid Brass Fitting" },
-        { icon: ShieldCheck, text: "3-Year Warranty" },
+        { icon: "Sparkles", text: "Handblown Glass" },
+        { icon: "UserCheck", text: "Solid Brass Fitting" },
+        { icon: "ShieldCheck", text: "3-Year Warranty" },
       ]}
       subCategories={[
         { id: "all", label: "All Wall & Pendants" },

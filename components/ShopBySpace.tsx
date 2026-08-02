@@ -161,35 +161,6 @@ export default function ShopBySpace() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent lg:hidden" />
           </div>
         </div>
-
-        {/* 6 Quick Space Grid Cards Below */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mt-8" data-reveal-stagger>
-          {spaces.map((sp, idx) => {
-            const IconComp = sp.icon;
-            const isSelected = activeSpace.id === sp.id;
-            return (
-              <button
-                key={sp.id}
-                onClick={() => setActiveSpace(sp)}
-                data-reveal="up"
-                data-reveal-delay={String(idx * 70)}
-                className={`p-4 rounded-2xl bg-white border text-center transition-all duration-300 cursor-pointer ${
-                  isSelected
-                    ? "border-[#B8860B] ring-2 ring-[#B8860B]/30 shadow-md scale-[1.02]"
-                    : "border-[#EAE3D2] hover:border-[#B8860B]/60 hover:shadow-md hover:-translate-y-1"
-                }`}
-              >
-                <div className={`w-10 h-10 mx-auto rounded-xl flex items-center justify-center transition-colors mb-2 ${
-                  isSelected ? "bg-[#B8860B] text-white" : "bg-[#FAF6F0] text-[#B8860B]"
-                }`}>
-                  <IconComp className="w-5 h-5" />
-                </div>
-                <div className="text-xs font-bold text-slate-800 line-clamp-1">{sp.name}</div>
-                <div className="text-[10px] text-slate-500 mt-0.5">{sp.badge}</div>
-              </button>
-            );
-          })}
-        </div>
       </div>
     </section>
   );

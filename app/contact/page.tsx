@@ -114,7 +114,7 @@ export default function ContactPage() {
                   </p>
                   <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mt-2">
                     <Clock className="w-3.5 h-3.5 text-[#B8860B]" />
-                    <span>Mon - Sun: 10:00 AM - 9:30 PM</span>
+                    <span>Mon - Sat: 10:00 AM - 10:00 PM</span>
                   </div>
                 </div>
               </div>
@@ -233,7 +233,7 @@ export default function ContactPage() {
                     Teynampet Flagship Location Map
                   </h2>
                   <span className="text-xs font-semibold text-[#B8860B] bg-[#FAF6F0] px-3 py-1 rounded-full border border-[#EAE3D2]">
-                    Open Daily
+                    Closed Sunday
                   </span>
                 </div>
 

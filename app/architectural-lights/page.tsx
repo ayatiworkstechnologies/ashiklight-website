@@ -1,8 +1,18 @@
-"use client";
-
-import React from "react";
+import type { Metadata } from "next";
 import CategoryCatalog from "@/components/CategoryCatalog";
-import { Sparkles, SlidersHorizontal, ShieldCheck } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Architectural Lighting Chennai",
+  description:
+    "Magnetic track spotlights, trimless recessed architectural downlights (UGR<13), wall washers and linear profile LED channels. Ashik Lights, Chennai.",
+  alternates: { canonical: "/architectural-lights" },
+  openGraph: {
+    title: "Architectural Lighting Chennai | Ashik Lights",
+    description:
+      "Precision beam architectural lighting, trimless channels, and magnetic track systems for Chennai homes and offices.",
+    url: "https://ashiklights.in/architectural-lights",
+  },
+};
 
 export default function ArchitecturalLightsPage() {
   const products = [
@@ -70,9 +80,9 @@ export default function ArchitecturalLightsPage() {
       description="Magnetic track spotlights, trimless recessed architectural downlights (UGR<13), wall washers and linear profile LED channels."
       heroImage="/banner/Architectural Lights.webp"
       badges={[
-        { icon: Sparkles, text: "Low Glare UGR < 13" },
-        { icon: SlidersHorizontal, text: "15°/24°/36° Optics" },
-        { icon: ShieldCheck, text: "Meanwell LED Drivers" },
+        { icon: "Sparkles", text: "Low Glare UGR < 13" },
+        { icon: "SlidersHorizontal", text: "15°/24°/36° Optics" },
+        { icon: "ShieldCheck", text: "Meanwell LED Drivers" },
       ]}
       subCategories={[
         { id: "all", label: "All Architectural" },

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -11,6 +11,36 @@ import MobileMenu from "./MobileMenu";
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const [navHidden, setNavHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    lastScrollY.current = window.scrollY;
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const currentY = window.scrollY;
+        const delta = currentY - lastScrollY.current;
+
+        if (currentY < 80) {
+          setNavHidden(false);
+        } else if (delta > 6) {
+          setNavHidden(true);
+        } else if (delta < -6) {
+          setNavHidden(false);
+        }
+
+        lastScrollY.current = currentY;
+        ticking = false;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const decorativeRoutes = [
     "/chandeliers",
@@ -156,9 +186,11 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile app-style bottom navigation */}
+      {/* Mobile app-style bottom navigation — auto-hides on scroll down, reveals on scroll up */}
       <nav
-        className="fixed inset-x-3 bottom-3 z-50 lg:hidden h-[68px] rounded-2xl border border-[#EAE3D2] bg-white/95 backdrop-blur-xl shadow-[0_12px_40px_rgba(26,24,19,0.18)] px-2 grid grid-cols-5 items-center"
+        className={`fixed inset-x-3 bottom-3 z-50 lg:hidden h-[68px] rounded-2xl border border-[#EAE3D2] bg-white/95 backdrop-blur-xl shadow-[0_12px_40px_rgba(26,24,19,0.18)] px-2 grid grid-cols-5 items-center transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          navHidden ? "translate-y-[calc(100%+24px)]" : "translate-y-0"
+        }`}
         aria-label="Mobile navigation"
       >
         <Link

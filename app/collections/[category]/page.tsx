@@ -2,29 +2,40 @@
 
 import React, { useState, use, useRef } from "react";
 import Link from "next/link";
-import type { LucideIcon } from "lucide-react";
 import { notFound } from "next/navigation";
 import TopBanner from "@/components/TopBanner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollRevealProvider from "@/components/ScrollRevealProvider";
 import ProductModal, { ProductModalData } from "@/components/ProductModal";
+import type { BadgeIconName } from "@/components/CategoryCatalog";
 import {
   ChevronRight,
   Filter,
   Heart,
   MessageCircle,
+  Grid,
+  List,
   Sparkles,
   UserCheck,
   ShieldCheck,
   SlidersHorizontal,
-  Grid,
-  List,
   Sun,
   Award,
   Fan,
   Maximize2,
 } from "lucide-react";
+
+const badgeIconMap = {
+  Sparkles,
+  UserCheck,
+  ShieldCheck,
+  SlidersHorizontal,
+  Sun,
+  Award,
+  Fan,
+  Maximize2,
+} as const;
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
@@ -65,7 +76,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       tagline: string;
       desc: string;
       image: string;
-      badges: { icon: LucideIcon; text: string }[];
+      badges: { icon: BadgeIconName; text: string }[];
       subCategories: { id: string; label: string }[];
       products: {
         id: string;
@@ -83,9 +94,9 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       desc: "Discover a timeless collection of chandeliers in classic, modern and luxury crystal styles for every interior.",
       image: "/assets/chandeliers/Luxury Floral Crystal Chandelier.webp",
       badges: [
-        { icon: Sparkles, text: "Premium Quality Materials" },
-        { icon: UserCheck, text: "Expert Guidance" },
-        { icon: ShieldCheck, text: "3-Year Warranty" },
+        { icon: "Sparkles", text: "Premium Quality Materials" },
+        { icon: "UserCheck", text: "Expert Guidance" },
+        { icon: "ShieldCheck", text: "3-Year Warranty" },
       ],
       subCategories: [
         { id: "all", label: "All Chandeliers" },
@@ -152,7 +163,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               {/* Feature Badges */}
               <div className="flex flex-wrap items-center gap-3 pt-2" data-reveal-stagger>
                 {currentConfig.badges.map((b, i) => {
-                  const BIcon = b.icon;
+                  const BIcon = badgeIconMap[b.icon];
                   return (
                     <div
                       key={i}

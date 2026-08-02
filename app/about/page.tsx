@@ -1,6 +1,4 @@
-"use client";
-
-import React from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import TopBanner from "@/components/TopBanner";
@@ -23,6 +21,19 @@ import {
   Building2,
   Lightbulb,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Established in 2016 by Mr. Abdul Hameed Ashik, Ashik Lights is Chennai's leading luxury lighting showroom serving residential, commercial and hospitality projects.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Ashik Lights | Chennai's Luxury Lighting Showroom",
+    description:
+      "Since 2016, Ashik Lights has delivered complete decorative, indoor, architectural and outdoor lighting solutions from our Teynampet flagship showroom.",
+    url: "https://ashiklights.in/about",
+  },
+};
 
 export default function AboutPage() {
   const foundationPillars = [

@@ -1,8 +1,18 @@
-"use client";
-
-import React from "react";
+import type { Metadata } from "next";
 import CategoryCatalog from "@/components/CategoryCatalog";
-import { SlidersHorizontal, UserCheck, ShieldCheck } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "High Ceiling Chandeliers Chennai",
+  description:
+    "Custom multi-tier crystal statement chandeliers engineered with structural ceiling plates for double-height foyers and stairwells in Chennai.",
+  alternates: { canonical: "/high-ceiling-chandeliers" },
+  openGraph: {
+    title: "High Ceiling Chandeliers Chennai | Ashik Lights",
+    description:
+      "Custom drop-length multi-tier crystal rain chandeliers engineered for double-height villas, foyers and stairwells.",
+    url: "https://ashiklights.in/high-ceiling-chandeliers",
+  },
+};
 
 export default function HighCeilingChandeliersPage() {
   const products = [
@@ -214,9 +224,9 @@ export default function HighCeilingChandeliersPage() {
       description="Custom multi-tier crystal statement chandeliers engineered with structural ceiling plates for foyers and stairwells."
       heroImage="/banner/High Ceiling Chandeliers.webp"
       badges={[
-        { icon: SlidersHorizontal, text: "Custom Cable Drops" },
-        { icon: UserCheck, text: "Structural CAD Support" },
-        { icon: ShieldCheck, text: "Load Capacity Tested" },
+        { icon: "SlidersHorizontal", text: "Custom Cable Drops" },
+        { icon: "UserCheck", text: "Structural CAD Support" },
+        { icon: "ShieldCheck", text: "Load Capacity Tested" },
       ]}
       subCategories={[
         { id: "all", label: "All High Ceiling" },

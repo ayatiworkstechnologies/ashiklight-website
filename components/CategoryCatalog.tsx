@@ -3,7 +3,6 @@
 import React, { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import type { LucideIcon } from "lucide-react";
 import TopBanner from "@/components/TopBanner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -18,11 +17,31 @@ import {
   UserCheck,
   ShieldCheck,
   SlidersHorizontal,
+  Maximize2,
+  Award,
+  Fan,
+  Sun,
   Grid,
   List,
   Eye,
   ArrowRight,
 } from "lucide-react";
+
+// Badges are passed as icon name strings (not component references) so category
+// pages can stay Server Components — React Server Components can't pass
+// function/component props across the server -> client boundary.
+const badgeIconMap = {
+  Sparkles,
+  UserCheck,
+  ShieldCheck,
+  SlidersHorizontal,
+  Maximize2,
+  Award,
+  Fan,
+  Sun,
+} as const;
+
+export type BadgeIconName = keyof typeof badgeIconMap;
 
 export interface CategoryProduct {
   id: string;
@@ -41,7 +60,7 @@ export interface CategoryCatalogProps {
   tagline: string;
   description: string;
   heroImage: string;
-  badges: { icon: LucideIcon; text: string }[];
+  badges: { icon: BadgeIconName; text: string }[];
   subCategories: { id: string; label: string }[];
   products: CategoryProduct[];
   bottomTrustText?: string;
@@ -98,8 +117,22 @@ export default function CategoryCatalog({
       return 0;
     });
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://ashiklights.in/" },
+      { "@type": "ListItem", position: 2, name: "Collections", item: "https://ashiklights.in/#collections" },
+      { "@type": "ListItem", position: 3, name: title, item: `https://ashiklights.in/${categorySlug}` },
+    ],
+  };
+
   return (
     <ScrollRevealProvider>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <main className="min-h-screen flex flex-col bg-[#FAF8F5]">
         <TopBanner />
         <Header />
@@ -162,7 +195,7 @@ export default function CategoryCatalog({
                   <span>{filteredProducts.length} Products Available</span>
                 </div>
                 {badges.map((b, i) => {
-                  const BIcon = b.icon;
+                  const BIcon = badgeIconMap[b.icon];
                   return (
                     <div
                       key={i}
@@ -207,9 +240,39 @@ export default function CategoryCatalog({
         <section ref={catalogRef} className="py-12 lg:py-16 bg-white scroll-mt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              {/* Left Sidebar Filter Panel — Luxury Styling */}
+              {/* Mobile Horizontal Filter Bar — app-style scrollable chips */}
+              <div className="lg:hidden -mx-4 px-4 sm:mx-0 sm:px-0">
+                <div className="flex items-center gap-2 overflow-x-auto pb-2 -mb-2 scrollbar-hide snap-x snap-mandatory">
+                  {subCategories.map((item) => {
+                    const isSelected = selectedSubCategory === item.id;
+                    const count = getSubCategoryCount(item.id);
+                    return (
+                      <button
+                        key={item.id}
+                        onClick={() => handleSubCategoryChange(item.id)}
+                        className={`shrink-0 snap-start flex items-center gap-1.5 px-4 py-2.5 rounded-full border text-xs font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer active:scale-95 ${
+                          isSelected
+                            ? "bg-[#B8860B] text-white border-[#B8860B] shadow-md scale-[1.03]"
+                            : "bg-[#FAF6F0] text-slate-700 border-[#EAE3D2]"
+                        }`}
+                      >
+                        <span>{item.label}</span>
+                        <span
+                          className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+                            isSelected ? "bg-white/20 text-white" : "bg-white text-slate-500 border border-[#EAE3D2]"
+                          }`}
+                        >
+                          {count}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Left Sidebar Filter Panel — Luxury Styling (desktop only) */}
               <div
-                className="lg:col-span-3 bg-[#FAF6F0] rounded-3xl p-6 border border-[#EAE3D2] shadow-2xs space-y-6 sticky top-24"
+                className="hidden lg:block lg:col-span-3 bg-[#FAF6F0] rounded-3xl p-6 border border-[#EAE3D2] shadow-2xs space-y-6 lg:sticky lg:top-24"
                 data-reveal="left"
               >
                 <div className="flex items-center justify-between border-b border-[#EAE3D2] pb-4">

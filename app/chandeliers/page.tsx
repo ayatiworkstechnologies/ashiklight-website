@@ -1,8 +1,18 @@
-"use client";
-
-import React from "react";
+import type { Metadata } from "next";
 import CategoryCatalog from "@/components/CategoryCatalog";
-import { Sparkles, UserCheck, ShieldCheck } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Chandeliers in Chennai",
+  description:
+    "Discover a timeless collection of chandeliers in classic, modern and luxury crystal styles for every interior. Visit Ashik Lights' Teynampet showroom, Chennai.",
+  alternates: { canonical: "/chandeliers" },
+  openGraph: {
+    title: "Chandeliers in Chennai | Ashik Lights",
+    description:
+      "Statement grand crystal & brass chandeliers for luxury living rooms, dining areas and foyers.",
+    url: "https://ashiklights.in/chandeliers",
+  },
+};
 
 export default function ChandeliersPage() {
   const products = [
@@ -250,9 +260,9 @@ export default function ChandeliersPage() {
       description="Discover a timeless collection of chandeliers in classic, modern and luxury crystal styles for every interior."
       heroImage="/banner/Chandeliers.webp"
       badges={[
-        { icon: Sparkles, text: "Premium K9 Crystal" },
-        { icon: UserCheck, text: "Expert Guidance" },
-        { icon: ShieldCheck, text: "3-Year Warranty" },
+        { icon: "Sparkles", text: "Premium K9 Crystal" },
+        { icon: "UserCheck", text: "Expert Guidance" },
+        { icon: "ShieldCheck", text: "3-Year Warranty" },
       ]}
       subCategories={[
         { id: "all", label: "All Chandeliers" },

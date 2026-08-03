@@ -115,15 +115,15 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
           <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-[#07101F] border-2 border-white text-white flex items-center justify-center shadow-2xl">
             <MoveHorizontal className="w-5 h-5" />
 
-            {/* Floating Handle Tooltip */}
+            {/* Floating Handle Tooltip on Right Side */}
             <div
-              className={`absolute bottom-full mb-3 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1.5 bg-[#040812]/95 backdrop-blur-md text-white text-[11px] font-bold rounded-full border border-white/30 shadow-2xl flex items-center gap-1.5 transition-all duration-300 ${
+              className={`absolute left-full ml-3 top-1/2 -translate-y-1/2 whitespace-nowrap px-3.5 py-1.5 bg-[#040812]/95 backdrop-blur-md text-white text-[11px] font-bold rounded-full border border-white/30 shadow-2xl flex items-center gap-1.5 transition-all duration-300 pointer-events-none ${
                 isDragging
                   ? "opacity-40 scale-90"
-                  : "animate-bounce opacity-100"
+                  : "animate-pulse opacity-100"
               }`}
             >
-              <span>← Drag to Compare →</span>
+              <span>Drag to Compare</span>
             </div>
           </div>
         </div>

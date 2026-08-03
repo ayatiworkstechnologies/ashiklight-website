@@ -89,8 +89,8 @@ export default function ShopBySpace() {
           </p>
         </div>
 
-        {/* Space Selection Pills */}
-        <div className="flex items-center justify-center flex-wrap gap-2.5 mb-10" data-reveal="fade">
+        {/* Space Selection Pills — Touch-scrolling on mobile */}
+        <div className="flex items-center justify-start sm:justify-center overflow-x-auto scrollbar-hide gap-2.5 mb-8 sm:mb-10 px-1 pb-2" data-reveal="fade">
           {spaces.map((sp) => {
             const IconComp = sp.icon;
             const isSelected = activeSpace.id === sp.id;
@@ -98,14 +98,14 @@ export default function ShopBySpace() {
               <button
                 key={sp.id}
                 onClick={() => setActiveSpace(sp)}
-                className={`px-4 py-2.5 rounded-2xl text-xs font-bold transition-all duration-300 flex items-center gap-2 cursor-pointer ${
+                className={`px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all duration-300 flex items-center gap-2 cursor-pointer shrink-0 ${
                   isSelected
-                    ? "bg-[#D4A017] text-white shadow-lg scale-[1.03]"
+                    ? "bg-[#D4A017] text-white shadow-lg scale-[1.02]"
                     : "bg-[#0A1628] text-slate-300 hover:bg-[#122240] border border-[#D4A017]/20 hover:border-[#D4A017]"
                 }`}
               >
-                <IconComp className={`w-4 h-4 ${isSelected ? "text-white" : "text-slate-400"}`} />
-                <span>{sp.name}</span>
+                <IconComp className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isSelected ? "text-white" : "text-slate-400"}`} />
+                <span className="whitespace-nowrap">{sp.name}</span>
               </button>
             );
           })}
@@ -117,9 +117,22 @@ export default function ShopBySpace() {
           className="bg-[#0A1628] rounded-3xl border border-[#D4A017]/20 shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 animate-slide-carousel"
           data-reveal="scale"
         >
-          {/* Left Feature Description */}
-          <div className="lg:col-span-5 p-8 sm:p-12 flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
+          {/* Right Full-Width Photo Frame (Shown FIRST on mobile) */}
+          <div className="lg:col-span-7 order-1 lg:order-2 relative min-h-[260px] sm:min-h-[340px] lg:min-h-[440px] bg-slate-100 overflow-hidden group">
+            <Image
+              src={activeSpace.image}
+              alt={activeSpace.name}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 55vw"
+              className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-transparent to-transparent lg:hidden" />
+          </div>
+
+          {/* Left Feature Description (Shown BELOW image on mobile) */}
+          <div className="lg:col-span-5 order-2 lg:order-1 p-6 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6">
+            <div className="space-y-3.5">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4A017]/15 rounded-full text-[#D4A017] text-xs font-bold border border-[#D4A017]/25">
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 <span>{activeSpace.badge}</span>
@@ -129,7 +142,7 @@ export default function ShopBySpace() {
                 {activeSpace.name}
               </h3>
 
-              <div className="text-sm font-semibold text-[#B8860B]">
+              <div className="text-xs sm:text-sm font-semibold text-[#D4A017]">
                 {activeSpace.tagline}
               </div>
 
@@ -141,25 +154,12 @@ export default function ShopBySpace() {
             <div className="pt-2">
               <Link
                 href={activeSpace.href}
-                className="btn-shimmer px-7 py-3.5 text-white text-xs sm:text-sm font-bold rounded-xl shadow-md hover:shadow-lg inline-flex items-center gap-2.5 transition-all cursor-pointer group"
+                className="btn-shimmer w-full sm:w-auto px-7 py-3.5 text-white text-xs sm:text-sm font-bold rounded-xl shadow-md hover:shadow-lg inline-flex items-center justify-center gap-2.5 transition-all cursor-pointer group"
               >
                 <span>Browse {activeSpace.name} Collection</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </div>
-          </div>
-
-          {/* Right Full-Width Photo Frame */}
-          <div className="lg:col-span-7 relative min-h-[320px] lg:min-h-[440px] bg-slate-100 overflow-hidden group">
-            <Image
-              src={activeSpace.image}
-              alt={activeSpace.name}
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 55vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent lg:hidden" />
           </div>
         </div>
       </div>

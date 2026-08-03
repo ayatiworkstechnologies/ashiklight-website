@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Eye } from "lucide-react";
+import { ArrowRight, Eye, Sparkles } from "lucide-react";
 import ProductModal, { ProductModalData } from "./ProductModal";
 import { VectorDiamondGrid, VectorCornerMotif } from "@/components/VectorAccents";
 
@@ -102,7 +102,7 @@ export default function Collections({ onOpenConsultation }: CollectionsProps) {
 
           {/* 8 Cards Grid with staggered scroll reveal */}
           <div
-            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
+            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-6"
             data-reveal-stagger
           >
             {collections.map((item, index) => (
@@ -123,20 +123,20 @@ export default function Collections({ onOpenConsultation }: CollectionsProps) {
                     className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span className="px-3 py-1.5 bg-white/90 backdrop-blur-md text-slate-900 text-xs font-bold rounded-full shadow-md flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                      <Eye className="w-3.5 h-3.5 text-[#B8860B]" /> View Collection
+                    <span className="px-3 py-1.5 bg-white/95 backdrop-blur-md rounded-full text-[10px] font-bold text-slate-900 shadow-md flex items-center gap-1">
+                      <Sparkles className="w-3 h-3 text-[#B8860B]" /> Explore
                     </span>
                   </div>
                 </div>
 
-                {/* Text Footer */}
-                <div className="p-4 text-center space-y-1 bg-[#0D1E35] border-t border-[#D4A017]/15">
-                  <h3 className="font-semibold text-sm sm:text-base text-white group-hover:text-[#D4A017] transition-colors duration-300">
+                {/* Content */}
+                <div className="p-3 sm:p-4 text-center bg-[#0D1E35] border-t border-[#D4A017]/15">
+                  <h3 className="font-semibold text-xs sm:text-base text-white group-hover:text-[#D4A017] transition-colors duration-300 line-clamp-1">
                     {item.name}
                   </h3>
-                  <div className="inline-flex items-center gap-1 text-xs font-semibold text-slate-400 group-hover:text-[#D4A017] transition-colors duration-300">
-                    <span>Explore Catalog</span>
-                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
+                  <div className="mt-2 pt-2 border-t border-[#D4A017]/10 inline-flex items-center justify-center gap-1 text-[11px] font-bold text-[#D4A017] opacity-80 group-hover:opacity-100 transition-opacity">
+                    <span>View Range</span>
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </Link>

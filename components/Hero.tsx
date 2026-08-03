@@ -20,7 +20,7 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
   }, []);
 
   return (
-    <section className="relative min-h-[85vh] lg:min-h-[92vh] flex items-center overflow-hidden bg-[#0A1628]">
+    <section className="relative min-h-[85vh] lg:min-h-[92vh] flex items-end lg:items-center overflow-hidden bg-[#0A1628]">
       {/* Background Image with Ken Burns Effect */}
       <div className="absolute inset-0 z-0">
         {/* Desktop Hero Banner */}
@@ -41,10 +41,9 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
           sizes="100vw"
           className="object-cover object-center animate-ken-burns md:hidden"
         />
-        {/* Left-side shade overlay ONLY for text contrast; Right side is 100% clear image with zero shade */}
+        {/* Left-side shade overlay for Desktop; Bottom-up dark gradient overlay for Mobile */}
         <div className="hidden md:block absolute inset-y-0 left-0 md:w-[65%] lg:w-[55%] bg-gradient-to-r from-[#0A1628] via-[#0A1628]/90 to-transparent pointer-events-none" />
-        <div className="block md:hidden absolute inset-y-0 left-0 w-[72%] sm:w-[68%] bg-gradient-to-r from-[#0A1628]/95 via-[#0A1628]/75 to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0A1628] to-transparent md:hidden pointer-events-none" />
+        <div className="block md:hidden absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/80 to-transparent pointer-events-none" />
       </div>
 
       {/* Vector Diamond Grid Background Pattern */}
@@ -59,11 +58,11 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
         <span className="sparkle" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16 lg:py-24 w-full">
-        <div className="max-w-xl lg:max-w-2xl space-y-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-28 pb-8 sm:py-16 lg:py-24 w-full">
+        <div className="max-w-xl lg:max-w-2xl space-y-5 sm:space-y-6">
 
           {/* Main Headline — staggered word reveal */}
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-bold tracking-tight text-white leading-[1.1]">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-bold tracking-tight text-white leading-[1.15] sm:leading-[1.1]">
             <span
               className={`inline-block transition-all duration-700 delay-200 ${
                 isLoaded
@@ -117,13 +116,6 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
             >
               <span>Explore Collections</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-
-            <Link
-              href="/contact"
-              className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-[#D4A017] text-sm font-semibold rounded-full text-center shadow-xs hover:shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
-            >
-              Contact Specialist
             </Link>
           </div>
 

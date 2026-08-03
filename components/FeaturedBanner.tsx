@@ -68,13 +68,16 @@ function BeforeAfterSlider({ card }: { card: BeforeAfterCard }) {
     };
   }, [isDragging, calcPos]);
 
-  // Touch
+  // Touch Dragging
   const onTouchStart = () => setIsDragging(true);
   useEffect(() => {
     if (!isDragging) return;
-    const onMove = (e: TouchEvent) => calcPos(e.touches[0].clientX);
+    const onMove = (e: TouchEvent) => {
+      if (e.cancelable) e.preventDefault();
+      calcPos(e.touches[0].clientX);
+    };
     const onEnd = () => setIsDragging(false);
-    window.addEventListener("touchmove", onMove, { passive: true });
+    window.addEventListener("touchmove", onMove, { passive: false });
     window.addEventListener("touchend", onEnd);
     return () => {
       window.removeEventListener("touchmove", onMove);

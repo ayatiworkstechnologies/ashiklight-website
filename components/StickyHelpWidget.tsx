@@ -6,7 +6,7 @@ import { FaWhatsapp } from "react-icons/fa6";
 
 export default function StickyHelpWidget() {
   return (
-    <div className="fixed right-4 sm:right-6 bottom-6 z-50 flex flex-col items-end gap-3 pointer-events-none">
+    <div className="hidden lg:flex fixed right-4 sm:right-6 bottom-6 z-50 flex-col items-end gap-3 pointer-events-none">
       <div className="pointer-events-auto flex flex-col items-end gap-3">
         {/* Direct Mobile Call Button */}
         <a

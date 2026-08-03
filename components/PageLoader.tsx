@@ -36,6 +36,7 @@ export default function PageLoader() {
             alt="Ashik Lights Logo"
             fill
             priority
+            sizes="(max-width: 640px) 192px, 224px"
             className="object-contain white-logo"
           />
         </div>

@@ -69,9 +69,9 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-[#0A1628]/97 backdrop-blur-xl border-b border-[#B8860B]/30 transition-all">
+      <header className="sticky top-0 z-40 bg-[#040812]/97 backdrop-blur-xl border-b border-[#D4A017]/25 transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-16 lg:h-20 flex items-center justify-between gap-6">
-          {/* Official Brand Logo from /public/logo.png — Golden Luxury Tint, Larger Size, No Outline */}
+          {/* Official Brand Logo */}
           <Link href="/" className="flex items-center group shrink-0 py-1">
             <Image
               src="/logo.png"
@@ -83,7 +83,7 @@ export default function Header() {
             />
           </Link>
 
-          {/* Desktop Navbar: Decorative Lighting ▼ | Technical Lighting ▼ | Outdoor Lights | About */}
+          {/* Desktop Navbar */}
           <nav className="hidden lg:flex items-center gap-8 xl:gap-10 text-sm font-medium text-white">
             {/* 1. Decorative Lighting Dropdown */}
             <div className="relative group py-2">
@@ -91,7 +91,7 @@ export default function Header() {
                 <span>Decorative Lighting</span>
                 <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#D4A017] transition-transform group-hover:rotate-180" />
               </button>
-              <div className="absolute top-full left-0 hidden group-hover:block w-60 bg-[#0D1E35] shadow-xl rounded-xl border border-[#B8860B]/30 p-3 space-y-1 animate-fadeIn">
+              <div className="absolute top-full left-0 hidden group-hover:block w-60 bg-[#07101F] shadow-2xl rounded-xl border border-[#D4A017]/30 p-3 space-y-1 animate-fadeIn">
                 <Link
                   href="/chandeliers"
                   className={dropdownLinkClass("/chandeliers")}
@@ -188,7 +188,7 @@ export default function Header() {
 
       {/* Mobile app-style bottom navigation — auto-hides on scroll down, reveals on scroll up */}
       <nav
-        className={`fixed inset-x-3 bottom-3 z-50 lg:hidden h-[68px] rounded-2xl border border-[#B8860B]/30 bg-[#0A1628]/97 backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.45)] px-2 grid grid-cols-5 items-center transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`fixed inset-x-3 bottom-3 z-50 lg:hidden h-[68px] rounded-2xl border border-[#D4A017]/30 bg-[#040812]/97 backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.65)] px-2 grid grid-cols-5 items-center transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           navHidden ? "translate-y-[calc(100%+24px)]" : "translate-y-0"
         }`}
         aria-label="Mobile navigation"

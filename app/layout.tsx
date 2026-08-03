@@ -139,7 +139,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link
@@ -156,7 +156,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${playfair.variable} ${jakarta.variable} font-sans antialiased bg-[#0A1628] text-slate-100 selection:bg-[#D4A017] selection:text-white`}
+        className={`${playfair.variable} ${jakarta.variable} font-sans antialiased bg-[#040812] text-slate-100 selection:bg-[#D4A017] selection:text-white`}
       >
         <PageLoader />
         <AdvancedAnimations />

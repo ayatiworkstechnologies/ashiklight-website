@@ -109,11 +109,22 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
 
         {/* Full-Height Vertical Drag Divider Bar */}
         <div
-          className="absolute top-0 bottom-0 w-1 bg-[#D4A017] shadow-[0_0_20px_rgba(212,160,23,0.9)] z-20 pointer-events-none"
+          className="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_20px_rgba(255,255,255,0.9)] z-20 pointer-events-none"
           style={{ left: `${sliderPos}%` }}
         >
-          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#07101F] border-2 border-[#D4A017] text-[#D4A017] flex items-center justify-center shadow-2xl">
+          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-[#07101F] border-2 border-white text-white flex items-center justify-center shadow-2xl">
             <MoveHorizontal className="w-5 h-5" />
+
+            {/* Floating Handle Tooltip */}
+            <div
+              className={`absolute bottom-full mb-3 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1.5 bg-[#040812]/95 backdrop-blur-md text-white text-[11px] font-bold rounded-full border border-white/30 shadow-2xl flex items-center gap-1.5 transition-all duration-300 ${
+                isDragging
+                  ? "opacity-40 scale-90"
+                  : "animate-bounce opacity-100"
+              }`}
+            >
+              <span>← Drag to Compare →</span>
+            </div>
           </div>
         </div>
 
@@ -121,7 +132,7 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
         <span className="hidden sm:block absolute bottom-6 left-6 z-20 px-3 py-1.5 bg-black/80 backdrop-blur-md text-white text-xs font-bold rounded-lg uppercase tracking-wider border border-white/20">
           Before
         </span>
-        <span className="hidden sm:block absolute bottom-6 right-6 z-20 px-3 py-1.5 bg-[#D4A017] text-white text-xs font-bold rounded-lg uppercase tracking-wider shadow-lg">
+        <span className="hidden sm:block absolute bottom-6 right-6 z-20 px-3 py-1.5 bg-white text-[#040812] text-xs font-bold rounded-lg uppercase tracking-wider shadow-lg">
           After
         </span>
       </div>
@@ -148,33 +159,9 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              With{" "}
-            </span>
-            <span
-              className={`inline-block italic font-medium transition-all duration-700 delay-[600ms] ${
-                isLoaded
-                  ? "opacity-100 translate-y-0 animate-gold-shimmer"
-                  : "opacity-0 translate-y-8"
-              }`}
-            >
-              Timeless Luxury.
+              With Timeless Luxury.
             </span>
           </h1>
-
-          {/* Action CTA */}
-          <div
-            className={`flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2 transition-all duration-700 delay-[850ms] ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
-          >
-            <Link
-              href="/#collections"
-              className="px-8 py-4 bg-white hover:bg-slate-100 text-[#040812] text-sm font-bold rounded-full text-center shadow-xl hover:shadow-2xl flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-105 cursor-pointer group"
-            >
-              <span>Explore Collections</span>
-              <ArrowRight className="w-4 h-4 text-[#D4A017] group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-          </div>
         </div>
       </div>
 

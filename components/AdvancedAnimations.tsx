@@ -55,7 +55,7 @@ export default function AdvancedAnimations() {
   return (
     <div
       ref={spotlightRef}
-      className="hidden lg:block fixed top-0 left-0 w-[500px] h-[500px] rounded-full bg-radial from-[#D4A017]/8 via-[#D4A017]/2 to-transparent pointer-events-none z-30 transition-opacity duration-500 blur-2xl opacity-60"
+      className="hidden lg:block fixed top-0 left-0 w-[500px] h-[500px] rounded-full bg-radial from-white/10 via-white/3 to-transparent pointer-events-none z-30 transition-opacity duration-500 blur-2xl opacity-60"
       aria-hidden="true"
     />
   );

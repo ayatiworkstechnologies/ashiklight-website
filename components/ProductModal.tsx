@@ -28,7 +28,7 @@ export default function ProductModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/70 backdrop-blur-md animate-fade-in" onClick={onClose}>
       <div
-        className="relative w-full max-w-4xl bg-[#0D1E35] rounded-3xl shadow-2xl overflow-hidden border border-[#D4A017]/20 animate-fade-in-up max-h-[92vh] flex flex-col md:flex-row transition-all duration-400"
+        className="relative w-full max-w-4xl bg-[#0D1E35] rounded-3xl shadow-2xl overflow-hidden border border-white/20 animate-fade-in-up max-h-[92vh] flex flex-col md:flex-row transition-all duration-400"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -48,13 +48,13 @@ export default function ProductModal({
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
           />
           <div className="absolute top-4 left-4 z-10">
-            <span className="px-3.5 py-1.5 bg-[#1A1813]/85 backdrop-blur-md text-[#E2C77D] text-[11px] font-bold uppercase tracking-wider rounded-full border border-[#B8860B]/40 shadow-md">
+            <span className="px-3.5 py-1.5 bg-[#040812]/90 backdrop-blur-md text-white text-[11px] font-bold uppercase tracking-wider rounded-full border border-white/30 shadow-md">
               {product.category}
             </span>
           </div>
           <div className="absolute bottom-4 left-4 z-10">
-            <span className="px-3 py-1 bg-white/90 backdrop-blur-md text-slate-800 text-[10px] font-bold rounded-full shadow-sm border border-[#EAE3D2] flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B8860B] animate-ping" /> High-Definition View
+            <span className="px-3 py-1 bg-white/90 backdrop-blur-md text-slate-800 text-[10px] font-bold rounded-full shadow-sm border border-slate-200 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-900 animate-ping" /> High-Definition View
             </span>
           </div>
         </div>
@@ -62,7 +62,7 @@ export default function ProductModal({
         {/* Right Details */}
         <div className="md:w-5/12 p-5 sm:p-6 lg:p-7 flex flex-col justify-between overflow-y-auto bg-[#0D1E35]">
           <div className="space-y-3 sm:space-y-4">
-            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#D4A017]">
+            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-white">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Ashik Premium Collection</span>
             </div>
@@ -77,13 +77,13 @@ export default function ProductModal({
 
             {/* Tech Specs */}
             {product.specs && product.specs.length > 0 && (
-              <div className="space-y-2 pt-2 border-t border-[#D4A017]/15">
+              <div className="space-y-2 pt-2 border-t border-white/15">
                 <h4 className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
                   Specifications
                 </h4>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
                   {product.specs.map((spec, i) => (
-                    <div key={i} className="bg-[#0A1628] p-2 rounded-lg border border-[#D4A017]/15">
+                    <div key={i} className="bg-[#0A1628] p-2 rounded-lg border border-white/15">
                       <span className="text-slate-500 block text-[10px]">
                         {spec.label}
                       </span>
@@ -102,7 +102,7 @@ export default function ProductModal({
                 <Check className="w-3.5 h-3.5 text-emerald-400" /> Free Site Visit
               </div>
               <div className="flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#D4A017]" /> 3-Year Warranty
+                <ShieldCheck className="w-3.5 h-3.5 text-white" /> 3-Year Warranty
               </div>
             </div>
           </div>
@@ -126,9 +126,9 @@ export default function ProductModal({
                 onClose();
                 onOpenConsultation();
               }}
-              className="w-full py-2.5 bg-[#D4A017]/10 hover:bg-[#D4A017] text-[#D4A017] hover:text-white font-semibold rounded-xl text-xs flex items-center justify-center gap-2 border border-[#D4A017]/25 hover:border-[#D4A017] transition-all duration-300 cursor-pointer"
+              className="w-full py-2.5 bg-white/10 hover:bg-white text-white hover:text-[#040812] font-semibold rounded-xl text-xs flex items-center justify-center gap-2 border border-white/20 hover:border-white transition-all duration-300 cursor-pointer group"
             >
-              <PhoneCall className="w-3.5 h-3.5 text-[#D4A017]" />
+              <PhoneCall className="w-3.5 h-3.5 text-white group-hover:text-[#040812]" />
               <span>Book Expert Consultation</span>
             </button>
           </div>

@@ -11,10 +11,10 @@ export default function StickyHelpWidget() {
         {/* Direct Mobile Call Button */}
         <a
           href="tel:08754860555"
-          className="w-12 h-12 rounded-full bg-[#0D1E35] hover:bg-[#D4A017] text-white flex items-center justify-center shadow-xl transition-all duration-300 hover:scale-110 cursor-pointer border border-[#D4A017]/40 group"
+          className="w-12 h-12 rounded-full bg-[#0D1E35] hover:bg-white text-white flex items-center justify-center shadow-xl transition-all duration-300 hover:scale-110 cursor-pointer border border-white/20 group"
           title="Call 087548 60555"
         >
-          <Phone className="w-5 h-5 text-[#D4A017] group-hover:text-white transition-colors" />
+          <Phone className="w-5 h-5 text-white group-hover:text-[#040812] transition-colors" />
         </a>
 
         {/* Direct WhatsApp Floating Button with Pulse Glow */}

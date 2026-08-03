@@ -112,7 +112,7 @@ export default function Projects({ onOpenConsultation }: ProjectsProps) {
             <Link
               href="/#projects"
               data-reveal="right"
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#B8860B] hover:text-[#a3722a] transition-colors group cursor-pointer"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-white hover:text-slate-200 transition-colors group cursor-pointer"
             >
               <span>View All Projects</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -138,7 +138,7 @@ export default function Projects({ onOpenConsultation }: ProjectsProps) {
                     specs: project.specs,
                   })
                 }
-                className="group bg-[#0D1E35] rounded-2xl overflow-hidden border border-[#D4A017]/20 shadow-2xs hover-border-glow transition-all duration-400 transform hover:-translate-y-2 cursor-pointer"
+                className="group bg-[#0D1E35] rounded-2xl overflow-hidden border border-white/15 shadow-2xs hover-border-glow transition-all duration-400 transform hover:-translate-y-2 cursor-pointer"
               >
                 {/* Image Box */}
                 <div className="relative aspect-16/10 overflow-hidden bg-slate-100">
@@ -159,11 +159,11 @@ export default function Projects({ onOpenConsultation }: ProjectsProps) {
 
                 {/* Title & Location Footer */}
                 <div className="p-4 text-center space-y-1 bg-[#0D1E35]">
-                  <h3 className="font-medium text-white text-sm sm:text-base group-hover:text-[#D4A017] transition-colors duration-300">
+                  <h3 className="font-medium text-white text-sm sm:text-base group-hover:text-white transition-colors duration-300">
                     {project.title}
                   </h3>
                   <div className="flex items-center justify-center gap-1 text-xs text-slate-400 font-light">
-                    <MapPin className="w-3.5 h-3.5 text-[#B8860B]" />
+                    <MapPin className="w-3.5 h-3.5 text-white/80" />
                     <span>{project.location}</span>
                   </div>
                 </div>

@@ -2,24 +2,23 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import TopBanner from "@/components/TopBanner";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import ScrollRevealProvider from "@/components/ScrollRevealProvider";
 import {
   Phone,
   Mail,
   MapPin,
-  CheckCircle2,
-  ChevronRight,
   Clock,
+  ChevronRight,
   MessageSquare,
   Navigation,
+  CheckCircle2,
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa6";
+import TopBanner from "@/components/TopBanner";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ScrollRevealProvider from "@/components/ScrollRevealProvider";
 
 export default function ContactPage() {
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -27,24 +26,19 @@ export default function ContactPage() {
     message: "",
   });
 
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const message = [
-      "Hi Ashik Lights, I would like a lighting consultation.",
-      `Name: ${formData.name}`,
-      `Phone: ${formData.phone}`,
-      formData.email ? `Email: ${formData.email}` : "",
-      formData.message ? `Message: ${formData.message}` : "",
-    ]
-      .filter(Boolean)
-      .join("\n");
 
-    window.open(
-      `https://wa.me/918754860555?text=${encodeURIComponent(message)}`,
-      "_blank",
-      "noopener,noreferrer"
-    );
+    const text = `Hi Ashik Lights, I would like to make an inquiry.\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Email:* ${formData.email || "N/A"}\n*Message:* ${formData.message || "Lighting guidance for my project"}`;
+
+    const whatsappUrl = `https://wa.me/918754860555?text=${encodeURIComponent(text)}`;
+
     setFormSubmitted(true);
+    setTimeout(() => {
+      window.open(whatsappUrl, "_blank");
+    }, 600);
   };
 
   return (
@@ -54,16 +48,16 @@ export default function ContactPage() {
         <Header />
 
         {/* Contact Hero & Info Cards */}
-        <section className="relative py-14 lg:py-20 bg-gradient-to-b from-[#0A1628] via-[#0D1E35] to-[#0A1628] border-b border-[#D4A017]/20 overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#D4A017]/10 rounded-full blur-3xl pointer-events-none" />
+        <section className="relative py-14 lg:py-20 bg-gradient-to-b from-[#0A1628] via-[#0D1E35] to-[#0A1628] border-b border-white/15 overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
             {/* Header Title Block */}
             <div className="text-center max-w-2xl mx-auto mb-12 space-y-3" data-reveal="up">
-              <div className="inline-flex items-center gap-2 text-[#D4A017] text-xs font-bold uppercase tracking-[0.2em]">
-                <span className="w-6 h-px bg-[#D4A017]/50" />
+              <div className="inline-flex items-center gap-2 text-white/80 text-xs font-bold uppercase tracking-[0.2em]">
+                <span className="w-6 h-px bg-white/30" />
                 PERSONALIZED LIGHTING ADVICE
-                <span className="w-6 h-px bg-[#D4A017]/50" />
+                <span className="w-6 h-px bg-white/30" />
               </div>
               <h1 className="font-serif text-4xl sm:text-5xl font-bold text-white">
                 Get in Touch with Ashik Lights
@@ -80,15 +74,15 @@ export default function ContactPage() {
                 href="tel:08754860555"
                 data-reveal="up"
                 data-reveal-delay="0"
-                className="bg-[#0D1E35] p-6 rounded-3xl border border-[#D4A017]/20 shadow-lg hover:border-[#D4A017] hover:-translate-y-1.5 transition-all duration-400 group flex items-start gap-4 cursor-pointer"
+                className="bg-[#0D1E35] p-6 rounded-3xl border border-white/15 shadow-lg hover:border-white hover:-translate-y-1.5 transition-all duration-400 group flex items-start gap-4 cursor-pointer"
               >
-                <div className="w-12 h-12 rounded-2xl bg-[#D4A017]/15 text-[#D4A017] group-hover:bg-[#D4A017] group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300 shadow-sm border border-[#D4A017]/30">
+                <div className="w-12 h-12 rounded-2xl bg-white/15 text-white group-hover:bg-white group-hover:text-[#040812] flex items-center justify-center shrink-0 transition-all duration-300 shadow-sm border border-white/20">
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white text-base group-hover:text-[#D4A017] transition-colors">Call Us Directly</h3>
+                  <h3 className="font-semibold text-white text-base group-hover:text-white transition-colors">Call Us Directly</h3>
                   <p className="text-xs text-slate-400 mt-1">Talk to our lighting architects</p>
-                  <div className="text-sm font-bold text-[#D4A017] mt-2 font-mono">087548 60555</div>
+                  <div className="text-sm font-bold text-white mt-2 font-sans">087548 60555</div>
                 </div>
               </a>
 
@@ -97,15 +91,15 @@ export default function ContactPage() {
                 href="mailto:info@ashiklights.in"
                 data-reveal="up"
                 data-reveal-delay="100"
-                className="bg-[#0D1E35] p-6 rounded-3xl border border-[#D4A017]/20 shadow-lg hover:border-[#D4A017] hover:-translate-y-1.5 transition-all duration-400 group flex items-start gap-4 cursor-pointer"
+                className="bg-[#0D1E35] p-6 rounded-3xl border border-white/15 shadow-lg hover:border-white hover:-translate-y-1.5 transition-all duration-400 group flex items-start gap-4 cursor-pointer"
               >
-                <div className="w-12 h-12 rounded-2xl bg-[#D4A017]/15 text-[#D4A017] group-hover:bg-[#D4A017] group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300 shadow-sm border border-[#D4A017]/30">
+                <div className="w-12 h-12 rounded-2xl bg-white/15 text-white group-hover:bg-white group-hover:text-[#040812] flex items-center justify-center shrink-0 transition-all duration-300 shadow-sm border border-white/20">
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white text-base group-hover:text-[#D4A017] transition-colors">Email Us</h3>
+                  <h3 className="font-semibold text-white text-base group-hover:text-white transition-colors">Email Us</h3>
                   <p className="text-xs text-slate-400 mt-1">Send us your layout or floor plan</p>
-                  <div className="text-sm font-bold text-[#D4A017] mt-2">info@ashiklights.in</div>
+                  <div className="text-sm font-bold text-white mt-2">info@ashiklights.in</div>
                 </div>
               </a>
 
@@ -113,9 +107,9 @@ export default function ContactPage() {
               <div
                 data-reveal="up"
                 data-reveal-delay="200"
-                className="bg-[#0D1E35] p-6 rounded-3xl border border-[#D4A017]/20 shadow-lg hover:border-[#D4A017] transition-all duration-400 flex items-start gap-4"
+                className="bg-[#0D1E35] p-6 rounded-3xl border border-white/15 shadow-lg hover:border-white transition-all duration-400 flex items-start gap-4"
               >
-                <div className="w-12 h-12 rounded-2xl bg-[#D4A017]/15 text-[#D4A017] flex items-center justify-center shrink-0 border border-[#D4A017]/30">
+                <div className="w-12 h-12 rounded-2xl bg-white/15 text-white flex items-center justify-center shrink-0 border border-white/20">
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
@@ -124,7 +118,7 @@ export default function ContactPage() {
                     #313, Anna Salai, Opposite Kamaraj Arangam, Teynampet, Chennai 600006
                   </p>
                   <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mt-2">
-                    <Clock className="w-3.5 h-3.5 text-[#D4A017]" />
+                    <Clock className="w-3.5 h-3.5 text-white" />
                     <span>Mon - Sat: 10:00 AM - 10:00 PM</span>
                   </div>
                 </div>
@@ -134,13 +128,13 @@ export default function ContactPage() {
         </section>
 
         {/* Breadcrumb */}
-        <div className="bg-[#0D1E35] border-b border-[#D4A017]/15 py-3.5 px-4 sm:px-6 lg:px-12 text-xs text-slate-400 shadow-2xs">
+        <div className="bg-[#0D1E35] border-b border-white/15 py-3.5 px-4 sm:px-6 lg:px-12 text-xs text-slate-400 shadow-2xs">
           <div className="max-w-7xl mx-auto flex items-center gap-2">
-            <Link href="/" className="hover:text-[#D4A017] transition-colors duration-300">
+            <Link href="/" className="hover:text-white transition-colors duration-300">
               Home
             </Link>
             <ChevronRight className="w-3 h-3 text-slate-400" />
-            <span className="text-[#D4A017] font-bold">Contact Us</span>
+            <span className="text-white font-bold">Contact Us</span>
           </div>
         </div>
 
@@ -149,9 +143,9 @@ export default function ContactPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
               {/* Contact Form Container */}
-              <div className="lg:col-span-6 bg-[#0D1E35] p-8 sm:p-12 rounded-3xl border border-[#D4A017]/20 shadow-xl" data-reveal="left">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#D4A017] mb-2">
-                  <MessageSquare className="w-4 h-4 text-[#D4A017]" />
+              <div className="lg:col-span-6 bg-[#0D1E35] p-8 sm:p-12 rounded-3xl border border-white/15 shadow-xl" data-reveal="left">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white mb-2">
+                  <MessageSquare className="w-4 h-4 text-white" />
                   <span>CONSULTATION INQUIRY</span>
                 </div>
                 <h2 className="font-serif text-3xl font-bold text-white mb-3">
@@ -162,7 +156,7 @@ export default function ContactPage() {
                 </p>
 
                 {formSubmitted ? (
-                  <div className="bg-[#0A1628] p-8 rounded-2xl border border-[#D4A017]/20 text-center space-y-4 animate-slide-carousel shadow-sm">
+                  <div className="bg-[#0A1628] p-8 rounded-2xl border border-white/15 text-center space-y-4 animate-slide-carousel shadow-sm">
                     <div className="w-16 h-16 bg-emerald-950/80 text-emerald-400 rounded-full flex items-center justify-center mx-auto border border-emerald-500/30">
                       <CheckCircle2 className="w-10 h-10" />
                     </div>
@@ -172,7 +166,7 @@ export default function ContactPage() {
                     </p>
                     <button
                       onClick={() => setFormSubmitted(false)}
-                      className="mt-2 text-xs font-bold text-[#D4A017] hover:underline cursor-pointer"
+                      className="mt-2 text-xs font-bold text-white hover:underline cursor-pointer"
                     >
                       ← Submit another inquiry
                     </button>
@@ -187,7 +181,7 @@ export default function ContactPage() {
                         placeholder="e.g. Rajesh Kumar"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-3.5 rounded-xl border border-[#D4A017]/20 focus:outline-none focus:border-[#D4A017] bg-[#0A1628] text-white placeholder-slate-500 shadow-2xs transition-colors duration-300"
+                        className="w-full px-4 py-3.5 rounded-xl border border-white/15 focus:outline-none focus:border-white bg-[#0A1628] text-white placeholder-slate-500 shadow-2xs transition-colors duration-300"
                       />
                     </div>
 
@@ -200,7 +194,7 @@ export default function ContactPage() {
                           placeholder="e.g. 98765 43210"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full px-4 py-3.5 rounded-xl border border-[#D4A017]/20 focus:outline-none focus:border-[#D4A017] bg-[#0A1628] text-white placeholder-slate-500 shadow-2xs transition-colors duration-300"
+                          className="w-full px-4 py-3.5 rounded-xl border border-white/15 focus:outline-none focus:border-white bg-[#0A1628] text-white placeholder-slate-500 shadow-2xs transition-colors duration-300"
                         />
                       </div>
                       <div>
@@ -210,7 +204,7 @@ export default function ContactPage() {
                           placeholder="e.g. rajesh@domain.com"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full px-4 py-3.5 rounded-xl border border-[#D4A017]/20 focus:outline-none focus:border-[#D4A017] bg-[#0A1628] text-white placeholder-slate-500 shadow-2xs transition-colors duration-300"
+                          className="w-full px-4 py-3.5 rounded-xl border border-white/15 focus:outline-none focus:border-white bg-[#0A1628] text-white placeholder-slate-500 shadow-2xs transition-colors duration-300"
                         />
                       </div>
                     </div>
@@ -222,7 +216,7 @@ export default function ContactPage() {
                         placeholder="Tell us about your villa, apartment or double-height foyer requirements..."
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full px-4 py-3.5 rounded-xl border border-[#D4A017]/20 focus:outline-none focus:border-[#D4A017] bg-[#0A1628] text-white placeholder-slate-500 shadow-2xs transition-colors duration-300"
+                        className="w-full px-4 py-3.5 rounded-xl border border-white/15 focus:outline-none focus:border-white bg-[#0A1628] text-white placeholder-slate-500 shadow-2xs transition-colors duration-300"
                       />
                     </div>
 
@@ -247,14 +241,14 @@ export default function ContactPage() {
                     href="https://maps.google.com/?q=ASHIK+LIGHTS+Teynampet+Chennai"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#D4A017] hover:underline"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-white hover:underline"
                   >
                     <Navigation className="w-3.5 h-3.5" />
                     <span>Get Directions</span>
                   </a>
                 </div>
 
-                <div className="rounded-3xl overflow-hidden border border-[#D4A017]/20 shadow-xl h-[480px]">
+                <div className="rounded-3xl overflow-hidden border border-white/15 shadow-xl h-[480px]">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.776584227003!2d80.24744707588805!3d13.049888213155413!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526646610db38f%3A0x8a4786f1bb0c0c74!2sASHIK%20LIGHTS!5e0!3m2!1sen!2sin!4v1712558237503!5m2!1sen!2sin"
                     width="100%"

@@ -69,8 +69,8 @@ export default function WhyChooseUs({ onOpenConsultation }: WhyChooseUsProps) {
             className="text-center max-w-2xl mx-auto mb-16 space-y-3"
             data-reveal="up"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#D4A017]/10 border border-[#D4A017]/25 text-[#D4A017] text-xs font-bold uppercase tracking-wider shadow-2xs">
-              <Award className="w-4 h-4 text-[#B8860B]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 border border-white/20 text-white text-xs font-bold uppercase tracking-wider shadow-2xs">
+              <Award className="w-4 h-4 text-white" />
               THE ASHIK LIGHTS DIFFERENCE
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-white">
@@ -107,18 +107,18 @@ export default function WhyChooseUs({ onOpenConsultation }: WhyChooseUsProps) {
                       ],
                     })
                   }
-                  className="group bg-[#0A1628] rounded-3xl p-8 border border-[#D4A017]/20 shadow-2xs hover-border-glow transition-all duration-400 transform hover:-translate-y-2 flex flex-col justify-between cursor-pointer relative overflow-hidden"
+                  className="group bg-[#0A1628] rounded-3xl p-8 border border-white/15 shadow-2xs hover-border-glow transition-all duration-400 transform hover:-translate-y-2 flex flex-col justify-between cursor-pointer relative overflow-hidden"
                 >
                   <div className="space-y-4">
-                    <div className="w-14 h-14 rounded-2xl bg-[#D4A017]/15 text-[#D4A017] group-hover:bg-[#D4A017] group-hover:text-white transition-all duration-400 flex items-center justify-center shadow-2xs group-hover:scale-110 group-hover:rotate-3">
+                    <div className="w-14 h-14 rounded-2xl bg-white/15 text-white group-hover:bg-white group-hover:text-[#040812] transition-all duration-400 flex items-center justify-center shadow-2xs group-hover:scale-110 group-hover:rotate-3">
                       <IconComp className="w-7 h-7" />
                     </div>
 
-                    <div className="inline-block text-[11px] font-bold tracking-wider text-[#D4A017] uppercase bg-[#D4A017]/10 px-2.5 py-1 rounded-md border border-[#D4A017]/20">
+                    <div className="inline-block text-[11px] font-bold tracking-wider text-white uppercase bg-white/10 px-2.5 py-1 rounded-md border border-white/15">
                       {item.tag}
                     </div>
 
-                    <h3 className="font-serif text-xl font-bold text-white group-hover:text-[#D4A017] transition-colors duration-300">
+                    <h3 className="font-serif text-xl font-bold text-white group-hover:text-white transition-colors duration-300">
                       {item.title}
                     </h3>
 
@@ -127,7 +127,7 @@ export default function WhyChooseUs({ onOpenConsultation }: WhyChooseUsProps) {
                     </p>
                   </div>
 
-                  <div className="pt-6 border-t border-[#D4A017]/15 mt-6 flex items-center justify-between text-xs font-semibold text-slate-400 group-hover:text-[#D4A017] transition-colors duration-300">
+                  <div className="pt-6 border-t border-white/15 mt-6 flex items-center justify-between text-xs font-semibold text-slate-400 group-hover:text-white transition-colors duration-300">
                     <span>Learn More</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </div>

@@ -57,19 +57,19 @@ export default function Header() {
   const dropdownLinkClass = (route: string) =>
     `block px-3 py-2 text-xs font-medium rounded-lg transition ${
       isRouteActive(route)
-        ? "bg-[#B8860B]/20 text-[#D4A017]"
-        : "text-slate-200 hover:bg-[#B8860B]/15 hover:text-[#D4A017]"
+        ? "bg-white/15 text-white font-semibold"
+        : "text-slate-200 hover:bg-white/10 hover:text-white"
     }`;
   const directLinkClass = (route: string) =>
     `transition-colors cursor-pointer whitespace-nowrap ${
       isRouteActive(route)
-        ? "text-[#D4A017] font-semibold"
-        : "text-white hover:text-[#D4A017]"
+        ? "text-white font-bold underline underline-offset-4 decoration-white/40"
+        : "text-slate-200 hover:text-white"
     }`;
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-[#040812]/97 backdrop-blur-xl border-b border-[#D4A017]/25 transition-all">
+      <header className="sticky top-0 z-40 bg-[#040812]/97 backdrop-blur-xl border-b border-white/15 transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-16 lg:h-20 flex items-center justify-between gap-6">
           {/* Official Brand Logo */}
           <Link href="/" className="flex items-center group shrink-0 py-1">
@@ -78,6 +78,7 @@ export default function Header() {
               alt="Ashik Lights Logo"
               width={200}
               height={60}
+              style={{ width: "auto" }}
               priority
               className="h-12 lg:h-15 w-auto object-contain white-logo group-hover:scale-105 transition-transform duration-300"
             />
@@ -87,11 +88,11 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-8 xl:gap-10 text-sm font-medium text-white">
             {/* 1. Decorative Lighting Dropdown */}
             <div className="relative group py-2">
-              <button className={`flex items-center gap-1.5 transition-colors py-1 cursor-pointer whitespace-nowrap ${isDecorativeActive ? "text-[#D4A017] font-semibold" : "text-white hover:text-[#D4A017]"}`}>
+              <button className={`flex items-center gap-1.5 transition-colors py-1 cursor-pointer whitespace-nowrap ${isDecorativeActive ? "text-white font-bold" : "text-slate-200 hover:text-white"}`}>
                 <span>Decorative Lighting</span>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#D4A017] transition-transform group-hover:rotate-180" />
+                <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-transform group-hover:rotate-180" />
               </button>
-              <div className="absolute top-full left-0 hidden group-hover:block w-60 bg-[#07101F] shadow-2xl rounded-xl border border-[#D4A017]/30 p-3 space-y-1 animate-fadeIn">
+              <div className="absolute top-full left-0 hidden group-hover:block w-60 bg-[#07101F] shadow-2xl rounded-xl border border-white/15 p-3 space-y-1 animate-fadeIn">
                 <Link
                   href="/chandeliers"
                   className={dropdownLinkClass("/chandeliers")}
@@ -127,11 +128,11 @@ export default function Header() {
 
             {/* 2. Technical Lighting Dropdown */}
             <div className="relative group py-2">
-              <button className={`flex items-center gap-1.5 transition-colors py-1 cursor-pointer whitespace-nowrap ${isTechnicalActive ? "text-[#D4A017] font-semibold" : "text-white hover:text-[#D4A017]"}`}>
+              <button className={`flex items-center gap-1.5 transition-colors py-1 cursor-pointer whitespace-nowrap ${isTechnicalActive ? "text-white font-bold" : "text-slate-200 hover:text-white"}`}>
                 <span>Technical Lighting</span>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#D4A017] transition-transform group-hover:rotate-180" />
+                <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-transform group-hover:rotate-180" />
               </button>
-              <div className="absolute top-full left-0 hidden group-hover:block w-52 bg-[#0D1E35] shadow-xl rounded-xl border border-[#B8860B]/30 p-3 space-y-1 animate-fadeIn">
+              <div className="absolute top-full left-0 hidden group-hover:block w-52 bg-[#0D1E35] shadow-xl rounded-xl border border-white/15 p-3 space-y-1 animate-fadeIn">
                 <Link
                   href="/indoor-lights"
                   className={dropdownLinkClass("/indoor-lights")}
@@ -177,7 +178,7 @@ export default function Header() {
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="lg:hidden w-10 h-10 flex items-center justify-center text-[#D4A017] bg-[#0D1E35] border border-[#B8860B]/40 rounded-xl active:scale-95 transition"
+              className="lg:hidden w-10 h-10 flex items-center justify-center text-white bg-[#0D1E35] border border-white/20 rounded-xl active:scale-95 transition"
               aria-label="Toggle menu"
             >
               <Menu className="w-6 h-6" />
@@ -188,7 +189,7 @@ export default function Header() {
 
       {/* Mobile app-style bottom navigation — auto-hides on scroll down, reveals on scroll up */}
       <nav
-        className={`fixed inset-x-3 bottom-3 z-50 lg:hidden h-[68px] rounded-2xl border border-[#D4A017]/30 bg-[#040812]/97 backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.65)] px-2 grid grid-cols-5 items-center transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`fixed inset-x-3 bottom-3 z-50 lg:hidden h-[68px] rounded-2xl border border-white/15 bg-[#040812]/97 backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.65)] px-2 grid grid-cols-5 items-center transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           navHidden ? "translate-y-[calc(100%+24px)]" : "translate-y-0"
         }`}
         aria-label="Mobile navigation"
@@ -196,7 +197,7 @@ export default function Header() {
         <Link
           href="/"
           className={`flex h-14 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold transition ${
-            pathname === "/" ? "bg-[#B8860B]/20 text-[#D4A017]" : "text-slate-400"
+            pathname === "/" ? "bg-white/15 text-white" : "text-slate-400"
           }`}
         >
           <Home className="h-5 w-5" />
@@ -204,7 +205,7 @@ export default function Header() {
         </Link>
         <Link
           href="/#collections"
-          className="flex h-14 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-slate-400 active:bg-[#B8860B]/20 active:text-[#D4A017]"
+          className="flex h-14 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-slate-400 active:bg-white/15 active:text-white"
         >
           <Grid2X2 className="h-5 w-5" />
           <span>Explore</span>
@@ -220,7 +221,7 @@ export default function Header() {
         </a>
         <Link
           href="/#showrooms"
-          className="flex h-14 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-slate-400 active:bg-[#B8860B]/20 active:text-[#D4A017]"
+          className="flex h-14 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-slate-400 active:bg-white/15 active:text-white"
         >
           <MapPin className="h-5 w-5" />
           <span>Stores</span>
@@ -229,7 +230,7 @@ export default function Header() {
           href="/contact"
           className={`flex h-14 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold transition ${
             isRouteActive("/contact")
-              ? "bg-[#B8860B]/20 text-[#D4A017]"
+              ? "bg-white/15 text-white"
               : "text-slate-400"
           }`}
         >

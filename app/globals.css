@@ -1,14 +1,18 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-sans), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-serif), "Playfair Display", Georgia, serif;
+}
+
 @layer base {
   :root {
-    --gold: #D4A017;
-    --gold-hover: #E5B429;
-    --gold-light: rgba(212, 160, 23, 0.12);
+    --white: #FFFFFF;
+    --silver: #E2E8F0;
     --navy: #040812;
     --navy-mid: #07101F;
     --navy-light: #0C172C;
-    --navy-border: rgba(212, 160, 23, 0.22);
+    --navy-border: rgba(255, 255, 255, 0.15);
     --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -16,34 +20,38 @@
 
   html {
     scroll-behavior: smooth;
+    font-family: var(--font-sans), system-ui, sans-serif;
   }
 
   body {
     background-color: #040812;
     color: #E8EAF0;
-    font-family: var(--font-sans), sans-serif;
+    font-family: var(--font-sans), system-ui, sans-serif;
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, .font-serif {
+  h1, h2, h3, h4, h5, h6, .font-serif {
     font-family: var(--font-serif), Georgia, serif;
   }
-}
 
-/* Golden Logo Tint Filter & Container */
-.gold-logo-tint {
-  filter: sepia(1) saturate(5) hue-rotate(5deg) brightness(0.68) contrast(1.15) drop-shadow(0 1px 3px rgba(184, 134, 11, 0.3));
+  p, span, a, button, input, textarea, select, label, li, td, th, .font-sans {
+    font-family: var(--font-sans), system-ui, sans-serif;
+  }
 }
 
 /* White Logo Filter — for use on dark navy backgrounds */
 .white-logo {
-  filter: brightness(0) invert(1) drop-shadow(0 1px 4px rgba(255, 255, 255, 0.15));
+  filter: brightness(0) invert(1) drop-shadow(0 1px 4px rgba(255, 255, 255, 0.25));
+}
+
+.gold-logo-tint {
+  filter: brightness(0) invert(1) drop-shadow(0 1px 4px rgba(255, 255, 255, 0.25));
 }
 
 .gold-logo-container {
-  background: linear-gradient(135deg, #FAF6F0 0%, #FFFFFF 50%, #FAF6F0 100%);
-  border: 1px solid rgba(184, 134, 11, 0.3);
-  box-shadow: 0 2px 12px rgba(184, 134, 11, 0.1);
+  background: linear-gradient(135deg, #07101F 0%, #0C172C 50%, #07101F 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 12px rgba(255, 255, 255, 0.05);
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -128,8 +136,8 @@
 }
 
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 15px rgba(184, 134, 11, 0.2); }
-  50% { box-shadow: 0 0 30px rgba(184, 134, 11, 0.5); }
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.5); }
 }
 
 @keyframes shimmer {
@@ -140,19 +148,17 @@
 @keyframes pinPulse {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(184, 134, 11, 0.7);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
   }
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 12px rgba(184, 134, 11, 0);
+    box-shadow: 0 0 0 12px rgba(255, 255, 255, 0);
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(184, 134, 11, 0);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
   }
 }
-
-/* ── New Premium Keyframes ── */
 
 @keyframes slideInLeft {
   0% {
@@ -236,12 +242,12 @@
 
 @keyframes borderGlow {
   0%, 100% {
-    border-color: rgba(184, 134, 11, 0.2);
-    box-shadow: 0 0 0 0 rgba(184, 134, 11, 0);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
   }
   50% {
-    border-color: rgba(184, 134, 11, 0.6);
-    box-shadow: 0 0 20px -5px rgba(184, 134, 11, 0.15);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 20px -5px rgba(255, 255, 255, 0.25);
   }
 }
 
@@ -340,11 +346,11 @@
 .animate-gold-shimmer {
   background: linear-gradient(
     90deg,
-    #B8860B 0%,
-    #D4AF37 25%,
-    #F0D78C 50%,
-    #D4AF37 75%,
-    #B8860B 100%
+    #FFFFFF 0%,
+    #E2E8F0 25%,
+    #FFFFFF 50%,
+    #94A3B8 75%,
+    #FFFFFF 100%
   );
   background-size: 300% 100%;
   -webkit-background-clip: text;
@@ -434,8 +440,8 @@
   transform: translateY(-8px) scale(1.01);
   box-shadow:
     0 20px 40px -15px rgba(0, 0, 0, 0.6),
-    0 0 25px -5px rgba(212, 160, 23, 0.15);
-  border-color: #D4A017;
+    0 0 25px -5px rgba(255, 255, 255, 0.2);
+  border-color: #FFFFFF;
 }
 
 /* ── 3D Perspective Card Tilt ── */
@@ -465,9 +471,9 @@
 }
 
 .hover-border-glow:hover {
-  border-color: rgba(212, 160, 23, 0.6);
+  border-color: rgba(255, 255, 255, 0.4);
   box-shadow:
-    0 0 25px -5px rgba(212, 160, 23, 0.2),
+    0 0 25px -5px rgba(255, 255, 255, 0.2),
     0 20px 45px -15px rgba(10, 22, 40, 0.8);
 }
 
@@ -484,7 +490,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: #B8860B;
+  background: #FFFFFF;
   transition: width 0.3s var(--ease-spring);
 }
 
@@ -498,7 +504,7 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #D4AF37;
+  background: #FFFFFF;
   animation: sparkleFloat 3s ease-in-out infinite;
   pointer-events: none;
 }
@@ -586,10 +592,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D4AF37;
+  background: #334155;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #B8860B;
+  background: #FFFFFF;
 }

@@ -26,7 +26,7 @@ export default function PageLoader() {
       }`}
     >
       {/* Background glow */}
-      <div className="absolute w-96 h-96 bg-[#D4A017]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="flex flex-col items-center space-y-6 text-center px-4 relative z-10">
         {/* White Logo Image with Pulsing Glow */}
@@ -41,16 +41,16 @@ export default function PageLoader() {
           />
         </div>
 
-        {/* Unified Gold Badge Subtitle */}
-        <div className="inline-flex items-center gap-2 text-[#D4A017] text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]">
-          <span className="w-5 h-px bg-[#D4A017]/50" />
+        {/* Subtitle */}
+        <div className="inline-flex items-center gap-2 text-white/80 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]">
+          <span className="w-5 h-px bg-white/30" />
           LUXURY LIGHTING SHOWROOM
-          <span className="w-5 h-px bg-[#D4A017]/50" />
+          <span className="w-5 h-px bg-white/30" />
         </div>
 
-        {/* Gold Loader Bar */}
-        <div className="w-48 bg-[#0D1E35] h-1 rounded-full overflow-hidden relative border border-[#D4A017]/20">
-          <div className="bg-[#D4A017] h-full rounded-full animate-progress-bar" />
+        {/* Loader Bar */}
+        <div className="w-48 bg-[#0D1E35] h-1 rounded-full overflow-hidden relative border border-white/20">
+          <div className="bg-white h-full rounded-full animate-progress-bar" />
         </div>
       </div>
     </div>

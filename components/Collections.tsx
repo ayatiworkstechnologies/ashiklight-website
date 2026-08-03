@@ -1,82 +1,79 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Eye, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Sparkles } from "lucide-react";
 import ProductModal, { ProductModalData } from "./ProductModal";
-import { VectorDiamondGrid, VectorCornerMotif } from "@/components/VectorAccents";
+import { VectorCornerMotif } from "./VectorAccents";
+
+const collections = [
+  {
+    id: "chandeliers",
+    name: "Statement Chandeliers",
+    href: "/chandeliers",
+    image: "/assets/chandeliers/Luxury Crystal Leaf Branch Chandelier.webp",
+  },
+  {
+    id: "high-ceiling",
+    name: "High Ceiling Chandeliers",
+    href: "/high-ceiling-chandeliers",
+    image: "/assets/High Ceiling Chandeliers/Butterfly Crystal Disc Cascade Chandelier.webp",
+  },
+  {
+    id: "fans",
+    name: "BLDC Decorative Fans",
+    href: "/decorative-fans",
+    image: "/assets/Decorative Fan/Luxury Crystal Waterfall Retractable Blade Ceiling Fan.webp",
+  },
+  {
+    id: "wall-pendant",
+    name: "Wall & Pendant Lights",
+    href: "/wall-pendant-lights",
+    image: "/assets/Wall & Pendant Lights/Hanging Crystal Drum Wall Sconce.webp",
+  },
+  {
+    id: "led-mirrors",
+    name: "Vanity LED Mirrors",
+    href: "/led-mirrors",
+    image: "/assets/Led Mirror/Round Ring LED Vanity Mirror.webp",
+  },
+  {
+    id: "indoor-lights",
+    name: "Architectural Indoor Lights",
+    href: "/indoor-lights",
+    image: "/assets/Indoor light catalog/Eclipse Selective COB Downlight.webp",
+  },
+  {
+    id: "architectural",
+    name: "Magnetic Track & Profiles",
+    href: "/architectural-lights",
+    image: "/assets/Architecture Light/Circular Magnetic Power Track Series.webp",
+  },
+  {
+    id: "outdoor-lights",
+    name: "IP65 Outdoor & Facade",
+    href: "/outdoor-lights",
+    image: "/assets/Outdoor Light Catalog/Up Down Narrow Wall Light.webp",
+  },
+];
 
 interface CollectionsProps {
   onOpenConsultation?: () => void;
 }
 
-export default function Collections({ onOpenConsultation }: CollectionsProps) {
+export default function Collections({
+  onOpenConsultation,
+}: CollectionsProps) {
   const [selectedProduct, setSelectedProduct] = useState<ProductModalData | null>(null);
-
-  const collections = [
-    {
-      id: "chandeliers",
-      href: "/chandeliers",
-      name: "Chandeliers",
-      image: "/assets/chandeliers/Luxury Floral Crystal Chandelier.webp",
-      desc: "Statement grand crystal & brass chandeliers engineered for luxury dining areas and living rooms.",
-    },
-    {
-      id: "high-ceiling-chandeliers",
-      href: "/high-ceiling-chandeliers",
-      name: "High Ceiling Chandeliers",
-      image: "/assets/High Ceiling Chandeliers/Crystal Raindrop High-Ceiling Chandelier.webp",
-      desc: "Custom multi-tier and long cable drop chandeliers created for double-height foyers, staircases and villas.",
-    },
-    {
-      id: "wall-pendant-lights",
-      href: "/wall-pendant-lights",
-      name: "Wall & Pendant Lights",
-      image: "/assets/Wall & Pendant Lights/Clustered Textured Glass Bud Pendant Light.webp",
-      desc: "Architectural wall sconces and artistic pendant lights designed for modern spaces.",
-    },
-    {
-      id: "indoor-lights",
-      href: "/indoor-lights",
-      name: "Indoor Lights",
-      image: "/assets/Indoor light catalog/ArcGlow Minimal LED Wall Light.webp",
-      desc: "Premium recessed spotlights, magnetic track lights, surface COBs, and Linear LED profile lights.",
-    },
-    {
-      id: "led-mirrors",
-      href: "/led-mirrors",
-      name: "LED Mirror",
-      image: "/assets/Led Mirror/Round Halo LED Bathroom Mirror.webp",
-      desc: "High-definition vanity LED mirrors featuring touch sensors, anti-fog demisters, and dual CCT.",
-    },
-    {
-      id: "architectural-lights",
-      href: "/architectural-lights",
-      name: "Architectural Lights",
-      image: "/assets/Architecture Light/Circular Magnetic Power Track Series.webp",
-      desc: "Precision beam architectural lighting, trimless channels, and magnetic track systems.",
-    },
-    {
-      id: "decorative-fans",
-      href: "/decorative-fans",
-      name: "Decorative Fans",
-      image: "/assets/Decorative Fan/Crystal Dome Retractable Blade Ceiling Fan.webp",
-      desc: "Luxury ceiling fans featuring retractable blades, integrated LED lighting, and whisper-quiet BLDC motors.",
-    },
-    {
-      id: "outdoor-lights",
-      href: "/outdoor-lights",
-      name: "Outdoor Lights",
-      image: "/assets/Outdoor Light Catalog/Spike Spotlight.webp",
-      desc: "Weatherproof IP65 outdoor wall sconces, garden bollards, spike spotlights, and gate lamps.",
-    },
-  ];
 
   return (
     <>
-      <section id="collections" className="relative py-16 lg:py-24 bg-[#0A1628] overflow-hidden">
-        <VectorDiamondGrid className="opacity-[0.03]" />
+      <section
+        id="collections"
+        className="py-16 sm:py-20 bg-[#07101F] border-b border-white/15 relative overflow-hidden"
+      >
+        {/* Subtle Decorative Accents */}
         <VectorCornerMotif position="top-right" />
         <VectorCornerMotif position="bottom-left" />
 
@@ -86,10 +83,10 @@ export default function Collections({ onOpenConsultation }: CollectionsProps) {
             className="text-center max-w-2xl mx-auto mb-12 space-y-3"
             data-reveal="up"
           >
-            <div className="inline-flex items-center gap-2 text-[#D4A017] text-xs font-bold uppercase tracking-[0.2em]">
-              <span className="w-6 h-px bg-[#D4A017]/50" />
+            <div className="inline-flex items-center gap-2 text-white/80 text-xs font-bold uppercase tracking-[0.2em]">
+              <span className="w-6 h-px bg-white/30" />
               OUR COLLECTIONS
-              <span className="w-6 h-px bg-[#D4A017]/50" />
+              <span className="w-6 h-px bg-white/30" />
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-white tracking-tight">
               Explore Our Collections
@@ -111,7 +108,7 @@ export default function Collections({ onOpenConsultation }: CollectionsProps) {
                 href={item.href}
                 data-reveal="up"
                 data-reveal-delay={String(index * 80)}
-                className="group block bg-[#0D1E35] rounded-2xl overflow-hidden border border-[#D4A017]/20 shadow-2xs card-hover-lift hover-border-glow cursor-pointer"
+                className="group block bg-[#0D1E35] rounded-2xl overflow-hidden border border-white/15 shadow-2xs card-hover-lift hover-border-glow cursor-pointer"
               >
                 {/* Image Container with Zoom & Floating Quick Badge */}
                 <div className="relative aspect-4/3 sm:aspect-square overflow-hidden bg-slate-100">
@@ -124,17 +121,17 @@ export default function Collections({ onOpenConsultation }: CollectionsProps) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <span className="px-3 py-1.5 bg-white/95 backdrop-blur-md rounded-full text-[10px] font-bold text-slate-900 shadow-md flex items-center gap-1">
-                      <Sparkles className="w-3 h-3 text-[#B8860B]" /> Explore
+                      <Sparkles className="w-3 h-3 text-slate-900" /> Explore
                     </span>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-3 sm:p-4 text-center bg-[#0D1E35] border-t border-[#D4A017]/15">
-                  <h3 className="font-semibold text-xs sm:text-base text-white group-hover:text-[#D4A017] transition-colors duration-300 line-clamp-1">
+                <div className="p-3 sm:p-4 text-center bg-[#0D1E35] border-t border-white/15">
+                  <h3 className="font-semibold text-xs sm:text-base text-white group-hover:text-white transition-colors duration-300 line-clamp-1">
                     {item.name}
                   </h3>
-                  <div className="mt-2 pt-2 border-t border-[#D4A017]/10 inline-flex items-center justify-center gap-1 text-[11px] font-bold text-[#D4A017] opacity-80 group-hover:opacity-100 transition-opacity">
+                  <div className="mt-2 pt-2 border-t border-white/10 inline-flex items-center justify-center gap-1 text-[11px] font-bold text-white/90 opacity-80 group-hover:opacity-100 transition-opacity">
                     <span>View Range</span>
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   </div>

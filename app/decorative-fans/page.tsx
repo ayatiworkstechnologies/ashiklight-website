@@ -97,6 +97,7 @@ export default function DecorativeFansPage() {
       tagline="Whisper-quiet air delivery with integrated light rings."
       description="Energy-saving BLDC motor ceiling fans crafted with retractable blades, crystal shades, and dimmable LED halos."
       heroImage="/banner/Decorative Fan.webp"
+      mobileHeroImage="/banner/Decorative Fan mob.webp"
       badges={[
         { icon: "Fan", text: "Super Efficient BLDC Motor" },
         { icon: "Award", text: "Retractable Hideaway Blades" },

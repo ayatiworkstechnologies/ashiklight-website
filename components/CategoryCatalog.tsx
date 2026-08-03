@@ -60,6 +60,7 @@ export interface CategoryCatalogProps {
   tagline: string;
   description: string;
   heroImage: string;
+  mobileHeroImage?: string;
   badges: { icon: BadgeIconName; text: string }[];
   subCategories: { id: string; label: string }[];
   products: CategoryProduct[];
@@ -72,6 +73,7 @@ export default function CategoryCatalog({
   tagline,
   description,
   heroImage,
+  mobileHeroImage,
   badges,
   subCategories,
   products,
@@ -127,6 +129,12 @@ export default function CategoryCatalog({
     ],
   };
 
+  const effectiveMobileHeroImage =
+    mobileHeroImage ||
+    (heroImage.includes("mob.webp")
+      ? heroImage
+      : heroImage.replace(/\.webp$/, " mob.webp"));
+
   return (
     <ScrollRevealProvider>
       <script
@@ -141,17 +149,33 @@ export default function CategoryCatalog({
         <section className="relative min-h-[60vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#FAF6F0] border-b border-[#EAE3D2]">
           {/* Full Width Background Image — Bright & Unzoomed */}
           <div className="absolute inset-0 z-0">
+            {/* Desktop Hero Banner */}
             <Image
               src={heroImage}
               alt={title}
               fill
               priority
               sizes="100vw"
-              className="object-cover object-right lg:object-center brightness-105 contrast-[1.02]"
+              className={`object-cover object-right lg:object-center brightness-105 contrast-[1.02] ${
+                effectiveMobileHeroImage ? "hidden md:block" : ""
+              }`}
             />
-            {/* Subtle left-side shade overlay ONLY for text contrast; Right side is 100% bright & unshaded */}
-            <div className="absolute inset-y-0 left-0 w-full md:w-[58%] lg:w-[48%] bg-gradient-to-r from-[#FAF6F0] via-[#FAF6F0]/90 to-transparent pointer-events-none" />
-            <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#FAF6F0] to-transparent md:hidden pointer-events-none" />
+            {/* Mobile Hero Banner */}
+            {effectiveMobileHeroImage && (
+              <Image
+                src={effectiveMobileHeroImage}
+                alt={`${title} Mobile Banner`}
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover object-center brightness-105 contrast-[1.02] md:hidden"
+              />
+            )}
+            {/* Desktop Overlay: Left-side shade ONLY for text contrast; Right side is 100% bright & unshaded */}
+            <div className="hidden md:block absolute inset-y-0 left-0 md:w-[58%] lg:w-[48%] bg-gradient-to-r from-[#FAF6F0] via-[#FAF6F0]/90 to-transparent pointer-events-none" />
+            {/* Mobile Overlay: Graceful left-to-right gradient fade so right 30%+ of banner is 100% unshaded */}
+            <div className="block md:hidden absolute inset-y-0 left-0 w-[72%] sm:w-[65%] bg-gradient-to-r from-[#FAF6F0]/95 via-[#FAF6F0]/75 to-transparent pointer-events-none" />
+            <div className="block md:hidden absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#FAF6F0] to-transparent pointer-events-none" />
           </div>
 
           {/* Vector Diamond Grid Background Pattern */}
@@ -166,8 +190,8 @@ export default function CategoryCatalog({
             <span className="sparkle" />
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-14 lg:py-20 w-full">
-            <div className="max-w-xl lg:max-w-2xl space-y-6">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-10 sm:py-14 lg:py-20 w-full">
+            <div className="max-w-[85%] sm:max-w-xl lg:max-w-2xl space-y-4 sm:space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#B8860B]/10 border border-[#B8860B]/30 text-[#B8860B] text-xs font-semibold tracking-wider uppercase backdrop-blur-sm shadow-2xs">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#B8860B] opacity-75" />

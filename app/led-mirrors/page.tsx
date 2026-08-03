@@ -70,6 +70,7 @@ export default function LedMirrorsPage() {
       tagline="Flawless vanity reflection with touch sensors and anti-fog."
       description="Frameless high-definition vanity LED mirrors featuring feather touch switches, integrated demister pads and dual CCT lighting."
       heroImage="/banner/LED Mirror.webp"
+      mobileHeroImage="/banner/LED Mirror mob.webp"
       badges={[
         { icon: "Maximize2", text: "5mm HD Copper-Free Glass" },
         { icon: "Award", text: "Smart Anti-Fog Demister" },

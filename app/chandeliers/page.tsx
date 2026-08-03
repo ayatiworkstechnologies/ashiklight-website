@@ -259,6 +259,7 @@ export default function ChandeliersPage() {
       tagline="Statement lighting that defines your space."
       description="Discover a timeless collection of chandeliers in classic, modern and luxury crystal styles for every interior."
       heroImage="/banner/Chandeliers.webp"
+      mobileHeroImage="/banner/Chandeliers mob.webp"
       badges={[
         { icon: "Sparkles", text: "Premium K9 Crystal" },
         { icon: "UserCheck", text: "Expert Guidance" },

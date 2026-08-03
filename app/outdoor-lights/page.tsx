@@ -79,6 +79,7 @@ export default function OutdoorLightsPage() {
       tagline="Illuminate your outdoors with beauty and durability."
       description="Weather-resistant IP65 outdoor wall sconces, garden bollards, spike spotlights, and facade wall washers."
       heroImage="/banner/Outdoor Lights.webp"
+      mobileHeroImage="/banner/Outdoor Lights mob.webp"
       badges={[
         { icon: "Sun", text: "Weather Resistant IP65" },
         { icon: "Award", text: "Corrosion Proof Body" },

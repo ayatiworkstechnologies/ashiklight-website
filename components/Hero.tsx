@@ -23,17 +23,28 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
     <section className="relative min-h-[85vh] lg:min-h-[92vh] flex items-center overflow-hidden bg-[#FAF6F0]">
       {/* Background Image with Ken Burns Effect */}
       <div className="absolute inset-0 z-0">
+        {/* Desktop Hero Banner */}
         <Image
-          src="/assets/banner.webp"
+          src="/banner/banner.webp"
           alt="Luxury indoor living room with warm chandelier lighting"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-right lg:object-center animate-ken-burns"
+          className="object-cover object-right lg:object-center animate-ken-burns hidden md:block"
+        />
+        {/* Mobile Hero Banner */}
+        <Image
+          src="/banner/banner mob.webp"
+          alt="Luxury indoor living room with warm chandelier lighting - Mobile Banner"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center animate-ken-burns md:hidden"
         />
         {/* Left-side shade overlay ONLY for text contrast; Right side is 100% clear image with zero shade */}
-        <div className="absolute inset-y-0 left-0 w-full md:w-[65%] lg:w-[55%] bg-gradient-to-r from-[#FAF6F0] via-[#FAF6F0]/95 to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#FAF6F0] to-transparent md:hidden pointer-events-none" />
+        <div className="hidden md:block absolute inset-y-0 left-0 md:w-[65%] lg:w-[55%] bg-gradient-to-r from-[#FAF6F0] via-[#FAF6F0]/95 to-transparent pointer-events-none" />
+        <div className="block md:hidden absolute inset-y-0 left-0 w-[72%] sm:w-[68%] bg-gradient-to-r from-[#FAF6F0]/95 via-[#FAF6F0]/75 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#FAF6F0] to-transparent md:hidden pointer-events-none" />
       </div>
 
       {/* Vector Diamond Grid Background Pattern */}
@@ -53,9 +64,7 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
           {/* Subtle Tagline Badge — animated entrance */}
           <div
             className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#B8860B]/10 border border-[#B8860B]/30 text-[#B8860B] text-xs font-semibold tracking-wider uppercase backdrop-blur-sm transition-all duration-700 ${
-              isLoaded
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
             <span className="relative flex h-2 w-2">
@@ -100,21 +109,18 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
           {/* Subtitle — delayed fade in */}
           <p
             className={`text-slate-700 text-sm sm:text-base lg:text-lg font-light leading-relaxed max-w-lg transition-all duration-700 delay-[700ms] ${
-              isLoaded
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-6"
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
-            Discover statement chandeliers, double-height cascades, architectural
-            magnetic tracks & luxury outdoor lights at our flagship Chennai showroom in Teynampet.
+            Discover statement chandeliers, double-height cascades,
+            architectural magnetic tracks & luxury outdoor lights at our
+            flagship Chennai showroom in Teynampet.
           </p>
 
           {/* Action CTAs — slide in from left */}
           <div
             className={`flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4 transition-all duration-700 delay-[850ms] ${
-              isLoaded
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-6"
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
             <Link
@@ -136,9 +142,7 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
           {/* Trust Bar — staggered entrance with counter animation */}
           <div
             className={`pt-8 border-t border-[#EAE3D2]/60 grid grid-cols-3 gap-4 text-xs font-medium text-slate-700 transition-all duration-700 delay-[1000ms] ${
-              isLoaded
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-6"
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
             <TrustItem
@@ -201,9 +205,7 @@ function TrustItem({
   return (
     <div
       className={`flex items-center gap-2 transition-all duration-500 ${
-        isLoaded
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-4"
+        isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >

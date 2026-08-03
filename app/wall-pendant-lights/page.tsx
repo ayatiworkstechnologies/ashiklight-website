@@ -313,6 +313,7 @@ export default function WallPendantLightsPage() {
       tagline="Artisanal glass, blown pendants and ambient wall sconces."
       description="Elevate your bedside, dining nook, corridor or feature wall with hand-blown glass island pendants and solid brass sconces."
       heroImage="/banner/Wall & Pendant Lights.webp"
+      mobileHeroImage="/banner/Wall & Pendant Lights mob.webp"
       badges={[
         { icon: "Sparkles", text: "Handblown Glass" },
         { icon: "UserCheck", text: "Solid Brass Fitting" },

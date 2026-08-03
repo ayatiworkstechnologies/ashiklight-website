@@ -79,6 +79,7 @@ export default function IndoorLightsPage() {
       tagline="Warm, ambient and seamless functional lighting."
       description="Flush mount ceiling luminaires, surface downlights, magnetic track modules and cove profile lights for modern homes."
       heroImage="/banner/Indoor Lights.webp"
+      mobileHeroImage="/banner/Indoor Lights mob.webp"
       badges={[
         { icon: "Sparkles", text: "Ultra Slim Profile" },
         { icon: "Award", text: "TrueColor >90 CRI" },

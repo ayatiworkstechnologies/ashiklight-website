@@ -96,15 +96,15 @@ export default function Projects({ onOpenConsultation }: ProjectsProps) {
 
   return (
     <>
-      <section id="projects" className="py-16 lg:py-24 bg-white">
+      <section id="projects" className="py-16 lg:py-24 bg-[#0A1628]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           {/* Header Block — split directional reveal */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
             <div data-reveal="left">
-              <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#1A1813] tracking-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-white tracking-tight">
                 Our Projects
               </h2>
-              <p className="text-slate-600 text-sm sm:text-base font-light mt-2">
+              <p className="text-slate-400 text-sm sm:text-base font-light mt-2">
                 See how we bring spaces to life with the right light.
               </p>
             </div>
@@ -138,7 +138,7 @@ export default function Projects({ onOpenConsultation }: ProjectsProps) {
                     specs: project.specs,
                   })
                 }
-                className="group bg-white rounded-2xl overflow-hidden border border-[#EAE3D2] shadow-2xs hover-border-glow transition-all duration-400 transform hover:-translate-y-2 cursor-pointer"
+                className="group bg-[#0D1E35] rounded-2xl overflow-hidden border border-[#D4A017]/20 shadow-2xs hover-border-glow transition-all duration-400 transform hover:-translate-y-2 cursor-pointer"
               >
                 {/* Image Box */}
                 <div className="relative aspect-16/10 overflow-hidden bg-slate-100">
@@ -158,11 +158,11 @@ export default function Projects({ onOpenConsultation }: ProjectsProps) {
                 </div>
 
                 {/* Title & Location Footer */}
-                <div className="p-4 text-center space-y-1 bg-white">
-                  <h3 className="font-medium text-slate-900 text-sm sm:text-base group-hover:text-[#B8860B] transition-colors duration-300">
+                <div className="p-4 text-center space-y-1 bg-[#0D1E35]">
+                  <h3 className="font-medium text-white text-sm sm:text-base group-hover:text-[#D4A017] transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <div className="flex items-center justify-center gap-1 text-xs text-slate-500 font-light">
+                  <div className="flex items-center justify-center gap-1 text-xs text-slate-400 font-light">
                     <MapPin className="w-3.5 h-3.5 text-[#B8860B]" />
                     <span>{project.location}</span>
                   </div>

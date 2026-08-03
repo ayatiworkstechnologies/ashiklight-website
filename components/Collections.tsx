@@ -75,7 +75,7 @@ export default function Collections({ onOpenConsultation }: CollectionsProps) {
 
   return (
     <>
-      <section id="collections" className="relative py-16 lg:py-24 bg-[#FAF8F5] overflow-hidden">
+      <section id="collections" className="relative py-16 lg:py-24 bg-[#0A1628] overflow-hidden">
         <VectorDiamondGrid className="opacity-[0.03]" />
         <VectorCornerMotif position="top-right" />
         <VectorCornerMotif position="bottom-left" />
@@ -86,15 +86,15 @@ export default function Collections({ onOpenConsultation }: CollectionsProps) {
             className="text-center max-w-2xl mx-auto mb-12 space-y-3"
             data-reveal="up"
           >
-            <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#1A1813] tracking-tight">
+            <div className="inline-flex items-center gap-2 text-[#D4A017] text-xs font-bold uppercase tracking-[0.2em]">
+              <span className="w-6 h-px bg-[#D4A017]/50" />
+              OUR COLLECTIONS
+              <span className="w-6 h-px bg-[#D4A017]/50" />
+            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-white tracking-tight">
               Explore Our Collections
             </h2>
-            <div className="flex items-center justify-center gap-2">
-              <span className="h-[1px] w-8 bg-[#B8860B]/40"></span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B8860B] animate-ping"></span>
-              <span className="h-[1px] w-8 bg-[#B8860B]/40"></span>
-            </div>
-            <p className="text-slate-600 text-sm sm:text-base font-light">
+            <p className="text-slate-400 text-sm sm:text-base font-light">
               From statement chandeliers to subtle architectural lighting, discover
               solutions for every space.
             </p>
@@ -111,7 +111,7 @@ export default function Collections({ onOpenConsultation }: CollectionsProps) {
                 href={item.href}
                 data-reveal="up"
                 data-reveal-delay={String(index * 80)}
-                className="group block bg-white rounded-2xl overflow-hidden border border-[#EAE3D2] shadow-2xs card-hover-lift hover-border-glow cursor-pointer"
+                className="group block bg-[#0D1E35] rounded-2xl overflow-hidden border border-[#D4A017]/20 shadow-2xs card-hover-lift hover-border-glow cursor-pointer"
               >
                 {/* Image Container with Zoom & Floating Quick Badge */}
                 <div className="relative aspect-4/3 sm:aspect-square overflow-hidden bg-slate-100">
@@ -130,11 +130,11 @@ export default function Collections({ onOpenConsultation }: CollectionsProps) {
                 </div>
 
                 {/* Text Footer */}
-                <div className="p-4 text-center space-y-1 bg-white border-t border-slate-100">
-                  <h3 className="font-semibold text-sm sm:text-base text-slate-900 group-hover:text-[#B8860B] transition-colors duration-300">
+                <div className="p-4 text-center space-y-1 bg-[#0D1E35] border-t border-[#D4A017]/15">
+                  <h3 className="font-semibold text-sm sm:text-base text-white group-hover:text-[#D4A017] transition-colors duration-300">
                     {item.name}
                   </h3>
-                  <div className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 group-hover:text-[#B8860B] transition-colors duration-300">
+                  <div className="inline-flex items-center gap-1 text-xs font-semibold text-slate-400 group-hover:text-[#D4A017] transition-colors duration-300">
                     <span>Explore Catalog</span>
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
                   </div>

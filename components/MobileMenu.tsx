@@ -32,14 +32,14 @@ export default function MobileMenu({
   const submenuLinkClass = (route: string) =>
     `block py-2 ${
       isRouteActive(route)
-        ? "text-[#B8860B] font-semibold"
-        : "text-slate-700 hover:text-[#B8860B]"
+        ? "text-[#D4A017] font-semibold"
+        : "text-slate-300 hover:text-[#D4A017]"
     }`;
   const mobileLinkClass = (route: string) =>
     `block px-4 py-3 font-medium rounded-xl transition ${
       isRouteActive(route)
-        ? "bg-[#FAF6F0] text-[#B8860B]"
-        : "text-slate-800 hover:text-[#B8860B] hover:bg-[#FAF6F0]"
+        ? "bg-[#B8860B]/20 text-[#D4A017]"
+        : "text-slate-200 hover:text-[#D4A017] hover:bg-[#B8860B]/10"
     }`;
 
   if (!isOpen) return null;
@@ -57,22 +57,22 @@ export default function MobileMenu({
       />
 
       {/* Drawer */}
-      <div className="fixed inset-y-0 right-0 w-[92%] max-w-sm bg-white shadow-2xl flex flex-col justify-between overflow-y-auto rounded-l-3xl border-l border-[#EAE3D2]">
+      <div className="fixed inset-y-0 right-0 w-[92%] max-w-sm bg-[#0A1628] shadow-2xl flex flex-col justify-between overflow-y-auto rounded-l-3xl border-l border-[#B8860B]/30">
         <div>
           {/* Header */}
-          <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-[#FAF8F5]">
+          <div className="flex items-center justify-between px-5 py-4 border-b border-[#B8860B]/20 bg-[#0D1E35]">
             <Link href="/" onClick={onClose} className="flex items-center">
               <Image
                 src="/logo.png"
                 alt="Ashik Lights Logo"
                 width={170}
                 height={50}
-                className="h-11 w-auto object-contain gold-logo-tint"
+                className="h-11 w-auto object-contain white-logo"
               />
             </Link>
             <button
               onClick={onClose}
-              className="p-2 text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-100"
+              className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-[#B8860B]/20"
             >
               <X className="w-6 h-6" />
             </button>
@@ -84,17 +84,17 @@ export default function MobileMenu({
             <div>
               <button
                 onClick={() => toggleSub("decorative")}
-                className={`w-full flex items-center justify-between px-4 py-3 font-medium hover:text-[#B8860B] hover:bg-[#FAF6F0] rounded-xl transition ${decorativeActive ? "bg-[#FAF6F0] text-[#B8860B]" : "text-slate-800"}`}
+                className={`w-full flex items-center justify-between px-4 py-3 font-medium hover:text-[#D4A017] hover:bg-[#B8860B]/10 rounded-xl transition ${decorativeActive ? "bg-[#B8860B]/20 text-[#D4A017]" : "text-slate-200"}`}
               >
                 <span>Decorative Lighting</span>
                 <ChevronDown
-                  className={`w-4 h-4 text-slate-400 transition-transform ${
-                    openSub === "decorative" ? "rotate-180 text-[#B8860B]" : ""
+                  className={`w-4 h-4 text-slate-500 transition-transform ${
+                    openSub === "decorative" ? "rotate-180 text-[#D4A017]" : ""
                   }`}
                 />
               </button>
               {openSub === "decorative" && (
-                <div className="pl-6 pr-2 py-1 space-y-1 bg-[#FAF6F0]/60 rounded-xl my-1 text-xs">
+                <div className="pl-6 pr-2 py-1 space-y-1 bg-[#B8860B]/10 rounded-xl my-1 text-xs">
                   <Link
                     href="/chandeliers"
                     onClick={onClose}
@@ -138,17 +138,17 @@ export default function MobileMenu({
             <div>
               <button
                 onClick={() => toggleSub("technical")}
-                className={`w-full flex items-center justify-between px-4 py-3 font-medium hover:text-[#B8860B] hover:bg-[#FAF6F0] rounded-xl transition ${technicalActive ? "bg-[#FAF6F0] text-[#B8860B]" : "text-slate-800"}`}
+                className={`w-full flex items-center justify-between px-4 py-3 font-medium hover:text-[#D4A017] hover:bg-[#B8860B]/10 rounded-xl transition ${technicalActive ? "bg-[#B8860B]/20 text-[#D4A017]" : "text-slate-200"}`}
               >
                 <span>Technical Lighting</span>
                 <ChevronDown
-                  className={`w-4 h-4 text-slate-400 transition-transform ${
-                    openSub === "technical" ? "rotate-180 text-[#B8860B]" : ""
+                  className={`w-4 h-4 text-slate-500 transition-transform ${
+                    openSub === "technical" ? "rotate-180 text-[#D4A017]" : ""
                   }`}
                 />
               </button>
               {openSub === "technical" && (
-                <div className="pl-6 pr-2 py-1 space-y-1 bg-[#FAF6F0]/60 rounded-xl my-1 text-xs">
+                <div className="pl-6 pr-2 py-1 space-y-1 bg-[#B8860B]/10 rounded-xl my-1 text-xs">
                   <Link
                     href="/indoor-lights"
                     onClick={onClose}
@@ -186,7 +186,7 @@ export default function MobileMenu({
         </div>
 
         {/* Footer Actions: Single Contact Us CTA Button */}
-        <div className="p-5 border-t border-slate-100 space-y-3 bg-[#FAF6F0]">
+        <div className="p-5 border-t border-[#B8860B]/20 space-y-3 bg-[#0D1E35]">
           <Link
             href="/contact"
             onClick={onClose}
@@ -194,7 +194,7 @@ export default function MobileMenu({
           >
             Contact Us
           </Link>
-          <div className="flex items-center justify-around pt-2 text-slate-700 text-xs font-medium">
+          <div className="flex items-center justify-around pt-2 text-slate-300 text-xs font-medium">
             <a
               href="tel:08754860555"
               className="flex items-center gap-1 hover:text-[#B8860B]"

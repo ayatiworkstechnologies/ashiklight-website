@@ -2,10 +2,13 @@
 
 @layer base {
   :root {
-    --gold: #B8860B;
-    --gold-hover: #A3722A;
-    --gold-light: #FAF6F0;
-    --navy-dark: #1A1813;
+    --gold: #D4A017;
+    --gold-hover: #B8860B;
+    --gold-light: rgba(212, 160, 23, 0.12);
+    --navy: #0A1628;
+    --navy-mid: #0D1E35;
+    --navy-light: #122240;
+    --navy-border: rgba(212, 160, 23, 0.2);
     --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -16,8 +19,8 @@
   }
 
   body {
-    background-color: #FAF8F5;
-    color: #1A1813;
+    background-color: #0A1628;
+    color: #E8EAF0;
     font-family: var(--font-sans), sans-serif;
     overflow-x: hidden;
   }
@@ -32,6 +35,11 @@
   filter: sepia(1) saturate(5) hue-rotate(5deg) brightness(0.68) contrast(1.15) drop-shadow(0 1px 3px rgba(184, 134, 11, 0.3));
 }
 
+/* White Logo Filter — for use on dark navy backgrounds */
+.white-logo {
+  filter: brightness(0) invert(1) drop-shadow(0 1px 4px rgba(255, 255, 255, 0.15));
+}
+
 .gold-logo-container {
   background: linear-gradient(135deg, #FAF6F0 0%, #FFFFFF 50%, #FAF6F0 100%);
   border: 1px solid rgba(184, 134, 11, 0.3);
@@ -39,62 +47,57 @@
 }
 
 /* ═══════════════════════════════════════════════════════
-   SCROLL REVEAL ANIMATION SYSTEM
-   All elements with [data-reveal] start hidden and
-   animate to visible when .revealed is added by the
-   IntersectionObserver hook.
+   HIGH-PERFORMANCE SCROLL REVEAL SYSTEM
    ═══════════════════════════════════════════════════════ */
 
-/* Base hidden state for all reveal elements */
 [data-reveal] {
   opacity: 0;
-  will-change: transform, opacity;
+  will-change: transform, opacity, filter;
   transition:
-    opacity 0.8s var(--ease-spring),
-    transform 0.8s var(--ease-spring),
-    filter 0.8s var(--ease-spring);
+    opacity 0.8s var(--ease-out-expo),
+    transform 0.8s var(--ease-out-expo),
+    filter 0.8s var(--ease-out-expo);
+  backface-visibility: hidden;
 }
 
-/* Revealed (visible) state */
 [data-reveal].revealed {
   opacity: 1;
-  transform: none !important;
-  filter: none !important;
+  transform: translate(0, 0) scale(1) rotate(0deg);
+  filter: blur(0px);
 }
 
-/* ── Direction Variants ── */
+/* Reveal Variations */
 [data-reveal="up"] {
-  transform: translateY(40px);
+  transform: translateY(35px) scale(0.98);
+  filter: blur(3px);
 }
 
 [data-reveal="down"] {
-  transform: translateY(-40px);
+  transform: translateY(-35px) scale(0.98);
+  filter: blur(3px);
 }
 
 [data-reveal="left"] {
-  transform: translateX(-50px);
+  transform: translateX(-40px);
+  filter: blur(3px);
 }
 
 [data-reveal="right"] {
-  transform: translateX(50px);
+  transform: translateX(40px);
+  filter: blur(3px);
 }
 
 [data-reveal="scale"] {
   transform: scale(0.92);
-}
-
-[data-reveal="blur"] {
-  transform: translateY(20px);
-  filter: blur(8px);
+  filter: blur(4px);
 }
 
 [data-reveal="fade"] {
-  /* just opacity, no transform */
+  transform: none;
+  filter: blur(2px);
 }
 
-/* ── Stagger Children ──
-   Apply data-reveal-stagger on parent, each child with
-   data-reveal gets an incrementing delay */
+/* Stagger Calculation */
 [data-reveal-stagger] > [data-reveal] {
   transition-delay: calc(var(--reveal-index, 0) * 80ms);
 }
@@ -367,8 +370,23 @@
 }
 
 .animate-progress-bar {
-  animation: progressBar 3.5s linear forwards;
+  animation: progressBar 4s linear forwards;
 }
+
+.animate-trust-marquee {
+  animation: trustMarquee 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-trust-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes trustMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
 
 /* ═══════════════════════════════════════════════════════
    INTERACTIVE ELEMENT STYLES
@@ -407,46 +425,54 @@
   opacity: 1;
 }
 
-/* Card Hover Elevation — upgraded with spring easing */
+/* Card Hover Elevation — upgraded with luxury spring physics */
 .card-hover-lift {
   transition:
-    transform 0.5s var(--ease-spring),
-    box-shadow 0.5s var(--ease-spring),
-    border-color 0.3s ease;
+    transform 0.5s var(--ease-out-expo),
+    box-shadow 0.5s var(--ease-out-expo),
+    border-color 0.4s var(--ease-soft);
+  will-change: transform, box-shadow;
 }
 
 .card-hover-lift:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px -15px rgba(26, 24, 19, 0.12);
-  border-color: #B8860B;
+  transform: translateY(-8px) scale(1.01);
+  box-shadow:
+    0 20px 40px -15px rgba(0, 0, 0, 0.6),
+    0 0 25px -5px rgba(212, 160, 23, 0.15);
+  border-color: #D4A017;
 }
 
 /* ── 3D Perspective Card Tilt ── */
 .card-3d {
-  perspective: 800px;
+  perspective: 1000px;
   transform-style: preserve-3d;
 }
 
 .card-3d-inner {
-  transition: transform 0.5s var(--ease-spring);
+  transition: transform 0.6s var(--ease-out-expo);
   transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .card-3d:hover .card-3d-inner {
-  transform: rotateY(-2deg) rotateX(2deg) translateZ(10px);
+  transform: rotateY(-3deg) rotateX(3deg) translateZ(12px);
 }
 
 /* ── Gradient Border Glow on Hover ── */
 .hover-border-glow {
   position: relative;
-  transition: all 0.4s var(--ease-spring);
+  transition:
+    transform 0.5s var(--ease-out-expo),
+    box-shadow 0.5s var(--ease-out-expo),
+    border-color 0.4s var(--ease-soft);
+  will-change: transform, box-shadow;
 }
 
 .hover-border-glow:hover {
-  border-color: rgba(184, 134, 11, 0.5);
+  border-color: rgba(212, 160, 23, 0.6);
   box-shadow:
-    0 0 20px -5px rgba(184, 134, 11, 0.12),
-    0 20px 50px -15px rgba(26, 24, 19, 0.1);
+    0 0 25px -5px rgba(212, 160, 23, 0.2),
+    0 20px 45px -15px rgba(10, 22, 40, 0.8);
 }
 
 /* ── Link Underline Slide ── */
@@ -560,7 +586,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #FAF8F5;
+  background: #0A1628;
 }
 
 ::-webkit-scrollbar-thumb {

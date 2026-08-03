@@ -59,7 +59,7 @@ export default function WhyChooseUs({ onOpenConsultation }: WhyChooseUsProps) {
 
   return (
     <>
-      <section className="relative py-16 lg:py-24 bg-white overflow-hidden">
+      <section className="relative py-16 lg:py-24 bg-[#0D1E35] overflow-hidden">
         <VectorDiamondGrid className="opacity-[0.03]" />
         <VectorLightRays className="-bottom-20 -right-20 pointer-events-none hidden lg:block opacity-10" />
 
@@ -69,14 +69,14 @@ export default function WhyChooseUs({ onOpenConsultation }: WhyChooseUsProps) {
             className="text-center max-w-2xl mx-auto mb-16 space-y-3"
             data-reveal="up"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#EAE3D2] text-[#B8860B] text-xs font-bold uppercase tracking-wider shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#D4A017]/10 border border-[#D4A017]/25 text-[#D4A017] text-xs font-bold uppercase tracking-wider shadow-2xs">
               <Award className="w-4 h-4 text-[#B8860B]" />
               THE ASHIK LIGHTS DIFFERENCE
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1A1813]">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-white">
               Why Choose Ashik Lights
             </h2>
-            <p className="text-slate-600 text-sm sm:text-base font-light leading-relaxed max-w-xl mx-auto">
+            <p className="text-slate-400 text-sm sm:text-base font-light leading-relaxed max-w-xl mx-auto">
               Since 2016, our founder Mr. Abdul Hameed Ashik and our lighting team in Teynampet have personally guided thousands of homeowners, interior designers, and architects in choosing the right lights for every room.
             </p>
           </div>
@@ -107,27 +107,27 @@ export default function WhyChooseUs({ onOpenConsultation }: WhyChooseUsProps) {
                       ],
                     })
                   }
-                  className="group bg-white rounded-3xl p-8 border border-[#EAE3D2] shadow-2xs hover-border-glow transition-all duration-400 transform hover:-translate-y-2 flex flex-col justify-between cursor-pointer relative overflow-hidden"
+                  className="group bg-[#0A1628] rounded-3xl p-8 border border-[#D4A017]/20 shadow-2xs hover-border-glow transition-all duration-400 transform hover:-translate-y-2 flex flex-col justify-between cursor-pointer relative overflow-hidden"
                 >
                   <div className="space-y-4">
-                    <div className="w-14 h-14 rounded-2xl bg-[#FAF6F0] text-[#B8860B] group-hover:bg-[#B8860B] group-hover:text-white transition-all duration-400 flex items-center justify-center shadow-2xs group-hover:scale-110 group-hover:rotate-3">
+                    <div className="w-14 h-14 rounded-2xl bg-[#D4A017]/15 text-[#D4A017] group-hover:bg-[#D4A017] group-hover:text-white transition-all duration-400 flex items-center justify-center shadow-2xs group-hover:scale-110 group-hover:rotate-3">
                       <IconComp className="w-7 h-7" />
                     </div>
 
-                    <div className="inline-block text-[11px] font-bold tracking-wider text-[#B8860B] uppercase bg-[#FAF6F0] px-2.5 py-1 rounded-md border border-[#EAE3D2]">
+                    <div className="inline-block text-[11px] font-bold tracking-wider text-[#D4A017] uppercase bg-[#D4A017]/10 px-2.5 py-1 rounded-md border border-[#D4A017]/20">
                       {item.tag}
                     </div>
 
-                    <h3 className="font-serif text-xl font-bold text-slate-900 group-hover:text-[#B8860B] transition-colors duration-300">
+                    <h3 className="font-serif text-xl font-bold text-white group-hover:text-[#D4A017] transition-colors duration-300">
                       {item.title}
                     </h3>
 
-                    <p className="text-slate-600 text-xs sm:text-sm font-light leading-relaxed">
+                    <p className="text-slate-400 text-xs sm:text-sm font-light leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
 
-                  <div className="pt-6 border-t border-slate-100 mt-6 flex items-center justify-between text-xs font-semibold text-slate-500 group-hover:text-[#B8860B] transition-colors duration-300">
+                  <div className="pt-6 border-t border-[#D4A017]/15 mt-6 flex items-center justify-between text-xs font-semibold text-slate-400 group-hover:text-[#D4A017] transition-colors duration-300">
                     <span>Learn More</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </div>

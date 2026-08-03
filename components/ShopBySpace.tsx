@@ -72,18 +72,19 @@ export default function ShopBySpace() {
   const [activeSpace, setActiveSpace] = useState(spaces[0]);
 
   return (
-    <section id="shop-by-space" className="py-16 lg:py-24 bg-[#FAF6F0] border-t border-[#EAE3D2]">
+    <section id="shop-by-space" className="py-16 lg:py-24 bg-[#0D1E35] border-t border-[#D4A017]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3" data-reveal="up">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#EAE3D2] text-[#B8860B] text-xs font-bold uppercase tracking-wider shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#B8860B]" />
-            ROOM-BY-ROOM LIGHTING GUIDE
+          <div className="inline-flex items-center gap-2 text-[#D4A017] text-xs font-bold uppercase tracking-[0.2em]">
+            <span className="w-6 h-px bg-[#D4A017]/50" />
+            SHOP BY SPACE
+            <span className="w-6 h-px bg-[#D4A017]/50" />
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#1A1813]">
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white">
             Shop by Space
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base font-light leading-relaxed max-w-xl mx-auto">
+          <p className="text-slate-400 text-sm sm:text-base font-light leading-relaxed max-w-xl mx-auto">
             Whether you are designing a double-height living room or outfitting a cozy bedroom, discover lights curated for every corner of your home.
           </p>
         </div>
@@ -99,11 +100,11 @@ export default function ShopBySpace() {
                 onClick={() => setActiveSpace(sp)}
                 className={`px-4 py-2.5 rounded-2xl text-xs font-bold transition-all duration-300 flex items-center gap-2 cursor-pointer ${
                   isSelected
-                    ? "bg-[#1A1813] text-white shadow-lg scale-[1.03]"
-                    : "bg-white text-slate-700 hover:bg-[#FAF8F5] border border-[#EAE3D2] hover:border-[#B8860B]"
+                    ? "bg-[#D4A017] text-white shadow-lg scale-[1.03]"
+                    : "bg-[#0A1628] text-slate-300 hover:bg-[#122240] border border-[#D4A017]/20 hover:border-[#D4A017]"
                 }`}
               >
-                <IconComp className={`w-4 h-4 ${isSelected ? "text-[#B8860B]" : "text-slate-500"}`} />
+                <IconComp className={`w-4 h-4 ${isSelected ? "text-white" : "text-slate-400"}`} />
                 <span>{sp.name}</span>
               </button>
             );
@@ -113,18 +114,18 @@ export default function ShopBySpace() {
         {/* Active Space Hero Showcase Banner */}
         <div
           key={activeSpace.id}
-          className="bg-white rounded-3xl border border-[#EAE3D2] shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 animate-slide-carousel"
+          className="bg-[#0A1628] rounded-3xl border border-[#D4A017]/20 shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 animate-slide-carousel"
           data-reveal="scale"
         >
           {/* Left Feature Description */}
           <div className="lg:col-span-5 p-8 sm:p-12 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FAF6F0] rounded-full text-[#B8860B] text-xs font-bold border border-[#EAE3D2]">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4A017]/15 rounded-full text-[#D4A017] text-xs font-bold border border-[#D4A017]/25">
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 <span>{activeSpace.badge}</span>
               </div>
 
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1A1813]">
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white">
                 {activeSpace.name}
               </h3>
 
@@ -132,7 +133,7 @@ export default function ShopBySpace() {
                 {activeSpace.tagline}
               </div>
 
-              <p className="text-slate-600 text-xs sm:text-sm font-light leading-relaxed">
+              <p className="text-slate-400 text-xs sm:text-sm font-light leading-relaxed">
                 {activeSpace.desc}
               </p>
             </div>

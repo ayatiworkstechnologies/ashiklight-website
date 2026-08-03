@@ -3,6 +3,7 @@ import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import PageLoader from "@/components/PageLoader";
 import StickyHelpWidget from "@/components/StickyHelpWidget";
+import AdvancedAnimations from "@/components/AdvancedAnimations";
 
 const playfair = Playfair_Display({
   variable: "--font-serif",
@@ -155,9 +156,10 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${playfair.variable} ${jakarta.variable} font-sans antialiased bg-[#FAF8F5] text-slate-900 selection:bg-[#B8860B] selection:text-white`}
+        className={`${playfair.variable} ${jakarta.variable} font-sans antialiased bg-[#0A1628] text-slate-100 selection:bg-[#D4A017] selection:text-white`}
       >
         <PageLoader />
+        <AdvancedAnimations />
         {children}
         <StickyHelpWidget />
       </body>

@@ -7,8 +7,8 @@ import Hero from "@/components/Hero";
 import Collections from "@/components/Collections";
 import ShopBySpace from "@/components/ShopBySpace";
 import FeaturedBanner from "@/components/FeaturedBanner";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import Projects from "@/components/Projects";
+import HeroTrustBar from "@/components/HeroTrustBar";
+
 import Testimonials from "@/components/Testimonials";
 import Showrooms from "@/components/Showrooms";
 import Footer from "@/components/Footer";
@@ -33,6 +33,9 @@ export default function Home() {
         {/* Hero Section */}
         <Hero onOpenConsultation={handleOpenConsultation} />
 
+        {/* Trust Marquee Bar */}
+        <HeroTrustBar />
+
         {/* Explore Our Collections */}
         <Collections onOpenConsultation={handleOpenConsultation} />
 
@@ -42,11 +45,6 @@ export default function Home() {
         {/* Featured Collection: High-Ceiling Chandeliers */}
         <FeaturedBanner onOpenConsultation={handleOpenConsultation} />
 
-        {/* Why Choose Ashik Lights */}
-        <WhyChooseUs onOpenConsultation={handleOpenConsultation} />
-
-        {/* Our Projects */}
-        <Projects onOpenConsultation={handleOpenConsultation} />
 
         {/* Customer Reviews & Testimonials */}
         <Testimonials />

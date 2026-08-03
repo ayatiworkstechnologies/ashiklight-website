@@ -57,19 +57,19 @@ export default function Header() {
   const dropdownLinkClass = (route: string) =>
     `block px-3 py-2 text-xs font-medium rounded-lg transition ${
       isRouteActive(route)
-        ? "bg-[#FAF6F0] text-[#B8860B]"
-        : "text-slate-700 hover:bg-[#FAF6F0] hover:text-[#B8860B]"
+        ? "bg-[#B8860B]/20 text-[#D4A017]"
+        : "text-slate-200 hover:bg-[#B8860B]/15 hover:text-[#D4A017]"
     }`;
   const directLinkClass = (route: string) =>
     `transition-colors cursor-pointer whitespace-nowrap ${
       isRouteActive(route)
-        ? "text-[#B8860B] font-semibold"
-        : "hover:text-[#B8860B]"
+        ? "text-[#D4A017] font-semibold"
+        : "text-white hover:text-[#D4A017]"
     }`;
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-[#EAE3D2] transition-all">
+      <header className="sticky top-0 z-40 bg-[#0A1628]/97 backdrop-blur-xl border-b border-[#B8860B]/30 transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-16 lg:h-20 flex items-center justify-between gap-6">
           {/* Official Brand Logo from /public/logo.png — Golden Luxury Tint, Larger Size, No Outline */}
           <Link href="/" className="flex items-center group shrink-0 py-1">
@@ -79,19 +79,19 @@ export default function Header() {
               width={200}
               height={60}
               priority
-              className="h-12 lg:h-15 w-auto object-contain gold-logo-tint group-hover:scale-105 transition-transform duration-300"
+              className="h-12 lg:h-15 w-auto object-contain white-logo group-hover:scale-105 transition-transform duration-300"
             />
           </Link>
 
           {/* Desktop Navbar: Decorative Lighting ▼ | Technical Lighting ▼ | Outdoor Lights | About */}
-          <nav className="hidden lg:flex items-center gap-8 xl:gap-10 text-sm font-medium text-[#2C261E]">
+          <nav className="hidden lg:flex items-center gap-8 xl:gap-10 text-sm font-medium text-white">
             {/* 1. Decorative Lighting Dropdown */}
             <div className="relative group py-2">
-              <button className={`flex items-center gap-1.5 transition-colors py-1 cursor-pointer whitespace-nowrap ${isDecorativeActive ? "text-[#B8860B] font-semibold" : "hover:text-[#B8860B]"}`}>
+              <button className={`flex items-center gap-1.5 transition-colors py-1 cursor-pointer whitespace-nowrap ${isDecorativeActive ? "text-[#D4A017] font-semibold" : "text-white hover:text-[#D4A017]"}`}>
                 <span>Decorative Lighting</span>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#B8860B] transition-transform group-hover:rotate-180" />
+                <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#D4A017] transition-transform group-hover:rotate-180" />
               </button>
-              <div className="absolute top-full left-0 hidden group-hover:block w-60 bg-white shadow-xl rounded-xl border border-[#EAE3D2] p-3 space-y-1 animate-fadeIn">
+              <div className="absolute top-full left-0 hidden group-hover:block w-60 bg-[#0D1E35] shadow-xl rounded-xl border border-[#B8860B]/30 p-3 space-y-1 animate-fadeIn">
                 <Link
                   href="/chandeliers"
                   className={dropdownLinkClass("/chandeliers")}
@@ -127,11 +127,11 @@ export default function Header() {
 
             {/* 2. Technical Lighting Dropdown */}
             <div className="relative group py-2">
-              <button className={`flex items-center gap-1.5 transition-colors py-1 cursor-pointer whitespace-nowrap ${isTechnicalActive ? "text-[#B8860B] font-semibold" : "hover:text-[#B8860B]"}`}>
+              <button className={`flex items-center gap-1.5 transition-colors py-1 cursor-pointer whitespace-nowrap ${isTechnicalActive ? "text-[#D4A017] font-semibold" : "text-white hover:text-[#D4A017]"}`}>
                 <span>Technical Lighting</span>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#B8860B] transition-transform group-hover:rotate-180" />
+                <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#D4A017] transition-transform group-hover:rotate-180" />
               </button>
-              <div className="absolute top-full left-0 hidden group-hover:block w-52 bg-white shadow-xl rounded-xl border border-[#EAE3D2] p-3 space-y-1 animate-fadeIn">
+              <div className="absolute top-full left-0 hidden group-hover:block w-52 bg-[#0D1E35] shadow-xl rounded-xl border border-[#B8860B]/30 p-3 space-y-1 animate-fadeIn">
                 <Link
                   href="/indoor-lights"
                   className={dropdownLinkClass("/indoor-lights")}
@@ -177,7 +177,7 @@ export default function Header() {
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="lg:hidden w-10 h-10 flex items-center justify-center text-[#2C261E] bg-[#FAF6F0] border border-[#EAE3D2] rounded-xl active:scale-95 transition"
+              className="lg:hidden w-10 h-10 flex items-center justify-center text-[#D4A017] bg-[#0D1E35] border border-[#B8860B]/40 rounded-xl active:scale-95 transition"
               aria-label="Toggle menu"
             >
               <Menu className="w-6 h-6" />
@@ -188,7 +188,7 @@ export default function Header() {
 
       {/* Mobile app-style bottom navigation — auto-hides on scroll down, reveals on scroll up */}
       <nav
-        className={`fixed inset-x-3 bottom-3 z-50 lg:hidden h-[68px] rounded-2xl border border-[#EAE3D2] bg-white/95 backdrop-blur-xl shadow-[0_12px_40px_rgba(26,24,19,0.18)] px-2 grid grid-cols-5 items-center transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`fixed inset-x-3 bottom-3 z-50 lg:hidden h-[68px] rounded-2xl border border-[#B8860B]/30 bg-[#0A1628]/97 backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.45)] px-2 grid grid-cols-5 items-center transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           navHidden ? "translate-y-[calc(100%+24px)]" : "translate-y-0"
         }`}
         aria-label="Mobile navigation"
@@ -196,7 +196,7 @@ export default function Header() {
         <Link
           href="/"
           className={`flex h-14 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold transition ${
-            pathname === "/" ? "bg-[#FAF6F0] text-[#B8860B]" : "text-slate-500"
+            pathname === "/" ? "bg-[#B8860B]/20 text-[#D4A017]" : "text-slate-400"
           }`}
         >
           <Home className="h-5 w-5" />
@@ -204,7 +204,7 @@ export default function Header() {
         </Link>
         <Link
           href="/#collections"
-          className="flex h-14 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-slate-500 active:bg-[#FAF6F0] active:text-[#B8860B]"
+          className="flex h-14 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-slate-400 active:bg-[#B8860B]/20 active:text-[#D4A017]"
         >
           <Grid2X2 className="h-5 w-5" />
           <span>Explore</span>
@@ -220,7 +220,7 @@ export default function Header() {
         </a>
         <Link
           href="/#showrooms"
-          className="flex h-14 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-slate-500 active:bg-[#FAF6F0] active:text-[#B8860B]"
+          className="flex h-14 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-slate-400 active:bg-[#B8860B]/20 active:text-[#D4A017]"
         >
           <MapPin className="h-5 w-5" />
           <span>Stores</span>
@@ -229,8 +229,8 @@ export default function Header() {
           href="/contact"
           className={`flex h-14 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold transition ${
             isRouteActive("/contact")
-              ? "bg-[#FAF6F0] text-[#B8860B]"
-              : "text-slate-500"
+              ? "bg-[#B8860B]/20 text-[#D4A017]"
+              : "text-slate-400"
           }`}
         >
           <Phone className="h-5 w-5" />

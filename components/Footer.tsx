@@ -9,12 +9,12 @@ import { VectorCornerMotif, VectorDiamondGrid } from "@/components/VectorAccents
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1A1813] text-slate-300 pt-16 pb-8 border-t border-[#332D24] relative overflow-hidden">
+    <footer className="bg-[#0A1628] text-slate-300 pt-16 pb-8 border-t border-[#D4A017]/20 relative overflow-hidden">
       <VectorDiamondGrid className="opacity-[0.03]" />
       <VectorCornerMotif position="top-right" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#332D24]"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#D4A017]/15"
           data-reveal-stagger
         >
           {/* Brand Info with /public/logo.png */}
@@ -34,7 +34,7 @@ export default function Footer() {
             </p>
 
             {/* Google Rating Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-slate-300">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#D4A017]/10 border border-[#D4A017]/20 text-xs text-slate-300">
               <div className="flex items-center text-amber-400">
                 <Star className="w-3.5 h-3.5 fill-amber-400" />
                 <Star className="w-3.5 h-3.5 fill-amber-400" />
@@ -49,7 +49,7 @@ export default function Footer() {
 
           {/* Core Categories */}
           <div className="lg:col-span-4 space-y-4" data-reveal="up" data-reveal-delay="100">
-            <h4 className="font-serif text-sm font-semibold uppercase tracking-wider text-white border-b border-[#332D24] pb-2 inline-block">
+            <h4 className="font-serif text-sm font-semibold uppercase tracking-wider text-white border-b border-[#D4A017]/20 pb-2 inline-block">
               Collections
             </h4>
             <ul className="grid grid-cols-2 gap-2 text-xs text-slate-400">
@@ -98,7 +98,7 @@ export default function Footer() {
 
           {/* Head Office Location */}
           <div className="lg:col-span-4 space-y-4" data-reveal="up" data-reveal-delay="200">
-            <h4 className="font-serif text-sm font-semibold uppercase tracking-wider text-white border-b border-[#332D24] pb-2 inline-block">
+            <h4 className="font-serif text-sm font-semibold uppercase tracking-wider text-white border-b border-[#D4A017]/20 pb-2 inline-block">
               Flagship Store
             </h4>
             <div className="space-y-3 text-xs text-slate-400">

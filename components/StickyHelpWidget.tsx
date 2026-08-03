@@ -6,15 +6,15 @@ import { FaWhatsapp } from "react-icons/fa6";
 
 export default function StickyHelpWidget() {
   return (
-    <div className="hidden lg:flex fixed right-4 bottom-6 z-50 flex-col items-end gap-3 pointer-events-none">
+    <div className="fixed right-4 sm:right-6 bottom-6 z-50 flex flex-col items-end gap-3 pointer-events-none">
       <div className="pointer-events-auto flex flex-col items-end gap-3">
         {/* Direct Mobile Call Button */}
         <a
           href="tel:08754860555"
-          className="w-12 h-12 rounded-full bg-[#1A1813] hover:bg-[#B8860B] text-white flex items-center justify-center shadow-xl transition-all duration-300 hover:scale-110 cursor-pointer border border-[#EAE3D2]"
+          className="w-12 h-12 rounded-full bg-[#0D1E35] hover:bg-[#D4A017] text-white flex items-center justify-center shadow-xl transition-all duration-300 hover:scale-110 cursor-pointer border border-[#D4A017]/40 group"
           title="Call 087548 60555"
         >
-          <Phone className="w-5 h-5 text-[#B8860B] hover:text-white transition-colors" />
+          <Phone className="w-5 h-5 text-[#D4A017] group-hover:text-white transition-colors" />
         </a>
 
         {/* Direct WhatsApp Floating Button with Pulse Glow */}

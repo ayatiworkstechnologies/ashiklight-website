@@ -1,144 +1,215 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, SlidersHorizontal, UserCheck, Wrench } from "lucide-react";
-import ProductModal, { ProductModalData } from "./ProductModal";
+import { ArrowRight, MoveHorizontal } from "lucide-react";
 
 interface FeaturedBannerProps {
   onOpenConsultation?: () => void;
 }
 
-export default function FeaturedBanner({ onOpenConsultation }: FeaturedBannerProps) {
-  const [modalData, setModalData] = useState<ProductModalData | null>(null);
+interface BeforeAfterCard {
+  id: number;
+  title: string;
+  beforeSrc: string;
+  afterSrc: string;
+  beforeAlt: string;
+  afterAlt: string;
+}
 
-  const openChandelierModal = () => {
-    setModalData({
-      title: "Statement High-Ceiling Chandeliers",
-      category: "Double-Height & Foyer Collection",
-      image:
-        "/assets/High Ceiling Chandeliers/Crystal Raindrop High-Ceiling Chandelier.webp",
-      description:
-        "Engineered specifically for stairwells, double-height foyers, and villa living rooms. Includes custom cable drop lengths, CAD wiring layouts, and structural ceiling plate load calculations.",
-      specs: [
-        { label: "Height Drop", value: "Custom 6ft to 25ft" },
-        { label: "Material", value: "K9 Optical Crystal" },
-        { label: "Customization", value: "Size, Color & Finish" },
-        { label: "Installation", value: "Full Team Support" },
-      ],
-    });
+const cards: BeforeAfterCard[] = [
+  {
+    id: 1,
+    title: "Villa Facade Illumination",
+    beforeSrc: "/assets/be.png",
+    afterSrc: "/assets/af.png",
+    beforeAlt: "Villa Facade Before Lighting",
+    afterAlt: "Villa Facade After Lighting",
+  },
+  {
+    id: 2,
+    title: "Living Room Transformation",
+    beforeSrc: "/assets/be-1.png",
+    afterSrc: "/assets/af-1.png",
+    beforeAlt: "Living Room Before Lighting",
+    afterAlt: "Living Room After Lighting",
+  },
+];
+
+
+/* ── Single draggable before/after card ── */
+function BeforeAfterSlider({ card }: { card: BeforeAfterCard }) {
+  const [sliderPos, setSliderPos] = useState(50); // percentage
+  const [isDragging, setIsDragging] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const calcPos = useCallback((clientX: number) => {
+    const el = containerRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const raw = ((clientX - rect.left) / rect.width) * 100;
+    setSliderPos(Math.min(95, Math.max(5, raw)));
+  }, []);
+
+  // Mouse
+  const onMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
   };
+  useEffect(() => {
+    if (!isDragging) return;
+    const onMove = (e: MouseEvent) => calcPos(e.clientX);
+    const onUp = () => setIsDragging(false);
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseup", onUp);
+    };
+  }, [isDragging, calcPos]);
 
-  const featurePills = [
-    { icon: SlidersHorizontal, label: "Custom Sizes" },
-    { icon: UserCheck, label: "Expert Guidance" },
-    { icon: Wrench, label: "Installation Support" },
-  ];
+  // Touch
+  const onTouchStart = () => setIsDragging(true);
+  useEffect(() => {
+    if (!isDragging) return;
+    const onMove = (e: TouchEvent) => calcPos(e.touches[0].clientX);
+    const onEnd = () => setIsDragging(false);
+    window.addEventListener("touchmove", onMove, { passive: true });
+    window.addEventListener("touchend", onEnd);
+    return () => {
+      window.removeEventListener("touchmove", onMove);
+      window.removeEventListener("touchend", onEnd);
+    };
+  }, [isDragging, calcPos]);
 
   return (
-    <>
-      <section id="featured" className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="bg-[#FAF6F0] rounded-3xl overflow-hidden border border-[#EAE3D2] grid grid-cols-1 lg:grid-cols-12 shadow-sm">
-            {/* Left High-Ceiling Chandelier Image — scale reveal on scroll */}
-            <div
-              onClick={openChandelierModal}
-              data-reveal="scale"
-              className="lg:col-span-6 relative min-h-[380px] lg:min-h-[520px] bg-slate-100 overflow-hidden cursor-pointer group"
-            >
-              <Image
-                src="/assets/High Ceiling Chandeliers/Crystal Raindrop High-Ceiling Chandelier.webp"
-                alt="High Ceiling Grand Chandelier"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end p-6">
-                <span className="px-4 py-2 bg-white/90 backdrop-blur-md rounded-full text-xs font-bold text-slate-900 shadow-md translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  Click to Explore Specifications
-                </span>
-              </div>
-            </div>
+    <div className="flex flex-col gap-0 group">
+      {/* Image Comparison Box */}
+      <div
+        ref={containerRef}
+        className="relative overflow-hidden rounded-2xl border border-[#D4A017]/25 shadow-2xl cursor-col-resize select-none"
+        style={{ aspectRatio: "4/3" }}
+        onMouseDown={onMouseDown}
+        onTouchStart={onTouchStart}
+      >
+        {/* AFTER image (full background) */}
+        <img
+          src={card.afterSrc}
+          alt={card.afterAlt}
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          draggable={false}
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = "/assets/af.png";
+          }}
+        />
 
-            {/* Right Detailed Description — staggered text reveal */}
-            <div className="lg:col-span-6 p-8 sm:p-12 lg:p-16 flex flex-col justify-center space-y-6">
-              <div
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#B8860B]"
-                data-reveal="up"
-              >
-                <span className="w-2 h-2 rounded-full bg-[#B8860B]" />
-                FEATURED COLLECTION
-              </div>
-
-              <h2
-                className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1A1813] leading-tight"
-                data-reveal="up"
-                data-reveal-delay="100"
-              >
-                Designed for <br className="hidden sm:inline" />
-                dramatic spaces.
-              </h2>
-
-              <p
-                className="text-slate-600 text-sm sm:text-base font-light leading-relaxed"
-                data-reveal="up"
-                data-reveal-delay="200"
-              >
-                Explore statement chandeliers created for double-height areas,
-                staircases, foyers, villas and premium interiors.
-              </p>
-
-              {/* 3 Interactive Feature Pills */}
-              <div
-                className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2"
-                data-reveal-stagger
-              >
-                {featurePills.map((pill, index) => {
-                  const IconComp = pill.icon;
-                  return (
-                    <div
-                      key={pill.label}
-                      onClick={openChandelierModal}
-                      data-reveal="up"
-                      data-reveal-delay={String(300 + index * 80)}
-                      className="flex items-center gap-2 bg-white px-3.5 py-2.5 rounded-xl border border-[#EAE3D2] shadow-2xs hover:border-[#B8860B] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group"
-                    >
-                      <div className="w-6 h-6 rounded-full bg-[#FAF6F0] text-[#B8860B] group-hover:bg-[#B8860B] group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300">
-                        <IconComp className="w-3.5 h-3.5" />
-                      </div>
-                      <span className="text-xs font-semibold text-slate-800 group-hover:text-[#B8860B] transition-colors duration-300">
-                        {pill.label}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* CTA Button */}
-              <div data-reveal="up" data-reveal-delay="500">
-                <Link
-                  href="/high-ceiling-chandeliers"
-                  className="inline-flex items-center gap-3 px-7 py-3.5 bg-[#B8860B] hover:bg-[#a3722a] text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group"
-                >
-                  <span>Explore High-Ceiling Chandeliers</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
-              </div>
-            </div>
-          </div>
+        {/* BEFORE image (clipped to left side) */}
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{ width: `${sliderPos}%` }}
+        >
+          <img
+            src={card.beforeSrc}
+            alt={card.beforeAlt}
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            style={{ width: `${100 / (sliderPos / 100)}%`, maxWidth: "none" }}
+            draggable={false}
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "/assets/be.png";
+            }}
+          />
         </div>
-      </section>
 
-      {/* Product Lightbox */}
-      <ProductModal
-        product={modalData}
-        onClose={() => setModalData(null)}
-        onOpenConsultation={() => {
-          setModalData(null);
-          if (onOpenConsultation) onOpenConsultation();
-        }}
-      />
-    </>
+        {/* Gold divider line */}
+        <div
+          className="absolute top-0 bottom-0 w-[2px] bg-[#D4A017] z-20 shadow-[0_0_12px_2px_rgba(212,160,23,0.5)]"
+          style={{ left: `${sliderPos}%`, transform: "translateX(-50%)" }}
+        />
+
+        {/* Drag pill */}
+        <div
+          className="absolute top-1/2 z-30 -translate-y-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-2 bg-[#1A1200] border border-[#D4A017]/60 rounded-full shadow-xl cursor-grab active:cursor-grabbing select-none"
+          style={{ left: `${sliderPos}%` }}
+          onMouseDown={onMouseDown}
+          onTouchStart={onTouchStart}
+        >
+          <MoveHorizontal className="w-4 h-4 text-[#D4A017]" />
+          <span className="text-[10px] font-bold tracking-widest text-[#D4A017] uppercase">
+            Drag
+          </span>
+        </div>
+
+        {/* BEFORE label */}
+        <div className="absolute top-4 left-4 z-10 px-2.5 py-1 bg-[#1A1200]/85 backdrop-blur-sm border border-[#D4A017]/30 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#D4A017]">
+          Before
+        </div>
+
+        {/* AFTER label */}
+        <div className="absolute top-4 right-4 z-10 px-2.5 py-1 bg-[#1A1200]/85 backdrop-blur-sm border border-[#D4A017]/30 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#D4A017]">
+          After
+        </div>
+      </div>
+
+      {/* Card footer */}
+      <div className="flex items-center gap-3 pt-4 pb-1">
+        <span className="text-xs font-bold text-[#D4A017]/60 tabular-nums">
+          {String(card.id).padStart(2, "0")}
+        </span>
+        <span className="flex-1 h-px bg-[#D4A017]/20" />
+        <h3 className="font-serif text-base sm:text-lg font-semibold text-white">
+          {card.title}
+        </h3>
+      </div>
+    </div>
+  );
+}
+
+/* ── Main section ── */
+export default function FeaturedBanner({ onOpenConsultation }: FeaturedBannerProps) {
+  return (
+    <section id="featured" className="py-16 lg:py-24 bg-[#0A1628] relative overflow-hidden">
+      {/* Subtle radial glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#D4A017]/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-14 space-y-3" data-reveal="up">
+          <div className="inline-flex items-center gap-2 text-[#D4A017] text-xs font-bold uppercase tracking-[0.2em]">
+            <span className="w-6 h-px bg-[#D4A017]/50" />
+            Transformations
+            <span className="w-6 h-px bg-[#D4A017]/50" />
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-white leading-tight">
+            Before &amp; After Inspiration
+          </h2>
+          <p className="text-slate-400 text-sm sm:text-base font-light leading-relaxed">
+            Drag the slider to see how the right lighting transforms ordinary spaces into
+            extraordinary luxury experiences.
+          </p>
+        </div>
+
+        {/* 2×2 Before/After Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+          {cards.map((card, i) => (
+            <div key={card.id} data-reveal="up" data-reveal-delay={String(i * 150)}>
+              <BeforeAfterSlider card={card} />
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-12 text-center" data-reveal="up" data-reveal-delay="300">
+          <Link
+            href="/high-ceiling-chandeliers"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-[#D4A017] hover:bg-[#B8860B] text-white text-sm font-bold rounded-full shadow-lg hover:shadow-[0_0_24px_4px_rgba(212,160,23,0.25)] hover:-translate-y-0.5 transition-all duration-300 group"
+          >
+            <span>Explore Our Chandelier Collection</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }

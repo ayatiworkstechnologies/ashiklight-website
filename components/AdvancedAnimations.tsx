@@ -37,7 +37,7 @@ export default function AdvancedAnimations() {
       currentY += (mouseY - currentY) * 0.08;
 
       if (spotlightRef.current) {
-        spotlightRef.current.style.transform = `translate3d(${currentX - 250}px, ${currentY - 250}px, 0)`;
+        spotlightRef.current.style.transform = `translate3d(${currentX - 300}px, ${currentY - 300}px, 0)`;
       }
 
       rafId = requestAnimationFrame(animateSpotlight);
@@ -55,7 +55,7 @@ export default function AdvancedAnimations() {
   return (
     <div
       ref={spotlightRef}
-      className="hidden lg:block fixed top-0 left-0 w-[500px] h-[500px] rounded-full bg-radial from-white/10 via-white/3 to-transparent pointer-events-none z-30 transition-opacity duration-500 blur-2xl opacity-60"
+      className="hidden lg:block fixed top-0 left-0 w-[600px] h-[600px] rounded-full bg-radial from-white/25 via-white/8 to-transparent pointer-events-none z-30 transition-opacity duration-500 blur-3xl opacity-90"
       aria-hidden="true"
     />
   );

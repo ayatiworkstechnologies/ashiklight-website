@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, Sparkles, CheckCircle2 } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa6";
+import { X, Sparkles, CheckCircle2, Mail } from "lucide-react";
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -28,18 +27,31 @@ export default function ConsultationModal({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const message = `Hi Ashik Lights, I would like to book an expert lighting consultation.\n\n*Details:*\n- Name: ${formData.name}\n- Phone: ${formData.phone}\n- Space: ${formData.spaceType}\n- Type: ${formData.showroom}\n- Preferred Date: ${formData.date || "As soon as possible"}`;
+    const subject = `Lighting Consultation Request - ${formData.name}`;
+    const body = `Dear Ashik Lights Team,
 
-    const whatsappUrl = `https://wa.me/918754860555?text=${encodeURIComponent(
-      message
-    )}`;
+I would like to request an expert lighting consultation for my project.
+
+CUSTOMER DETAILS:
+• Name: ${formData.name}
+• Phone: ${formData.phone}
+• Space Type: ${formData.spaceType}
+• Consultation Mode: ${formData.showroom}
+• Preferred Date: ${formData.date || "As soon as possible"}
+
+--------------------------------------------------
+Sent via Ashik Lights Official Website (ashiklights.in)`;
+
+    const mailtoUrl = `mailto:info@ashiklights.in?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
 
     setSubmitted(true);
     setTimeout(() => {
-      window.open(whatsappUrl, "_blank");
+      window.location.href = mailtoUrl;
       onClose();
       setSubmitted(false);
-    }, 800);
+    }, 600);
   };
 
   return (
@@ -72,10 +84,10 @@ export default function ConsultationModal({
                 <CheckCircle2 className="w-10 h-10" />
               </div>
               <h4 className="font-serif text-2xl font-bold text-slate-800">
-                Consultation Ready to Send
+                Email Inquiry Opening...
               </h4>
               <p className="text-slate-600 text-sm max-w-xs mx-auto">
-                Thank you {formData.name || "valued customer"}. Tap Send in WhatsApp to deliver your request to our lighting specialist.
+                Thank you {formData.name || "valued customer"}. Your email application is launching to deliver your inquiry to info@ashiklights.in.
               </p>
             </div>
           ) : (
@@ -164,10 +176,10 @@ export default function ConsultationModal({
 
               <button
                 type="submit"
-                className="w-full mt-2 py-3.5 px-6 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer flex items-center justify-center gap-2.5"
+                className="btn-shimmer w-full mt-2 py-3.5 px-6 bg-[#040812] hover:bg-[#07101F] text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer flex items-center justify-center gap-2.5"
               >
-                <FaWhatsapp className="w-5 h-5" />
-                <span>Book Consultation via WhatsApp</span>
+                <Mail className="w-5 h-5 text-white" />
+                <span>Send Direct Email Consultation</span>
               </button>
             </form>
           )}

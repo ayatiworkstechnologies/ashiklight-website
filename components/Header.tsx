@@ -88,7 +88,9 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-8 xl:gap-10 text-sm font-medium text-white">
             {/* 1. Decorative Lighting Dropdown */}
             <div className="relative group py-2">
-              <button className={`flex items-center gap-1.5 transition-colors py-1 cursor-pointer whitespace-nowrap ${isDecorativeActive ? "text-white font-bold" : "text-slate-200 hover:text-white"}`}>
+              <button
+                className={`flex items-center gap-1.5 transition-colors py-1 cursor-pointer whitespace-nowrap ${isDecorativeActive ? "text-white font-bold" : "text-slate-200 hover:text-white"}`}
+              >
                 <span>Decorative Lighting</span>
                 <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-transform group-hover:rotate-180" />
               </button>
@@ -128,7 +130,9 @@ export default function Header() {
 
             {/* 2. Technical Lighting Dropdown */}
             <div className="relative group py-2">
-              <button className={`flex items-center gap-1.5 transition-colors py-1 cursor-pointer whitespace-nowrap ${isTechnicalActive ? "text-white font-bold" : "text-slate-200 hover:text-white"}`}>
+              <button
+                className={`flex items-center gap-1.5 transition-colors py-1 cursor-pointer whitespace-nowrap ${isTechnicalActive ? "text-white font-bold" : "text-slate-200 hover:text-white"}`}
+              >
                 <span>Technical Lighting</span>
                 <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-transform group-hover:rotate-180" />
               </button>
@@ -157,10 +161,7 @@ export default function Header() {
             </Link>
 
             {/* 4. About */}
-            <Link
-              href="/about"
-              className={directLinkClass("/about")}
-            >
+            <Link href="/about" className={directLinkClass("/about")}>
               About
             </Link>
           </nav>

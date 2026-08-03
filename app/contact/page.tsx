@@ -11,8 +11,11 @@ import {
   MessageSquare,
   Navigation,
   CheckCircle2,
+  Send,
+  FileText,
+  Copy,
+  Check,
 } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa6";
 import TopBanner from "@/components/TopBanner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -27,18 +30,49 @@ export default function ContactPage() {
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const getEmailBody = () => {
+    return `Dear Ashik Lights Team,
+
+I would like to request a personalized lighting consultation and details for my project.
+
+CUSTOMER INQUIRY DETAILS:
+--------------------------------------------------
+• Name: ${formData.name}
+• Phone: ${formData.phone}
+• Email: ${formData.email || "Not Provided"}
+
+LIGHTING REQUIREMENTS / SPACE DETAILS:
+--------------------------------------------------
+${formData.message || "Requesting lighting advice, lux level guidance, and catalog details for my space."}
+
+--------------------------------------------------
+Sent via Ashik Lights Official Website (ashiklights.in)`;
+  };
+
+  const getEmailSubject = () => {
+    return `Lighting Consultation Inquiry - ${formData.name || "Customer"}`;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const text = `Hi Ashik Lights, I would like to make an inquiry.\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Email:* ${formData.email || "N/A"}\n*Message:* ${formData.message || "Lighting guidance for my project"}`;
-
-    const whatsappUrl = `https://wa.me/918754860555?text=${encodeURIComponent(text)}`;
+    const mailtoUrl = `mailto:info@ashiklights.in?subject=${encodeURIComponent(
+      getEmailSubject()
+    )}&body=${encodeURIComponent(getEmailBody())}`;
 
     setFormSubmitted(true);
     setTimeout(() => {
-      window.open(whatsappUrl, "_blank");
-    }, 600);
+      window.location.href = mailtoUrl;
+    }, 400);
+  };
+
+  const handleCopyTemplate = () => {
+    const textToCopy = `To: info@ashiklights.in\nSubject: ${getEmailSubject()}\n\n${getEmailBody()}`;
+    navigator.clipboard.writeText(textToCopy);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -97,7 +131,7 @@ export default function ContactPage() {
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white text-base group-hover:text-white transition-colors">Email Us</h3>
+                  <h3 className="font-semibold text-white text-base group-hover:text-white transition-colors">Email Us Directly</h3>
                   <p className="text-xs text-slate-400 mt-1">Send us your layout or floor plan</p>
                   <div className="text-sm font-bold text-white mt-2">info@ashiklights.in</div>
                 </div>
@@ -146,30 +180,75 @@ export default function ContactPage() {
               <div className="lg:col-span-6 bg-[#0D1E35] p-8 sm:p-12 rounded-3xl border border-white/15 shadow-xl" data-reveal="left">
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white mb-2">
                   <MessageSquare className="w-4 h-4 text-white" />
-                  <span>CONSULTATION INQUIRY</span>
+                  <span>DIRECT EMAIL INQUIRY</span>
                 </div>
                 <h2 className="font-serif text-3xl font-bold text-white mb-3">
                   Send Us a Message
                 </h2>
                 <p className="text-slate-400 text-xs sm:text-sm font-light mb-8 leading-relaxed">
-                  Fill out your details below and our team will get back to you with specs and layout advice.
+                  Fill out your details below to generate a pre-formatted email template to send directly to info@ashiklights.in.
                 </p>
 
                 {formSubmitted ? (
-                  <div className="bg-[#0A1628] p-8 rounded-2xl border border-white/15 text-center space-y-4 animate-slide-carousel shadow-sm">
-                    <div className="w-16 h-16 bg-emerald-950/80 text-emerald-400 rounded-full flex items-center justify-center mx-auto border border-emerald-500/30">
-                      <CheckCircle2 className="w-10 h-10" />
+                  <div className="bg-[#0A1628] p-6 sm:p-8 rounded-2xl border border-white/15 space-y-5 animate-slide-carousel shadow-sm">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-emerald-950/80 text-emerald-400 rounded-2xl flex items-center justify-center border border-emerald-500/30 shrink-0">
+                        <CheckCircle2 className="w-7 h-7" />
+                      </div>
+                      <div>
+                        <h3 className="font-serif text-xl font-bold text-white">Email Template Ready!</h3>
+                        <p className="text-xs text-slate-400">
+                          Your email app has been opened to send this inquiry to info@ashiklights.in.
+                        </p>
+                      </div>
                     </div>
-                    <h3 className="font-serif text-2xl font-bold text-white">Inquiry Ready in WhatsApp!</h3>
-                    <p className="text-xs text-slate-400 max-w-xs mx-auto">
-                      Thank you {formData.name}. Please tap Send in WhatsApp to deliver your inquiry to our team.
-                    </p>
-                    <button
-                      onClick={() => setFormSubmitted(false)}
-                      className="mt-2 text-xs font-bold text-white hover:underline cursor-pointer"
-                    >
-                      ← Submit another inquiry
-                    </button>
+
+                    {/* Email Template Preview Box */}
+                    <div className="bg-[#040812] p-4 sm:p-5 rounded-xl border border-white/15 text-left text-xs font-mono space-y-3 relative group">
+                      <div className="flex items-center justify-between border-b border-white/10 pb-2.5 text-slate-300 font-sans">
+                        <span className="flex items-center gap-1.5 font-bold text-white">
+                          <FileText className="w-4 h-4 text-white" /> Email Template Preview
+                        </span>
+                        <button
+                          onClick={handleCopyTemplate}
+                          className="flex items-center gap-1 text-[11px] font-semibold text-slate-300 hover:text-white bg-white/10 px-2.5 py-1 rounded-md transition-all cursor-pointer"
+                        >
+                          {copied ? (
+                            <>
+                              <Check className="w-3.5 h-3.5 text-emerald-400" /> Copied!
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="w-3.5 h-3.5" /> Copy Template
+                            </>
+                          )}
+                        </button>
+                      </div>
+
+                      <div className="text-slate-300 space-y-1 text-[11px]">
+                        <div><strong className="text-white">To:</strong> info@ashiklights.in</div>
+                        <div><strong className="text-white">Subject:</strong> {getEmailSubject()}</div>
+                      </div>
+
+                      <pre className="text-slate-300 font-mono text-[11px] whitespace-pre-wrap leading-relaxed pt-2 border-t border-white/10">
+                        {getEmailBody()}
+                      </pre>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+                      <a
+                        href={`mailto:info@ashiklights.in?subject=${encodeURIComponent(getEmailSubject())}&body=${encodeURIComponent(getEmailBody())}`}
+                        className="w-full sm:w-auto px-6 py-3 bg-white text-[#040812] font-bold rounded-xl text-xs flex items-center justify-center gap-2 hover:bg-slate-100 transition-all cursor-pointer"
+                      >
+                        <Send className="w-4 h-4" /> Open Email Client Again
+                      </a>
+                      <button
+                        onClick={() => setFormSubmitted(false)}
+                        className="w-full sm:w-auto px-5 py-3 bg-white/10 text-white font-semibold rounded-xl text-xs hover:bg-white/20 transition-all cursor-pointer"
+                      >
+                        ← Edit Inquiry Form
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4 text-xs">
@@ -222,10 +301,10 @@ export default function ContactPage() {
 
                     <button
                       type="submit"
-                      className="w-full py-4 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer text-sm flex items-center justify-center gap-2.5 mt-2"
+                      className="btn-shimmer w-full py-4 bg-white hover:bg-slate-100 text-[#040812] font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer text-sm flex items-center justify-center gap-2.5 mt-2"
                     >
-                      <FaWhatsapp className="w-5 h-5" />
-                      <span>Send Inquiry via WhatsApp</span>
+                      <Mail className="w-5 h-5 text-[#040812]" />
+                      <span>Send Direct Email Inquiry</span>
                     </button>
                   </form>
                 )}

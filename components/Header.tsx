@@ -169,7 +169,7 @@ export default function Header() {
             {/* Single High-Visibility Contact CTA Button */}
             <Link
               href="/contact"
-              className={`btn-shimmer hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-white text-xs sm:text-sm font-semibold rounded-full shadow-sm hover:shadow-md transition-all cursor-pointer whitespace-nowrap ${isRouteActive("/contact") ? "ring-2 ring-[#B8860B] ring-offset-2" : ""}`}
+              className={`hidden lg:inline-flex items-center justify-center px-6 py-2.5 bg-white hover:bg-slate-100 text-[#040812] text-xs sm:text-sm font-bold rounded-full shadow-md hover:shadow-lg transition-all cursor-pointer whitespace-nowrap ${isRouteActive("/contact") ? "ring-2 ring-white ring-offset-2" : ""}`}
             >
               Contact Us
             </Link>

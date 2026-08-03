@@ -190,7 +190,7 @@ export default function MobileMenu({
           <Link
             href="/contact"
             onClick={onClose}
-            className={`block w-full py-3 bg-[#B8860B] hover:bg-[#a3722a] text-white font-semibold rounded-xl text-center shadow-sm transition cursor-pointer ${isRouteActive("/contact") ? "ring-2 ring-[#B8860B] ring-offset-2" : ""}`}
+            className={`block w-full py-3 bg-white hover:bg-slate-100 text-[#040812] font-bold rounded-xl text-center shadow-md transition cursor-pointer ${isRouteActive("/contact") ? "ring-2 ring-white ring-offset-2" : ""}`}
           >
             Contact Us
           </Link>

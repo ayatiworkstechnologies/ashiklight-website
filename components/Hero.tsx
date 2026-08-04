@@ -202,7 +202,7 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            Statement crystal chandeliers, high-ceiling foyer cascades, BLDC decorative fans &amp; architectural magnetic profiles in Chennai.
+            Statement crystal chandeliers, high-ceiling foyer cascades, luxury decorative fans &amp; architectural magnetic profiles in Chennai.
           </p>
 
           <div

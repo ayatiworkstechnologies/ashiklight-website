@@ -45,7 +45,7 @@ export default function Testimonials() {
       rating: 5,
       date: "1 month ago",
       review:
-        "We bought retractable BLDC wooden fans and LED vanity mirrors from Ashik Lights Teynampet for our new home. Super quiet fans and anti-fog demister mirrors work flawlessly!",
+        "We bought retractable wooden fans and LED vanity mirrors from Ashik Lights Teynampet for our new home. Super quiet fans and anti-fog demister mirrors work flawlessly!",
       showroom: "Ashik Lights Teynampet Flagship",
       verified: true,
     },
@@ -100,7 +100,7 @@ export default function Testimonials() {
       rating: 5,
       date: "2 weeks ago",
       review:
-        "We replaced all traditional fans with BLDC retractable crystal fans from Ashik Lights Teynampet. Electricity bills are down and the living room looks like a 5-star hotel!",
+        "We replaced all traditional fans with retractable crystal fans from Ashik Lights Teynampet. Electricity bills are down and the living room looks like a 5-star hotel!",
       showroom: "Ashik Lights Teynampet Flagship",
       verified: true,
     },

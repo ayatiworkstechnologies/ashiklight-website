@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import CategoryCatalog from "@/components/CategoryCatalog";
 
 export const metadata: Metadata = {
-  title: "Decorative BLDC Ceiling Fans Chennai",
+  title: "Decorative Ceiling Fans Chennai",
   description:
-    "Energy-saving BLDC motor ceiling fans crafted with retractable blades, crystal shades, and dimmable LED halos. Shop decorative fans at Ashik Lights, Chennai.",
+    "Luxury ceiling fans crafted with retractable blades, crystal shades, and dimmable LED halos. Shop decorative fans at Ashik Lights, Chennai.",
   alternates: { canonical: "/decorative-fans" },
   openGraph: {
-    title: "Decorative BLDC Ceiling Fans Chennai | Ashik Lights",
+    title: "Decorative Ceiling Fans Chennai | Ashik Lights",
     description:
-      "Whisper-quiet BLDC decorative ceiling fans with retractable blades and integrated LED lighting.",
+      "Whisper-quiet luxury decorative ceiling fans with retractable blades and integrated LED lighting.",
     url: "https://ashiklights.in/decorative-fans",
   },
 };
@@ -21,7 +21,7 @@ export default function DecorativeFansPage() {
       title: "Crystal Dome Retractable Blade Ceiling Fan",
       code: "AL-DF-3001",
       material: "Crystal Dome & Retractable ABS Blades",
-      dimensions: "42\" Sweep • BLDC Motor",
+      dimensions: "42\" Sweep • Silent Motor",
       image: "/assets/Decorative Fan/Crystal Dome Retractable Blade Ceiling Fan.webp",
       subCat: "retractable",
     },
@@ -47,7 +47,7 @@ export default function DecorativeFansPage() {
       id: "df-4",
       title: "Tiered Crystal Cascade Retractable Ceiling Fan",
       code: "AL-DF-3004",
-      material: "Tiered Crystal Drops & Whisper BLDC",
+      material: "Tiered Crystal Drops & Silent Motor",
       dimensions: "42\" Sweep • 6 Speeds",
       image: "/assets/Decorative Fan/Tiered Crystal Cascade Retractable Blade Ceiling Fan.webp",
       subCat: "retractable",
@@ -74,10 +74,10 @@ export default function DecorativeFansPage() {
       id: "df-7",
       title: "White Dual-Tone Ring LED Retractable Fan",
       code: "AL-DF-3007",
-      material: "Dual-Tone Halo Ring & BLDC",
+      material: "Dual-Tone Halo Ring & Silent Motor",
       dimensions: "42\" Sweep • Remote",
       image: "/assets/Decorative Fan/White Dual-Tone Ring LED Retractable Ceiling Fan.webp",
-      subCat: "bldc",
+      subCat: "energy-saving",
     },
     {
       id: "df-8",
@@ -86,7 +86,7 @@ export default function DecorativeFansPage() {
       material: "Minimal Round Profile & Hideaway Blades",
       dimensions: "42\" Sweep • Dimmable",
       image: "/assets/Decorative Fan/White Round LED Retractable Blade Ceiling Fan.webp",
-      subCat: "bldc",
+      subCat: "energy-saving",
     },
   ];
 
@@ -95,11 +95,11 @@ export default function DecorativeFansPage() {
       categorySlug="decorative-fans"
       title="Decorative Fans"
       tagline="Whisper-quiet air delivery with integrated light rings."
-      description="Energy-saving BLDC motor ceiling fans crafted with retractable blades, crystal shades, and dimmable LED halos."
+      description="Luxury ceiling fans crafted with retractable blades, crystal shades, and dimmable LED halos."
       heroImage="/banner/Decorative Fan.webp"
       mobileHeroImage="/banner/Decorative Fan mob.webp"
       badges={[
-        { icon: "Fan", text: "Super Efficient BLDC Motor" },
+        { icon: "Fan", text: "Whisper Quiet Motor" },
         { icon: "Award", text: "Retractable Hideaway Blades" },
         { icon: "ShieldCheck", text: "RF Remote Control" },
       ]}
@@ -107,7 +107,7 @@ export default function DecorativeFansPage() {
         { id: "all", label: "All Decorative Fans" },
         { id: "retractable", label: "Crystal Retractable Fans" },
         { id: "led-fan", label: "Modern LED Fans" },
-        { id: "bldc", label: "BLDC Energy Savers" },
+        { id: "energy-saving", label: "Energy Efficient Fans" },
       ]}
       products={products}
     />

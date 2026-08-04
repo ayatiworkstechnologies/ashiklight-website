@@ -331,7 +331,7 @@ export default function ContactPage() {
                     <h2 className="font-serif text-2xl font-bold text-white">
                       Visit Our Teynampet Flagship Store
                     </h2>
-                    <p className="text-xs text-slate-400 mt-1">Experience over 500+ live chandeliers, BLDC decorative fans, magnetic track profiles, and vanity LED mirrors in person.</p>
+                    <p className="text-xs text-slate-400 mt-1">Experience over 500+ live chandeliers, decorative fans, magnetic track profiles, and vanity LED mirrors in person.</p>
                   </div>
                   <a
                     href="https://maps.google.com/?q=ASHIK+LIGHTS+Teynampet+Chennai"

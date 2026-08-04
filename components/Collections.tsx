@@ -22,7 +22,7 @@ const collections = [
   },
   {
     id: "fans",
-    name: "BLDC Decorative Fans",
+    name: "Decorative Ceiling Fans",
     href: "/decorative-fans",
     image: "/assets/Decorative Fan/Luxury Crystal Waterfall Retractable Blade Ceiling Fan.webp",
   },

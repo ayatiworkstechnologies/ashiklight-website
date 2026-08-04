@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | Ashik Lights Chennai",
   },
   description:
-    "Explore statement crystal chandeliers, high-ceiling foyer cascades, BLDC decorative ceiling fans, architectural magnetic tracks, vanity LED mirrors & IP65 outdoor lights at Ashik Lights Chennai.",
+    "Explore statement crystal chandeliers, high-ceiling foyer cascades, decorative ceiling fans, architectural magnetic tracks, vanity LED mirrors & IP65 outdoor lights at Ashik Lights Chennai.",
   keywords: [
     "Ashik Lights",
     "Chandeliers Chennai",

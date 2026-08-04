@@ -21,12 +21,12 @@ export default function PageLoader() {
 
   return (
     <div
-      className={`fixed inset-0 z-50 bg-[#0A1628] flex flex-col items-center justify-center transition-opacity duration-400 ${
+      className={`fixed inset-0 z-50 bg-[#050505] flex flex-col items-center justify-center transition-opacity duration-400 ${
         fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
       {/* Background glow */}
-      <div className="absolute w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="flex flex-col items-center space-y-6 text-center px-4 relative z-10">
         {/* White Logo Image with Pulsing Glow */}
@@ -42,15 +42,15 @@ export default function PageLoader() {
         </div>
 
         {/* Subtitle */}
-        <div className="inline-flex items-center gap-2 text-white/80 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]">
-          <span className="w-5 h-px bg-white/30" />
+        <div className="inline-flex items-center gap-2 text-[#D4AF37] text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]">
+          <span className="w-5 h-px bg-[#D4AF37]/40" />
           LUXURY LIGHTING SHOWROOM
-          <span className="w-5 h-px bg-white/30" />
+          <span className="w-5 h-px bg-[#D4AF37]/40" />
         </div>
 
         {/* Loader Bar */}
-        <div className="w-48 bg-[#0D1E35] h-1 rounded-full overflow-hidden relative border border-white/20">
-          <div className="bg-white h-full rounded-full animate-progress-bar" />
+        <div className="w-48 bg-[#161616] h-1 rounded-full overflow-hidden relative border border-[#D4AF37]/30">
+          <div className="bg-gradient-to-r from-[#D4AF37] to-[#B8860B] h-full rounded-full animate-progress-bar" />
         </div>
       </div>
     </div>

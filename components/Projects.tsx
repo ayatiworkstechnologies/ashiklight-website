@@ -96,7 +96,7 @@ export default function Projects({ onOpenConsultation }: ProjectsProps) {
 
   return (
     <>
-      <section id="projects" className="py-16 lg:py-24 bg-[#0A1628]">
+      <section id="projects" className="py-16 lg:py-24 bg-[#050505]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           {/* Header Block — split directional reveal */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
@@ -112,7 +112,7 @@ export default function Projects({ onOpenConsultation }: ProjectsProps) {
             <Link
               href="/#projects"
               data-reveal="right"
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-white hover:text-slate-200 transition-colors group cursor-pointer"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#D4AF37] hover:text-[#F3E5AB] transition-colors group cursor-pointer"
             >
               <span>View All Projects</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -138,7 +138,7 @@ export default function Projects({ onOpenConsultation }: ProjectsProps) {
                     specs: project.specs,
                   })
                 }
-                className="group bg-[#0D1E35] rounded-2xl overflow-hidden border border-white/15 shadow-2xs hover-border-glow transition-all duration-400 transform hover:-translate-y-2 cursor-pointer"
+                className="group bg-[#161616] rounded-2xl overflow-hidden border border-[#D4AF37]/25 shadow-2xs hover-border-glow transition-all duration-400 transform hover:-translate-y-2 cursor-pointer"
               >
                 {/* Image Box */}
                 <div className="relative aspect-16/10 overflow-hidden bg-slate-100">
@@ -149,21 +149,21 @@ export default function Projects({ onOpenConsultation }: ProjectsProps) {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
                   <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300">
-                    <span className="px-2.5 py-1 bg-black/70 backdrop-blur-xs text-[10px] font-bold text-white rounded-full">
+                    <span className="px-3 py-1 bg-black/80 backdrop-blur-xs text-[10px] font-bold text-[#D4AF37] border border-[#D4AF37]/30 rounded-full">
                       View Project
                     </span>
                   </div>
                 </div>
 
                 {/* Title & Location Footer */}
-                <div className="p-4 text-center space-y-1 bg-[#0D1E35]">
-                  <h3 className="font-medium text-white text-sm sm:text-base group-hover:text-white transition-colors duration-300">
+                <div className="p-4 text-center space-y-1 bg-[#161616]">
+                  <h3 className="font-medium text-white text-sm sm:text-base group-hover:text-[#D4AF37] transition-colors duration-300">
                     {project.title}
                   </h3>
                   <div className="flex items-center justify-center gap-1 text-xs text-slate-400 font-light">
-                    <MapPin className="w-3.5 h-3.5 text-white/80" />
+                    <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
                     <span>{project.location}</span>
                   </div>
                 </div>

@@ -20,6 +20,9 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
     return () => clearTimeout(timer);
   }, []);
 
+  const touchStartPos = useRef<{ x: number; y: number } | null>(null);
+  const isHorizontalDrag = useRef<boolean | null>(null);
+
   // Calculate drag percentage across full hero section width
   const calcPos = useCallback((clientX: number) => {
     if (!heroRef.current) return;
@@ -34,6 +37,7 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
     e.preventDefault();
     setIsDragging(true);
   };
+
   useEffect(() => {
     if (!isDragging) return;
     const onMove = (e: MouseEvent) => calcPos(e.clientX);
@@ -46,15 +50,44 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
     };
   }, [isDragging, calcPos]);
 
-  // Touch Dragging
-  const onTouchStart = () => setIsDragging(true);
+  // Touch Dragging — Smart direction check to allow normal vertical page scrolling
+  const onTouchStart = (e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    touchStartPos.current = { x: touch.clientX, y: touch.clientY };
+    isHorizontalDrag.current = null;
+    setIsDragging(true);
+  };
+
   useEffect(() => {
     if (!isDragging) return;
+
     const onMove = (e: TouchEvent) => {
-      if (e.cancelable) e.preventDefault();
-      calcPos(e.touches[0].clientX);
+      if (!touchStartPos.current || !e.touches[0]) return;
+      const currentX = e.touches[0].clientX;
+      const currentY = e.touches[0].clientY;
+      const deltaX = Math.abs(currentX - touchStartPos.current.x);
+      const deltaY = Math.abs(currentY - touchStartPos.current.y);
+
+      // Determine user intent on first movement threshold
+      if (isHorizontalDrag.current === null) {
+        if (deltaX > 6 || deltaY > 6) {
+          isHorizontalDrag.current = deltaX > deltaY;
+        }
+      }
+
+      // Only drag slider and prevent scroll if movement is horizontal
+      if (isHorizontalDrag.current === true) {
+        if (e.cancelable) e.preventDefault();
+        calcPos(currentX);
+      }
     };
-    const onEnd = () => setIsDragging(false);
+
+    const onEnd = () => {
+      setIsDragging(false);
+      touchStartPos.current = null;
+      isHorizontalDrag.current = null;
+    };
+
     window.addEventListener("touchmove", onMove, { passive: false });
     window.addEventListener("touchend", onEnd);
     return () => {
@@ -66,7 +99,7 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[85vh] lg:min-h-[92vh] flex items-end lg:items-center overflow-hidden bg-[#040812] select-none cursor-col-resize"
+      className="relative min-h-[85vh] lg:min-h-[92vh] flex items-end lg:items-center overflow-hidden bg-[#050505] select-none"
       onMouseDown={onMouseDown}
       onTouchStart={onTouchStart}
     >
@@ -109,15 +142,15 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
 
         {/* Full-Height Vertical Drag Divider Bar */}
         <div
-          className="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_20px_rgba(255,255,255,0.9)] z-20 pointer-events-none"
+          className="absolute top-0 bottom-0 w-1 bg-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.9)] z-20 pointer-events-none"
           style={{ left: `${sliderPos}%` }}
         >
-          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-[#07101F] border-2 border-white text-white flex items-center justify-center shadow-2xl">
+          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-[#0E0E0E] border-2 border-[#D4AF37] text-[#D4AF37] flex items-center justify-center shadow-2xl">
             <MoveHorizontal className="w-5 h-5" />
 
             {/* Floating Handle Tooltip on Right Side */}
             <div
-              className={`absolute left-full ml-3 top-1/2 -translate-y-1/2 whitespace-nowrap px-3.5 py-1.5 bg-[#040812]/95 backdrop-blur-md text-white text-[11px] font-bold rounded-full border border-white/30 shadow-2xl flex items-center gap-1.5 transition-all duration-300 pointer-events-none ${
+              className={`absolute left-full ml-3 top-1/2 -translate-y-1/2 whitespace-nowrap px-3.5 py-1.5 bg-[#050505]/95 backdrop-blur-md text-[#D4AF37] text-[11px] font-bold rounded-full border border-[#D4AF37]/40 shadow-2xl flex items-center gap-1.5 transition-all duration-300 pointer-events-none ${
                 isDragging
                   ? "opacity-40 scale-90"
                   : "animate-pulse opacity-100"
@@ -129,10 +162,10 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
         </div>
 
         {/* Floating Before / After Badges */}
-        <span className="hidden sm:block absolute bottom-6 left-6 z-20 px-3 py-1.5 bg-black/80 backdrop-blur-md text-white text-xs font-bold rounded-lg uppercase tracking-wider border border-white/20">
+        <span className="hidden sm:block absolute bottom-6 left-6 z-20 px-3 py-1.5 bg-black/80 backdrop-blur-md text-white text-xs font-bold rounded-lg uppercase tracking-wider border border-[#D4AF37]/30">
           Before
         </span>
-        <span className="hidden sm:block absolute bottom-6 right-6 z-20 px-3 py-1.5 bg-white text-[#040812] text-xs font-bold rounded-lg uppercase tracking-wider shadow-lg">
+        <span className="hidden sm:block absolute bottom-6 right-6 z-20 px-3 py-1.5 bg-gradient-to-r from-[#D4AF37] via-[#F5E0A3] to-[#B8860B] text-black text-xs font-extrabold rounded-lg uppercase tracking-wider shadow-lg">
           After
         </span>
       </div>
@@ -162,6 +195,29 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
               With Timeless Luxury.
             </span>
           </h1>
+
+          {/* Subtitle & Explore Collections CTA Button */}
+          <p
+            className={`text-slate-200 text-sm sm:text-base font-light max-w-lg leading-relaxed [text-shadow:_0_2px_10px_rgba(0,0,0,0.9)] transition-all duration-700 delay-[600ms] ${
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            Statement crystal chandeliers, high-ceiling foyer cascades, BLDC decorative fans &amp; architectural magnetic profiles in Chennai.
+          </p>
+
+          <div
+            className={`pt-2 transition-all duration-700 delay-[800ms] ${
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            <Link
+              href="/#collections"
+              className="btn-shimmer inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-black font-extrabold text-sm sm:text-base shadow-xl hover:scale-105 transition-all cursor-pointer"
+            >
+              <span>Explore Collections</span>
+              <ArrowRight className="w-4 h-4 text-black" />
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -175,7 +231,7 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
         >
           <path
             d="M0 30C240 50 480 0 720 30C960 60 1200 10 1440 30V60H0V30Z"
-            fill="#040812"
+            fill="#050505"
           />
         </svg>
       </div>

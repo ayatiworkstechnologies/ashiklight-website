@@ -83,7 +83,7 @@ export default function IndoorLightsPage() {
       badges={[
         { icon: "Sparkles", text: "Ultra Slim Profile" },
         { icon: "Award", text: "TrueColor >90 CRI" },
-        { icon: "ShieldCheck", text: "3-Year Warranty" },
+        { icon: "ShieldCheck", text: "Architectural Grade" },
       ]}
       subCategories={[
         { id: "all", label: "All Indoor Lights" },

@@ -317,7 +317,7 @@ export default function WallPendantLightsPage() {
       badges={[
         { icon: "Sparkles", text: "Handblown Glass" },
         { icon: "UserCheck", text: "Solid Brass Fitting" },
-        { icon: "ShieldCheck", text: "3-Year Warranty" },
+        { icon: "ShieldCheck", text: "Premium Craftsmanship" },
       ]}
       subCategories={[
         { id: "all", label: "All Wall & Pendants" },

@@ -18,7 +18,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#040812",
+  themeColor: "#050505",
   width: "device-width",
   initialScale: 1,
 };
@@ -156,7 +156,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${playfair.variable} ${jakarta.variable} font-sans antialiased bg-[#040812] text-slate-100 selection:bg-white selection:text-[#040812]`}
+        className={`${playfair.variable} ${jakarta.variable} font-sans antialiased bg-[#050505] text-slate-100 selection:bg-[#D4AF37] selection:text-black`}
       >
         <PageLoader />
         <AdvancedAnimations />

@@ -72,14 +72,14 @@ export default function ShopBySpace() {
   const [activeSpace, setActiveSpace] = useState(spaces[0]);
 
   return (
-    <section id="shop-by-space" className="py-16 lg:py-24 bg-[#0D1E35] border-t border-white/15">
+    <section id="shop-by-space" className="py-16 lg:py-24 bg-[#0E0E0E] border-t border-[#D4AF37]/25">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3" data-reveal="up">
-          <div className="inline-flex items-center gap-2 text-white/80 text-xs font-bold uppercase tracking-[0.2em]">
-            <span className="w-6 h-px bg-white/30" />
+          <div className="inline-flex items-center gap-2 text-[#D4AF37] text-xs font-bold uppercase tracking-[0.2em]">
+            <span className="w-6 h-px bg-[#D4AF37]/40" />
             SHOP BY SPACE
-            <span className="w-6 h-px bg-white/30" />
+            <span className="w-6 h-px bg-[#D4AF37]/40" />
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white">
             Shop by Space
@@ -100,11 +100,11 @@ export default function ShopBySpace() {
                 onClick={() => setActiveSpace(sp)}
                 className={`px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all duration-300 flex items-center gap-2 cursor-pointer shrink-0 ${
                   isSelected
-                    ? "bg-white text-[#040812] shadow-lg scale-[1.02]"
-                    : "bg-[#0A1628] text-slate-300 hover:bg-[#122240] border border-white/15 hover:border-white"
+                    ? "bg-gradient-to-r from-[#D4AF37] to-[#B8860B] text-black font-extrabold shadow-lg scale-[1.02]"
+                    : "bg-[#161616] text-slate-300 hover:bg-[#222] border border-[#D4AF37]/20 hover:border-[#D4AF37]"
                 }`}
               >
-                <IconComp className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isSelected ? "text-[#040812]" : "text-slate-400"}`} />
+                <IconComp className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isSelected ? "text-black" : "text-[#D4AF37]"}`} />
                 <span className="whitespace-nowrap">{sp.name}</span>
               </button>
             );
@@ -114,7 +114,7 @@ export default function ShopBySpace() {
         {/* Active Space Hero Showcase Banner */}
         <div
           key={activeSpace.id}
-          className="bg-[#0A1628] rounded-3xl border border-white/15 shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 animate-slide-carousel"
+          className="bg-[#161616] rounded-3xl border border-[#D4AF37]/25 shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 animate-slide-carousel"
           data-reveal="scale"
         >
           {/* Right Full-Width Photo Frame (Shown FIRST on mobile) */}
@@ -127,13 +127,13 @@ export default function ShopBySpace() {
               sizes="(max-width: 1024px) 100vw, 55vw"
               className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-transparent to-transparent lg:hidden" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#161616] via-transparent to-transparent lg:hidden" />
           </div>
 
           {/* Left Feature Description (Shown BELOW image on mobile) */}
           <div className="lg:col-span-5 order-2 lg:order-1 p-6 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6">
             <div className="space-y-3.5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/15 rounded-full text-white text-xs font-bold border border-white/20">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4AF37]/15 rounded-full text-[#D4AF37] text-xs font-bold border border-[#D4AF37]/30">
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 <span>{activeSpace.badge}</span>
               </div>
@@ -154,7 +154,7 @@ export default function ShopBySpace() {
             <div className="pt-2">
               <Link
                 href={activeSpace.href}
-                className="btn-shimmer w-full sm:w-auto px-7 py-3.5 text-white text-xs sm:text-sm font-bold rounded-xl shadow-md hover:shadow-lg inline-flex items-center justify-center gap-2.5 transition-all cursor-pointer group"
+                className="btn-shimmer w-full sm:w-auto px-7 py-3.5 text-xs sm:text-sm font-bold rounded-xl shadow-md hover:shadow-lg inline-flex items-center justify-center gap-2.5 transition-all cursor-pointer group"
               >
                 <span>Browse {activeSpace.name} Collection</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />

@@ -83,7 +83,7 @@ export default function OutdoorLightsPage() {
       badges={[
         { icon: "Sun", text: "Weather Resistant IP65" },
         { icon: "Award", text: "Corrosion Proof Body" },
-        { icon: "ShieldCheck", text: "3-Year Warranty" },
+        { icon: "ShieldCheck", text: "Heavy Duty Die-Cast" },
       ]}
       subCategories={[
         { id: "all", label: "All Outdoor Lights" },

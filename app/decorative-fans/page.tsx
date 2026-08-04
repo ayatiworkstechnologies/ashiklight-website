@@ -101,7 +101,7 @@ export default function DecorativeFansPage() {
       badges={[
         { icon: "Fan", text: "Super Efficient BLDC Motor" },
         { icon: "Award", text: "Retractable Hideaway Blades" },
-        { icon: "ShieldCheck", text: "2-Year Warranty" },
+        { icon: "ShieldCheck", text: "RF Remote Control" },
       ]}
       subCategories={[
         { id: "all", label: "All Decorative Fans" },

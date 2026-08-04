@@ -74,7 +74,7 @@ export default function LedMirrorsPage() {
       badges={[
         { icon: "Maximize2", text: "5mm HD Copper-Free Glass" },
         { icon: "Award", text: "Smart Anti-Fog Demister" },
-        { icon: "ShieldCheck", text: "2-Year Warranty" },
+        { icon: "ShieldCheck", text: "Feather Touch Sensor" },
       ]}
       subCategories={[
         { id: "all", label: "All LED Mirrors" },

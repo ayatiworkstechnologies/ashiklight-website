@@ -263,7 +263,7 @@ export default function ChandeliersPage() {
       badges={[
         { icon: "Sparkles", text: "Premium K9 Crystal" },
         { icon: "UserCheck", text: "Expert Guidance" },
-        { icon: "ShieldCheck", text: "3-Year Warranty" },
+        { icon: "ShieldCheck", text: "Custom Size Options" },
       ]}
       subCategories={[
         { id: "all", label: "All Chandeliers" },

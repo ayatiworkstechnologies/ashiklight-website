@@ -71,7 +71,7 @@ export default function Collections({
     <>
       <section
         id="collections"
-        className="py-16 sm:py-20 bg-[#07101F] border-b border-white/15 relative overflow-hidden"
+        className="py-16 sm:py-20 bg-[#050505] border-b border-[#D4AF37]/25 relative overflow-hidden"
       >
         {/* Subtle Decorative Accents */}
         <VectorCornerMotif position="top-right" />
@@ -83,10 +83,10 @@ export default function Collections({
             className="text-center max-w-2xl mx-auto mb-12 space-y-3"
             data-reveal="up"
           >
-            <div className="inline-flex items-center gap-2 text-white/80 text-xs font-bold uppercase tracking-[0.2em]">
-              <span className="w-6 h-px bg-white/30" />
+            <div className="inline-flex items-center gap-2 text-[#D4AF37] text-xs font-bold uppercase tracking-[0.2em]">
+              <span className="w-6 h-px bg-[#D4AF37]/40" />
               OUR COLLECTIONS
-              <span className="w-6 h-px bg-white/30" />
+              <span className="w-6 h-px bg-[#D4AF37]/40" />
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-white tracking-tight">
               Explore Our Collections
@@ -108,7 +108,7 @@ export default function Collections({
                 href={item.href}
                 data-reveal="up"
                 data-reveal-delay={String(index * 80)}
-                className="group block bg-[#0D1E35] rounded-2xl overflow-hidden border border-white/15 shadow-2xs card-hover-lift hover-border-glow cursor-pointer"
+                className="group block bg-[#161616] rounded-2xl overflow-hidden border border-[#D4AF37]/25 shadow-2xs card-hover-lift hover-border-glow cursor-pointer"
               >
                 {/* Image Container with Zoom & Floating Quick Badge */}
                 <div className="relative aspect-4/3 sm:aspect-square overflow-hidden bg-slate-100">
@@ -119,19 +119,19 @@ export default function Collections({
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 25vw"
                     className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span className="px-3 py-1.5 bg-white/95 backdrop-blur-md rounded-full text-[10px] font-bold text-slate-900 shadow-md flex items-center gap-1">
-                      <Sparkles className="w-3 h-3 text-slate-900" /> Explore
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="px-3.5 py-1.5 bg-gradient-to-r from-[#D4AF37] to-[#B8860B] rounded-full text-[10px] font-extrabold text-black shadow-md flex items-center gap-1">
+                      <Sparkles className="w-3 h-3 text-black" /> Explore
                     </span>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-3 sm:p-4 text-center bg-[#0D1E35] border-t border-white/15">
-                  <h3 className="font-semibold text-xs sm:text-base text-white group-hover:text-white transition-colors duration-300 line-clamp-1">
+                <div className="p-3 sm:p-4 text-center bg-[#161616] border-t border-[#D4AF37]/20">
+                  <h3 className="font-semibold text-xs sm:text-base text-white group-hover:text-[#D4AF37] transition-colors duration-300 line-clamp-1">
                     {item.name}
                   </h3>
-                  <div className="mt-2 pt-2 border-t border-white/10 inline-flex items-center justify-center gap-1 text-[11px] font-bold text-white/90 opacity-80 group-hover:opacity-100 transition-opacity">
+                  <div className="mt-2 pt-2 border-t border-[#D4AF37]/15 inline-flex items-center justify-center gap-1 text-[11px] font-bold text-[#D4AF37] opacity-85 group-hover:opacity-100 transition-opacity">
                     <span>View Range</span>
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   </div>

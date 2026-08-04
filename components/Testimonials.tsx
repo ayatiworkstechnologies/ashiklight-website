@@ -56,7 +56,7 @@ export default function Testimonials() {
       rating: 5,
       date: "2 months ago",
       review:
-        "Best luxury lighting store in Chennai. Exceptional crystal quality, genuine 3-year on-site warranty, and courteous staff at Ashik Lights Teynampet!",
+        "Best luxury lighting store in Chennai. Exceptional crystal quality, transparent pricing, and courteous staff at Ashik Lights Teynampet!",
       showroom: "Ashik Lights Teynampet Flagship",
       verified: true,
     },
@@ -210,7 +210,7 @@ export default function Testimonials() {
       rating: 5,
       date: "1 week ago",
       review:
-        "Prompt service, transparent guidance and reliable 3-year warranty. Ashik Lights Teynampet is Chennai's best lighting store without doubt.",
+        "Prompt service, transparent guidance and reliable support. Ashik Lights Teynampet is Chennai's best lighting store without doubt.",
       showroom: "Ashik Lights Teynampet Flagship",
       verified: true,
     },
@@ -284,7 +284,7 @@ export default function Testimonials() {
   return (
     <section
       id="reviews"
-      className="py-16 lg:py-24 bg-[#0A1628] border-t border-white/15 overflow-hidden"
+      className="py-16 lg:py-24 bg-[#0E0E0E] border-t border-[#D4AF37]/25 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section Title — scroll reveal */}
@@ -292,10 +292,10 @@ export default function Testimonials() {
           className="text-center max-w-2xl mx-auto mb-12 space-y-3"
           data-reveal="up"
         >
-          <div className="inline-flex items-center gap-2 text-white/80 text-xs font-bold uppercase tracking-[0.2em]">
-            <span className="w-6 h-px bg-white/30" />
+          <div className="inline-flex items-center gap-2 text-[#D4AF37] text-xs font-bold uppercase tracking-[0.2em]">
+            <span className="w-6 h-px bg-[#D4AF37]/40" />
             CUSTOMER REVIEWS
-            <span className="w-6 h-px bg-white/30" />
+            <span className="w-6 h-px bg-[#D4AF37]/40" />
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-white">
@@ -309,19 +309,19 @@ export default function Testimonials() {
         {/* Auto Moving Card Container */}
         <div className="max-w-4xl mx-auto relative" data-reveal="scale">
           {/* Animated Progress Bar */}
-          <div className="w-full bg-[#0D1E35] h-1.5 rounded-full mb-4 overflow-hidden border border-white/15">
+          <div className="w-full bg-[#161616] h-1.5 rounded-full mb-4 overflow-hidden border border-[#D4AF37]/20">
             <div
               ref={progressRef}
               key={`progress-${currentIndex}-${isPlaying}`}
-              className={`bg-white h-full rounded-full ${
+              className={`bg-[#D4AF37] h-full rounded-full ${
                 isPlaying ? "animate-progress-bar" : ""
               }`}
               style={{ width: isPlaying ? undefined : "0%" }}
             />
           </div>
 
-          <div className="bg-[#0D1E35] rounded-3xl p-8 sm:p-12 border border-white/15 shadow-xl relative overflow-hidden transition-all duration-500 hover:shadow-2xl">
-            <MessageSquareQuote className="absolute top-6 right-6 w-16 h-16 text-white/10" />
+          <div className="bg-[#161616] rounded-3xl p-8 sm:p-12 border border-[#D4AF37]/25 shadow-2xl relative overflow-hidden transition-all duration-500 hover:shadow-2xl">
+            <MessageSquareQuote className="absolute top-6 right-6 w-16 h-16 text-[#D4AF37]/10" />
 
             <div
               key={currentIndex}
@@ -333,9 +333,9 @@ export default function Testimonials() {
             >
               {/* Stars & Date */}
               <div className="flex items-center justify-between gap-4">
-                <div className="flex items-center gap-1 text-slate-200">
+                <div className="flex items-center gap-1 text-[#D4AF37]">
                   {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-slate-100 text-slate-100" />
+                    <Star key={i} className="w-5 h-5 fill-[#D4AF37] text-[#D4AF37]" />
                   ))}
                 </div>
                 <span className="text-xs text-slate-400 font-medium">
@@ -349,7 +349,7 @@ export default function Testimonials() {
               </p>
 
               {/* Author & Showroom */}
-              <div className="pt-4 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="pt-4 border-t border-[#D4AF37]/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="font-bold text-white text-base">
@@ -371,7 +371,7 @@ export default function Testimonials() {
                   href="https://maps.google.com/?q=ASHIK+LIGHTS+Teynampet+Chennai"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-semibold text-white hover:underline"
+                  className="inline-flex items-center gap-2 text-xs font-semibold text-[#D4AF37] hover:underline"
                 >
                   <span>Read on Google Maps →</span>
                 </a>
@@ -384,28 +384,28 @@ export default function Testimonials() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="w-8 h-8 rounded-full bg-[#0D1E35] border border-white/20 text-slate-300 hover:text-white hover:border-white flex items-center justify-center transition-all duration-300 cursor-pointer"
+                className="w-8 h-8 rounded-full bg-[#161616] border border-[#D4AF37]/30 text-slate-300 hover:text-[#D4AF37] hover:border-[#D4AF37] flex items-center justify-center transition-all duration-300 cursor-pointer"
                 title={isPlaying ? "Pause auto-scroll" : "Play auto-scroll"}
               >
                 {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
               </button>
 
-              <div className="text-xs font-semibold text-slate-300 bg-[#0D1E35] px-3 py-1 rounded-full border border-white/20">
-                <span className="text-white font-bold">{currentIndex + 1}</span> / {reviews.length} Reviews
+              <div className="text-xs font-semibold text-slate-300 bg-[#161616] px-3 py-1 rounded-full border border-[#D4AF37]/30">
+                <span className="text-[#D4AF37] font-bold">{currentIndex + 1}</span> / {reviews.length} Reviews
               </div>
             </div>
 
             <div className="flex items-center gap-3">
               <button
                 onClick={prevReview}
-                className="w-10 h-10 rounded-full bg-[#0D1E35] border border-white/20 text-slate-200 hover:border-white hover:text-white hover:shadow-md flex items-center justify-center transition-all duration-300 cursor-pointer"
+                className="w-10 h-10 rounded-full bg-[#161616] border border-[#D4AF37]/30 text-slate-200 hover:border-[#D4AF37] hover:text-[#D4AF37] hover:shadow-md flex items-center justify-center transition-all duration-300 cursor-pointer"
                 aria-label="Previous review"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={nextReview}
-                className="w-10 h-10 rounded-full bg-[#0D1E35] border border-white/20 text-slate-200 hover:border-white hover:text-white hover:shadow-md flex items-center justify-center transition-all duration-300 cursor-pointer"
+                className="w-10 h-10 rounded-full bg-[#161616] border border-[#D4AF37]/30 text-slate-200 hover:border-[#D4AF37] hover:text-[#D4AF37] hover:shadow-md flex items-center justify-center transition-all duration-300 cursor-pointer"
                 aria-label="Next review"
               >
                 <ChevronRight className="w-5 h-5" />

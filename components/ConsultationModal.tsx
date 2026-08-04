@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, Sparkles, CheckCircle2, Mail } from "lucide-react";
+import { X, Sparkles, CheckCircle2, Send, Loader2, AlertCircle } from "lucide-react";
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -20,38 +20,49 @@ export default function ConsultationModal({
     date: "",
     notes: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setError(false);
 
-    const subject = `Lighting Consultation Request - ${formData.name}`;
-    const body = `Dear Ashik Lights Team,
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          data: {
+            name: formData.name,
+            email: "",
+            phone: formData.phone,
+            message: `Space: ${formData.spaceType}, Consultation: ${formData.showroom}, Preferred Date: ${formData.date || "N/A"}`,
+          },
+        }),
+      });
 
-I would like to request an expert lighting consultation for my project.
+      const result = await res.json();
+      if (!res.ok || !result.success) {
+        throw new Error(result?.error || "Submission failed");
+      }
 
-CUSTOMER DETAILS:
-• Name: ${formData.name}
-• Phone: ${formData.phone}
-• Space Type: ${formData.spaceType}
-• Consultation Mode: ${formData.showroom}
-• Preferred Date: ${formData.date || "As soon as possible"}
-
---------------------------------------------------
-Sent via Ashik Lights Official Website (ashiklights.in)`;
-
-    const mailtoUrl = `mailto:info@ashiklights.in?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-
-    setSubmitted(true);
-    setTimeout(() => {
-      window.location.href = mailtoUrl;
-      onClose();
-      setSubmitted(false);
-    }, 600);
+      setSubmitted(true);
+      setTimeout(() => {
+        onClose();
+        setSubmitted(false);
+      }, 1800);
+    } catch (err) {
+      console.error("Consultation API error:", err);
+      setError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -84,14 +95,21 @@ Sent via Ashik Lights Official Website (ashiklights.in)`;
                 <CheckCircle2 className="w-10 h-10" />
               </div>
               <h4 className="font-serif text-2xl font-bold text-slate-800">
-                Email Inquiry Opening...
+                Consultation Request Submitted!
               </h4>
               <p className="text-slate-600 text-sm max-w-xs mx-auto">
-                Thank you {formData.name || "valued customer"}. Your email application is launching to deliver your inquiry to info@ashiklights.in.
+                Thank you {formData.name || "valued customer"}. Our lighting specialists will reach out to you shortly.
               </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-700 flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
+                  <span>Failed to submit consultation. Please try again or call us at 087548 60555.</span>
+                </div>
+              )}
+
               <div>
                 <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
                   Full Name *
@@ -176,10 +194,20 @@ Sent via Ashik Lights Official Website (ashiklights.in)`;
 
               <button
                 type="submit"
-                className="btn-shimmer w-full mt-2 py-3.5 px-6 bg-[#040812] hover:bg-[#07101F] text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer flex items-center justify-center gap-2.5"
+                disabled={isSubmitting}
+                className="btn-shimmer w-full mt-2 py-3.5 px-6 bg-[#040812] hover:bg-[#07101F] text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer flex items-center justify-center gap-2.5 disabled:opacity-50"
               >
-                <Mail className="w-5 h-5 text-white" />
-                <span>Send Direct Email Consultation</span>
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin text-white" />
+                    <span>Booking Consultation...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5 text-white" />
+                    <span>Book Consultation</span>
+                  </>
+                )}
               </button>
             </form>
           )}

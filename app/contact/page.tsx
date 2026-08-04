@@ -11,10 +11,11 @@ import {
   MessageSquare,
   Navigation,
   CheckCircle2,
+  AlertCircle,
   Send,
-  FileText,
-  Copy,
-  Check,
+  Loader2,
+  Sparkles,
+  RefreshCw,
 } from "lucide-react";
 import TopBanner from "@/components/TopBanner";
 import Header from "@/components/Header";
@@ -29,50 +30,57 @@ export default function ContactPage() {
     message: "",
   });
 
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const getEmailBody = () => {
-    return `Dear Ashik Lights Team,
-
-I would like to request a personalized lighting consultation and details for my project.
-
-CUSTOMER INQUIRY DETAILS:
---------------------------------------------------
-• Name: ${formData.name}
-• Phone: ${formData.phone}
-• Email: ${formData.email || "Not Provided"}
-
-LIGHTING REQUIREMENTS / SPACE DETAILS:
---------------------------------------------------
-${formData.message || "Requesting lighting advice, lux level guidance, and catalog details for my space."}
-
---------------------------------------------------
-Sent via Ashik Lights Official Website (ashiklights.in)`;
-  };
-
-  const getEmailSubject = () => {
-    return `Lighting Consultation Inquiry - ${formData.name || "Customer"}`;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitStatus("submitting");
+    setErrorMessage("");
 
-    const mailtoUrl = `mailto:info@ashiklights.in?subject=${encodeURIComponent(
-      getEmailSubject()
-    )}&body=${encodeURIComponent(getEmailBody())}`;
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          data: {
+            name: formData.name,
+            email: formData.email || "",
+            phone: formData.phone,
+            message:
+              formData.message ||
+              "Requesting lighting consultation & catalog guidance",
+          },
+        }),
+      });
 
-    setFormSubmitted(true);
-    setTimeout(() => {
-      window.location.href = mailtoUrl;
-    }, 400);
+      const result = await res.json();
+
+      if (!res.ok || !result.success) {
+        throw new Error(
+          result?.error || "Failed to deliver inquiry to the server."
+        );
+      }
+
+      setSubmitStatus("success");
+    } catch (err: any) {
+      console.error("Contact Form Submission Error:", err);
+      setErrorMessage(
+        err?.message ||
+          "Failed to connect to the server. Please check your internet connection or try again."
+      );
+      setSubmitStatus("error");
+    }
   };
 
-  const handleCopyTemplate = () => {
-    const textToCopy = `To: info@ashiklights.in\nSubject: ${getEmailSubject()}\n\n${getEmailBody()}`;
-    navigator.clipboard.writeText(textToCopy);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleResetForm = () => {
+    setFormData({ name: "", phone: "", email: "", message: "" });
+    setSubmitStatus("idle");
+    setErrorMessage("");
   };
 
   return (
@@ -82,22 +90,22 @@ Sent via Ashik Lights Official Website (ashiklights.in)`;
         <Header />
 
         {/* Contact Hero & Info Cards */}
-        <section className="relative py-14 lg:py-20 bg-gradient-to-b from-[#0A1628] via-[#0D1E35] to-[#0A1628] border-b border-white/15 overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+        <section className="relative py-16 lg:py-24 bg-gradient-to-b from-[#0A1628] via-[#0D1E35] to-[#0A1628] border-b border-white/15 overflow-hidden">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
             {/* Header Title Block */}
-            <div className="text-center max-w-2xl mx-auto mb-12 space-y-3" data-reveal="up">
-              <div className="inline-flex items-center gap-2 text-white/80 text-xs font-bold uppercase tracking-[0.2em]">
-                <span className="w-6 h-px bg-white/30" />
-                PERSONALIZED LIGHTING ADVICE
-                <span className="w-6 h-px bg-white/30" />
+            <div className="text-center max-w-3xl mx-auto mb-14 space-y-4" data-reveal="up">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-white/90 text-xs font-bold uppercase tracking-[0.2em] border border-white/15">
+                <Sparkles className="w-3.5 h-3.5 text-white" />
+                <span>EXPERT LIGHTING ARCHITECTURE &amp; ADVICE</span>
               </div>
-              <h1 className="font-serif text-4xl sm:text-5xl font-bold text-white">
-                Get in Touch with Ashik Lights
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                Bring Your Spaces to Life <br />
+                <span className="italic text-white font-medium">with Bespoke Lighting.</span>
               </h1>
-              <p className="text-slate-400 text-sm font-light leading-relaxed">
-                Visit our flagship showroom in Teynampet, Chennai or send us your floor plans for expert consultation.
+              <p className="text-slate-300 text-sm sm:text-base font-light leading-relaxed max-w-2xl mx-auto">
+                Whether you are designing a luxury villa foyer, high-ceiling duplex, or modern commercial venue, our lighting architects in Teynampet, Chennai are here to turn your floor plans into luminous masterpieces.
               </p>
             </div>
 
@@ -108,15 +116,15 @@ Sent via Ashik Lights Official Website (ashiklights.in)`;
                 href="tel:08754860555"
                 data-reveal="up"
                 data-reveal-delay="0"
-                className="bg-[#0D1E35] p-6 rounded-3xl border border-white/15 shadow-lg hover:border-white hover:-translate-y-1.5 transition-all duration-400 group flex items-start gap-4 cursor-pointer"
+                className="bg-[#0D1E35] p-7 rounded-3xl border border-white/15 shadow-xl hover:border-white hover:-translate-y-1.5 transition-all duration-400 group flex items-start gap-4 cursor-pointer"
               >
                 <div className="w-12 h-12 rounded-2xl bg-white/15 text-white group-hover:bg-white group-hover:text-[#040812] flex items-center justify-center shrink-0 transition-all duration-300 shadow-sm border border-white/20">
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white text-base group-hover:text-white transition-colors">Call Us Directly</h3>
-                  <p className="text-xs text-slate-400 mt-1">Talk to our lighting architects</p>
-                  <div className="text-sm font-bold text-white mt-2 font-sans">087548 60555</div>
+                  <h3 className="font-semibold text-white text-base group-hover:text-white transition-colors">Direct Showroom Line</h3>
+                  <p className="text-xs text-slate-400 mt-1 leading-relaxed">Speak live with senior lighting consultants for urgent stock and custom chandelier sizing.</p>
+                  <div className="text-sm font-bold text-white mt-3 font-sans">087548 60555</div>
                 </div>
               </a>
 
@@ -125,15 +133,15 @@ Sent via Ashik Lights Official Website (ashiklights.in)`;
                 href="mailto:info@ashiklights.in"
                 data-reveal="up"
                 data-reveal-delay="100"
-                className="bg-[#0D1E35] p-6 rounded-3xl border border-white/15 shadow-lg hover:border-white hover:-translate-y-1.5 transition-all duration-400 group flex items-start gap-4 cursor-pointer"
+                className="bg-[#0D1E35] p-7 rounded-3xl border border-white/15 shadow-xl hover:border-white hover:-translate-y-1.5 transition-all duration-400 group flex items-start gap-4 cursor-pointer"
               >
                 <div className="w-12 h-12 rounded-2xl bg-white/15 text-white group-hover:bg-white group-hover:text-[#040812] flex items-center justify-center shrink-0 transition-all duration-300 shadow-sm border border-white/20">
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white text-base group-hover:text-white transition-colors">Email Us Directly</h3>
-                  <p className="text-xs text-slate-400 mt-1">Send us your layout or floor plan</p>
-                  <div className="text-sm font-bold text-white mt-2">info@ashiklights.in</div>
+                  <h3 className="font-semibold text-white text-base group-hover:text-white transition-colors">Layout &amp; Floor Plan Inquiry</h3>
+                  <p className="text-xs text-slate-400 mt-1 leading-relaxed">Send CAD drawings or room dimensions for lux calculations and tailored proposals.</p>
+                  <div className="text-sm font-bold text-white mt-3">info@ashiklights.in</div>
                 </div>
               </a>
 
@@ -141,19 +149,19 @@ Sent via Ashik Lights Official Website (ashiklights.in)`;
               <div
                 data-reveal="up"
                 data-reveal-delay="200"
-                className="bg-[#0D1E35] p-6 rounded-3xl border border-white/15 shadow-lg hover:border-white transition-all duration-400 flex items-start gap-4"
+                className="bg-[#0D1E35] p-7 rounded-3xl border border-white/15 shadow-xl hover:border-white transition-all duration-400 flex items-start gap-4"
               >
                 <div className="w-12 h-12 rounded-2xl bg-white/15 text-white flex items-center justify-center shrink-0 border border-white/20">
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white text-base">Flagship Store</h3>
+                  <h3 className="font-semibold text-white text-base">Flagship Experience Center</h3>
                   <p className="text-xs text-slate-400 mt-1 leading-relaxed">
                     #313, Anna Salai, Opposite Kamaraj Arangam, Teynampet, Chennai 600006
                   </p>
-                  <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mt-2">
+                  <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mt-3">
                     <Clock className="w-3.5 h-3.5 text-white" />
-                    <span>Mon - Sat: 10:00 AM - 10:00 PM</span>
+                    <span>Monday – Saturday: 10:00 AM – 10:00 PM</span>
                   </div>
                 </div>
               </div>
@@ -180,84 +188,80 @@ Sent via Ashik Lights Official Website (ashiklights.in)`;
               <div className="lg:col-span-6 bg-[#0D1E35] p-8 sm:p-12 rounded-3xl border border-white/15 shadow-xl" data-reveal="left">
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white mb-2">
                   <MessageSquare className="w-4 h-4 text-white" />
-                  <span>DIRECT EMAIL INQUIRY</span>
+                  <span>TAILORED LIGHTING CONSULTATION</span>
                 </div>
                 <h2 className="font-serif text-3xl font-bold text-white mb-3">
-                  Send Us a Message
+                  Request CAD Layout &amp; Quotation
                 </h2>
                 <p className="text-slate-400 text-xs sm:text-sm font-light mb-8 leading-relaxed">
-                  Fill out your details below to generate a pre-formatted email template to send directly to info@ashiklights.in.
+                  Provide your project details below. Our lighting design team will curate custom fixture specifications, lumen calculations, and factory-direct pricing for your space.
                 </p>
 
-                {formSubmitted ? (
-                  <div className="bg-[#0A1628] p-6 sm:p-8 rounded-2xl border border-white/15 space-y-5 animate-slide-carousel shadow-sm">
+                {submitStatus === "success" ? (
+                  /* SUCCESS MESSAGE UI */
+                  <div className="bg-[#0A1628] p-8 sm:p-10 rounded-2xl border border-emerald-500/30 space-y-6 animate-slide-carousel text-center shadow-sm">
+                    <div className="w-16 h-16 bg-emerald-950/80 text-emerald-400 rounded-full flex items-center justify-center mx-auto border border-emerald-500/30">
+                      <CheckCircle2 className="w-9 h-9" />
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white">Inquiry Submitted Successfully!</h3>
+                      <p className="text-xs sm:text-sm text-slate-300 max-w-sm mx-auto leading-relaxed">
+                        Thank you <strong className="text-white">{formData.name}</strong>. Your inquiry has been received by our senior lighting architects at Ashik Lights.
+                      </p>
+                    </div>
+
+                    <div className="pt-2">
+                      <button
+                        onClick={handleResetForm}
+                        className="px-7 py-3.5 bg-white text-[#040812] font-bold rounded-xl text-xs hover:bg-slate-100 transition-all cursor-pointer shadow-md"
+                      >
+                        ← Submit Another Inquiry
+                      </button>
+                    </div>
+                  </div>
+                ) : submitStatus === "error" ? (
+                  /* FAILED MESSAGE UI */
+                  <div className="bg-[#0A1628] p-6 sm:p-8 rounded-2xl border border-rose-500/30 space-y-5 animate-slide-carousel shadow-sm">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-emerald-950/80 text-emerald-400 rounded-2xl flex items-center justify-center border border-emerald-500/30 shrink-0">
-                        <CheckCircle2 className="w-7 h-7" />
+                      <div className="w-14 h-14 bg-rose-950/80 text-rose-400 rounded-2xl flex items-center justify-center border border-rose-500/30 shrink-0">
+                        <AlertCircle className="w-8 h-8" />
                       </div>
                       <div>
-                        <h3 className="font-serif text-xl font-bold text-white">Email Template Ready!</h3>
-                        <p className="text-xs text-slate-400">
-                          Your email app has been opened to send this inquiry to info@ashiklights.in.
+                        <h3 className="font-serif text-2xl font-bold text-white">Submission Failed</h3>
+                        <p className="text-xs text-slate-300 mt-1">
+                          We could not record your submission due to a server response error.
                         </p>
                       </div>
                     </div>
 
-                    {/* Email Template Preview Box */}
-                    <div className="bg-[#040812] p-4 sm:p-5 rounded-xl border border-white/15 text-left text-xs font-mono space-y-3 relative group">
-                      <div className="flex items-center justify-between border-b border-white/10 pb-2.5 text-slate-300 font-sans">
-                        <span className="flex items-center gap-1.5 font-bold text-white">
-                          <FileText className="w-4 h-4 text-white" /> Email Template Preview
-                        </span>
-                        <button
-                          onClick={handleCopyTemplate}
-                          className="flex items-center gap-1 text-[11px] font-semibold text-slate-300 hover:text-white bg-white/10 px-2.5 py-1 rounded-md transition-all cursor-pointer"
-                        >
-                          {copied ? (
-                            <>
-                              <Check className="w-3.5 h-3.5 text-emerald-400" /> Copied!
-                            </>
-                          ) : (
-                            <>
-                              <Copy className="w-3.5 h-3.5" /> Copy Template
-                            </>
-                          )}
-                        </button>
-                      </div>
-
-                      <div className="text-slate-300 space-y-1 text-[11px]">
-                        <div><strong className="text-white">To:</strong> info@ashiklights.in</div>
-                        <div><strong className="text-white">Subject:</strong> {getEmailSubject()}</div>
-                      </div>
-
-                      <pre className="text-slate-300 font-mono text-[11px] whitespace-pre-wrap leading-relaxed pt-2 border-t border-white/10">
-                        {getEmailBody()}
-                      </pre>
+                    <div className="bg-rose-950/40 p-4 rounded-xl border border-rose-500/20 text-xs text-rose-200">
+                      <strong>Error Details:</strong> {errorMessage || "Network error occurred."}
                     </div>
 
                     <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
-                      <a
-                        href={`mailto:info@ashiklights.in?subject=${encodeURIComponent(getEmailSubject())}&body=${encodeURIComponent(getEmailBody())}`}
-                        className="w-full sm:w-auto px-6 py-3 bg-white text-[#040812] font-bold rounded-xl text-xs flex items-center justify-center gap-2 hover:bg-slate-100 transition-all cursor-pointer"
-                      >
-                        <Send className="w-4 h-4" /> Open Email Client Again
-                      </a>
                       <button
-                        onClick={() => setFormSubmitted(false)}
-                        className="w-full sm:w-auto px-5 py-3 bg-white/10 text-white font-semibold rounded-xl text-xs hover:bg-white/20 transition-all cursor-pointer"
+                        onClick={() => setSubmitStatus("idle")}
+                        className="w-full sm:w-auto px-6 py-3.5 bg-white text-[#040812] font-bold rounded-xl text-xs flex items-center justify-center gap-2 hover:bg-slate-100 transition-all cursor-pointer"
                       >
-                        ← Edit Inquiry Form
+                        <RefreshCw className="w-4 h-4" /> Try Submitting Again
                       </button>
+                      <a
+                        href="tel:08754860555"
+                        className="w-full sm:w-auto px-5 py-3.5 bg-white/10 text-white font-semibold rounded-xl text-xs hover:bg-white/20 transition-all cursor-pointer flex items-center justify-center gap-2"
+                      >
+                        <Phone className="w-4 h-4 text-white" /> Call Store: 087548 60555
+                      </a>
                     </div>
                   </div>
                 ) : (
+                  /* FORM INPUT UI */
                   <form onSubmit={handleSubmit} className="space-y-4 text-xs">
                     <div>
                       <label className="block font-bold text-slate-200 mb-1.5">Your Name *</label>
                       <input
                         type="text"
                         required
-                        placeholder="e.g. Rajesh Kumar"
+                        placeholder="e.g. Architect Rajesh Kumar / Ananya Roy"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="w-full px-4 py-3.5 rounded-xl border border-white/15 focus:outline-none focus:border-white bg-[#0A1628] text-white placeholder-slate-500 shadow-2xs transition-colors duration-300"
@@ -270,7 +274,7 @@ Sent via Ashik Lights Official Website (ashiklights.in)`;
                         <input
                           type="tel"
                           required
-                          placeholder="e.g. 98765 43210"
+                          placeholder="e.g. +91 98765 43210"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           className="w-full px-4 py-3.5 rounded-xl border border-white/15 focus:outline-none focus:border-white bg-[#0A1628] text-white placeholder-slate-500 shadow-2xs transition-colors duration-300"
@@ -280,7 +284,7 @@ Sent via Ashik Lights Official Website (ashiklights.in)`;
                         <label className="block font-bold text-slate-200 mb-1.5">Email Address</label>
                         <input
                           type="email"
-                          placeholder="e.g. rajesh@domain.com"
+                          placeholder="e.g. rajesh@architecture-studio.com"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           className="w-full px-4 py-3.5 rounded-xl border border-white/15 focus:outline-none focus:border-white bg-[#0A1628] text-white placeholder-slate-500 shadow-2xs transition-colors duration-300"
@@ -289,10 +293,10 @@ Sent via Ashik Lights Official Website (ashiklights.in)`;
                     </div>
 
                     <div>
-                      <label className="block font-bold text-slate-200 mb-1.5">Your Message / Space Details</label>
+                      <label className="block font-bold text-slate-200 mb-1.5">Space / Project Details</label>
                       <textarea
                         rows={4}
-                        placeholder="Tell us about your villa, apartment or double-height foyer requirements..."
+                        placeholder="Tell us about your villa, 24ft double-height living foyer, dining chandelier, or magnetic profile layout requirements..."
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         className="w-full px-4 py-3.5 rounded-xl border border-white/15 focus:outline-none focus:border-white bg-[#0A1628] text-white placeholder-slate-500 shadow-2xs transition-colors duration-300"
@@ -301,10 +305,20 @@ Sent via Ashik Lights Official Website (ashiklights.in)`;
 
                     <button
                       type="submit"
-                      className="btn-shimmer w-full py-4 bg-white hover:bg-slate-100 text-[#040812] font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer text-sm flex items-center justify-center gap-2.5 mt-2"
+                      disabled={submitStatus === "submitting"}
+                      className="btn-shimmer w-full py-4 bg-white hover:bg-slate-100 text-[#040812] font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer text-sm flex items-center justify-center gap-2.5 mt-2 disabled:opacity-50"
                     >
-                      <Mail className="w-5 h-5 text-[#040812]" />
-                      <span>Send Direct Email Inquiry</span>
+                      {submitStatus === "submitting" ? (
+                        <>
+                          <Loader2 className="w-5 h-5 animate-spin text-[#040812]" />
+                          <span>Submitting Inquiry...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-5 h-5 text-[#040812]" />
+                          <span>Submit Consultation Inquiry</span>
+                        </>
+                      )}
                     </button>
                   </form>
                 )}
@@ -313,14 +327,17 @@ Sent via Ashik Lights Official Website (ashiklights.in)`;
               {/* Embedded Google Map & Store Location Info */}
               <div className="lg:col-span-6 space-y-5" data-reveal="right">
                 <div className="flex items-center justify-between">
-                  <h2 className="font-serif text-2xl font-bold text-white">
-                    Teynampet Flagship Store Map
-                  </h2>
+                  <div>
+                    <h2 className="font-serif text-2xl font-bold text-white">
+                      Visit Our Teynampet Flagship Store
+                    </h2>
+                    <p className="text-xs text-slate-400 mt-1">Experience over 500+ live chandeliers, BLDC decorative fans, magnetic track profiles, and vanity LED mirrors in person.</p>
+                  </div>
                   <a
                     href="https://maps.google.com/?q=ASHIK+LIGHTS+Teynampet+Chennai"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-white hover:underline"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-white hover:underline shrink-0"
                   >
                     <Navigation className="w-3.5 h-3.5" />
                     <span>Get Directions</span>

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import TopBanner from "@/components/TopBanner";
 import Header from "@/components/Header";
+import HeroMarqueeText from "@/components/HeroMarqueeText";
 import Hero from "@/components/Hero";
 import Collections from "@/components/Collections";
 import ShopBySpace from "@/components/ShopBySpace";
@@ -29,6 +30,9 @@ export default function Home() {
 
         {/* Navigation Header */}
         <Header />
+
+        {/* 200px Height Luxury Animated Typography Section Before Hero */}
+        <HeroMarqueeText />
 
         {/* Hero Section */}
         <Hero onOpenConsultation={handleOpenConsultation} />

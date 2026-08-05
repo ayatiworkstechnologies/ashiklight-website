@@ -401,6 +401,21 @@
   100% { transform: translateX(-33.333%); }
 }
 
+.animate-hero-marquee {
+  animation: heroMarquee 35s linear infinite;
+  will-change: transform;
+}
+
+.animate-hero-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes heroMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.3333%); }
+}
+
+
 
 /* ═══════════════════════════════════════════════════════
    INTERACTIVE ELEMENT STYLES

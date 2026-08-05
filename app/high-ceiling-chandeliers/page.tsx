@@ -85,7 +85,7 @@ export default function HighCeilingChandeliersPage() {
       code: "AL-HC-2008",
       material: "Dome Crystal Shades & Gold Cords",
       dimensions: "Ø 36\" x H 118\"",
-      image: "/assets/High Ceiling Chandeliers/Cascading Crystal Dome Pendant Chandelier-prompt.webp",
+      image: "/assets/High Ceiling Chandeliers/Cascading Crystal Dome Pendant Chandelier.webp",
       subCat: "foyer",
     },
     {
@@ -121,7 +121,7 @@ export default function HighCeilingChandeliersPage() {
       code: "AL-HC-2012",
       material: "Linear Crystal Rods & Warm LED",
       dimensions: "Ø 28\" x H 115\"",
-      image: "/assets/High Ceiling Chandeliers/Cascading Crystal Tube LED Chandelier-prompt.webp",
+      image: "/assets/High Ceiling Chandeliers/Cascading Crystal Tube LED Chandelier.webp",
       subCat: "stairwell",
     },
     {
@@ -157,7 +157,7 @@ export default function HighCeilingChandeliersPage() {
       code: "AL-HC-2016",
       material: "Faceted Crystal Icicle Drops",
       dimensions: "Ø 36\" x H 140\"",
-      image: "/assets/High Ceiling Chandeliers/Crystal Icicle Cascade LED Chandelier-prompt.webp",
+      image: "/assets/High Ceiling Chandeliers/Crystal Icicle Cascade LED Chandelier.webp",
       subCat: "foyer",
     },
     {

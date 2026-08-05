@@ -18,7 +18,7 @@ const collections = [
     id: "high-ceiling",
     name: "High Ceiling Chandeliers",
     href: "/high-ceiling-chandeliers",
-    image: "/assets/High Ceiling Chandeliers/Butterfly Crystal Disc Cascade Chandelier.webp",
+    image: "/assets/High Ceiling Chandeliers/Crystal Raindrop High-Ceiling Chandelier.webp",
   },
   {
     id: "fans",

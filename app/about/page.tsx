@@ -114,7 +114,7 @@ export default function AboutPage() {
                     className="bg-[#161616] p-4.5 rounded-2xl border border-[#D4AF37]/25 shadow-2xs hover:border-[#D4AF37] transition-all duration-300 text-center"
                   >
                     <div className="font-serif text-2xl sm:text-3xl font-bold text-[#D4AF37]">
-                      4.9 ★
+                      4.6 ★
                     </div>
                     <div className="text-[11px] text-slate-400 font-semibold mt-1">
                       Google Rating

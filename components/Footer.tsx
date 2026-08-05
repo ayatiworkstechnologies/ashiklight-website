@@ -43,7 +43,7 @@ export default function Footer() {
                 <Star className="w-3.5 h-3.5 fill-[#D4AF37]" />
                 <Star className="w-3.5 h-3.5 fill-[#D4AF37]" />
               </div>
-              <span className="font-bold text-[#D4AF37]">4.9/5</span>
+              <span className="font-bold text-[#D4AF37]">4.6/5</span>
               <span className="text-slate-400 text-[10px]">(Google Reviews)</span>
             </div>
           </div>

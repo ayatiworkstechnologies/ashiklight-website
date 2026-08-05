@@ -32,7 +32,7 @@ export default function Home() {
         <Header />
 
         {/* 200px Height Luxury Animated Typography Section Before Hero */}
-        <HeroMarqueeText />
+        {/* <HeroMarqueeText /> */}
 
         {/* Hero Section */}
         <Hero onOpenConsultation={handleOpenConsultation} />
@@ -48,7 +48,6 @@ export default function Home() {
 
         {/* Featured Collection: High-Ceiling Chandeliers */}
         <FeaturedBanner onOpenConsultation={handleOpenConsultation} />
-
 
         {/* Customer Reviews & Testimonials */}
         <Testimonials />

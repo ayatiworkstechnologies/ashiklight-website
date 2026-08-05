@@ -44,7 +44,7 @@ export default function Projects({ onOpenConsultation }: ProjectsProps) {
       id: 3,
       title: "Fine Dining Restaurant",
       location: "Chennai",
-      image: "/assets/Wall & Pendant Lights/Amber Glass Halo Wall Sconce.webp",
+      image: "/assets/Wall-Pendant-Lights/Amber Glass Halo Wall Sconce.webp",
       desc: "Mood-setting warm ambient illumination with custom amber glass pendant fixtures and accent LED perimeter coves.",
       specs: [
         { label: "Location", value: "Nungambakkam" },

@@ -30,7 +30,7 @@ const collections = [
     id: "wall-pendant",
     name: "Wall & Pendant Lights",
     href: "/wall-pendant-lights",
-    image: "/assets/Wall & Pendant Lights/Hanging Crystal Drum Wall Sconce.webp",
+    image: "/assets/Wall-Pendant-Lights/Hanging Crystal Drum Wall Sconce.webp",
   },
   {
     id: "led-mirrors",

@@ -22,7 +22,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8001",
       material: "Amber Glass & Brushed Brass",
       dimensions: "Ø 10\" x H 14\"",
-      image: "/assets/Wall & Pendant Lights/Amber Glass Halo Wall Sconce.webp",
+      image: "/assets/Wall-Pendant-Lights/Amber Glass Halo Wall Sconce.webp",
       subCat: "wall-sconces",
     },
     {
@@ -31,7 +31,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8002",
       material: "Textured Amber Glass Disc",
       dimensions: "Ø 12\" Disc",
-      image: "/assets/Wall & Pendant Lights/Amber Textured Glass Disc Wall Sconce.webp",
+      image: "/assets/Wall-Pendant-Lights/Amber Textured Glass Disc Wall Sconce.webp",
       subCat: "wall-sconces",
     },
     {
@@ -40,7 +40,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8003",
       material: "Layered Antique Brass Rings",
       dimensions: "H 16\" x W 8\"",
-      image: "/assets/Wall & Pendant Lights/Antique Layered Ring Wall Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Antique Layered Ring Wall Light.webp",
       subCat: "wall-sconces",
     },
     {
@@ -49,7 +49,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8004",
       material: "Handcrafted Floral Glass Disc",
       dimensions: "Ø 14\" Disc",
-      image: "/assets/Wall & Pendant Lights/Clear Glass Floral Disc Wall Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Clear Glass Floral Disc Wall Light.webp",
       subCat: "wall-sconces",
     },
     {
@@ -58,7 +58,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8005",
       material: "Textured Glass Buds & Gold Cables",
       dimensions: "3-Light Cluster",
-      image: "/assets/Wall & Pendant Lights/Clustered Textured Glass Bud Pendant Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Clustered Textured Glass Bud Pendant Light.webp",
       subCat: "pendants",
     },
     {
@@ -67,7 +67,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8006",
       material: "Crown Faceted Crystals & Gold",
       dimensions: "H 12\" x W 6\"",
-      image: "/assets/Wall & Pendant Lights/Crystal Crown LED Wall Sconce.webp",
+      image: "/assets/Wall-Pendant-Lights/Crystal Crown LED Wall Sconce.webp",
       subCat: "wall-sconces",
     },
     {
@@ -76,7 +76,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8007",
       material: "Half-Drum Crystal Shield",
       dimensions: "H 14\" x W 8\"",
-      image: "/assets/Wall & Pendant Lights/Crystal Crown Half-Drum Wall Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Crystal Crown Half-Drum Wall Light.webp",
       subCat: "wall-sconces",
     },
     {
@@ -85,7 +85,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8008",
       material: "Crystal Globe & Brass Disc Backer",
       dimensions: "Ø 10\" x Depth 6\"",
-      image: "/assets/Wall & Pendant Lights/Crystal Globe Disc Wall Sconce.webp",
+      image: "/assets/Wall-Pendant-Lights/Crystal Globe Disc Wall Sconce.webp",
       subCat: "wall-sconces",
     },
     {
@@ -94,7 +94,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8009",
       material: "Hourglass Crystal & Dual Orbs",
       dimensions: "H 18\" x W 6\"",
-      image: "/assets/Wall & Pendant Lights/Crystal Hourglass Double-Globe Wall Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Crystal Hourglass Double-Globe Wall Light.webp",
       subCat: "wall-sconces",
     },
     {
@@ -103,7 +103,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8010",
       material: "Natural Alabaster & Warm Gold",
       dimensions: "Ø 12\" x H 16\"",
-      image: "/assets/Wall & Pendant Lights/Double Alabaster Stone Disc Wall Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Double Alabaster Stone Disc Wall Light.webp",
       subCat: "wall-sconces",
     },
     {
@@ -112,7 +112,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8011",
       material: "Dual Faceted Crystal Discs",
       dimensions: "H 16\" x W 8\"",
-      image: "/assets/Wall & Pendant Lights/Double Crystal Disc Loop Wall Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Double Crystal Disc Loop Wall Light.webp",
       subCat: "wall-sconces",
     },
     {
@@ -121,7 +121,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8012",
       material: "Frosted Opal Discs & Brass Arm",
       dimensions: "H 14\" x W 8\"",
-      image: "/assets/Wall & Pendant Lights/Double Opal Disc Loop Wall Sconce.webp",
+      image: "/assets/Wall-Pendant-Lights/Double Opal Disc Loop Wall Sconce.webp",
       subCat: "wall-sconces",
     },
     {
@@ -130,7 +130,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8013",
       material: "Dual Luminous Glass Spheres",
       dimensions: "H 18\" x W 8\"",
-      image: "/assets/Wall & Pendant Lights/Double Orb LED Wall Sconce.webp",
+      image: "/assets/Wall-Pendant-Lights/Double Orb LED Wall Sconce.webp",
       subCat: "wall-sconces",
     },
     {
@@ -139,7 +139,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8014",
       material: "Fluid Ripple Glass Discs",
       dimensions: "Ø 14\" x Depth 4\"",
-      image: "/assets/Wall & Pendant Lights/Double Textured Glass Disc Wall Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Double Textured Glass Disc Wall Light.webp",
       subCat: "wall-sconces",
     },
     {
@@ -148,7 +148,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8015",
       material: "Quartet Crystal Sunburst Discs",
       dimensions: "W 16\" x H 16\"",
-      image: "/assets/Wall & Pendant Lights/Four-Disc Crystal Sunburst Wall Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Four-Disc Crystal Sunburst Wall Light.webp",
       subCat: "wall-sconces",
     },
     {
@@ -157,7 +157,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8016",
       material: "Blossoming Glass Flowers",
       dimensions: "W 14\" x H 14\"",
-      image: "/assets/Wall & Pendant Lights/Four-Flower Frosted Glass Wall Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Four-Flower Frosted Glass Wall Light.webp",
       subCat: "wall-sconces",
     },
     {
@@ -166,7 +166,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8017",
       material: "Faceted Gold Ray Plate",
       dimensions: "Ø 14\" Sunburst",
-      image: "/assets/Wall & Pendant Lights/Golden Faceted Sunburst Wall Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Golden Faceted Sunburst Wall Light.webp",
       subCat: "wall-sconces",
     },
     {
@@ -175,7 +175,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8018",
       material: "Cast Gold Flame Leaf",
       dimensions: "H 20\" x W 6\"",
-      image: "/assets/Wall & Pendant Lights/Golden Flame Leaf LED Wall Sconce.webp",
+      image: "/assets/Wall-Pendant-Lights/Golden Flame Leaf LED Wall Sconce.webp",
       subCat: "wall-sconces",
     },
     {
@@ -184,7 +184,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8019",
       material: "Perforated Honeycomb Brass",
       dimensions: "Ø 12\" Disc",
-      image: "/assets/Wall & Pendant Lights/Golden Honeycomb Disc Wall Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Golden Honeycomb Disc Wall Light.webp",
       subCat: "wall-sconces",
     },
     {
@@ -193,7 +193,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8020",
       material: "Suspended Crystal Drum",
       dimensions: "H 16\" x W 8\"",
-      image: "/assets/Wall & Pendant Lights/Hanging Crystal Drum Wall Sconce.webp",
+      image: "/assets/Wall-Pendant-Lights/Hanging Crystal Drum Wall Sconce.webp",
       subCat: "wall-sconces",
     },
     {
@@ -202,7 +202,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8021",
       material: "Crystal Flower Pendant & Arm",
       dimensions: "H 18\" x W 6\"",
-      image: "/assets/Wall & Pendant Lights/Hanging Crystal Flower Wall Sconce.webp",
+      image: "/assets/Wall-Pendant-Lights/Hanging Crystal Flower Wall Sconce.webp",
       subCat: "wall-sconces",
     },
     {
@@ -211,7 +211,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8022",
       material: "Suspended Crystal Sphere",
       dimensions: "H 16\" x W 7\"",
-      image: "/assets/Wall & Pendant Lights/Hanging Crystal Orb Wall Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Hanging Crystal Orb Wall Light.webp",
       subCat: "wall-sconces",
     },
     {
@@ -220,7 +220,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8023",
       material: "Petal Faceted Crystals",
       dimensions: "H 18\" x W 8\"",
-      image: "/assets/Wall & Pendant Lights/Hanging Crystal Petal Flower Wall Sconce.webp",
+      image: "/assets/Wall-Pendant-Lights/Hanging Crystal Petal Flower Wall Sconce.webp",
       subCat: "wall-sconces",
     },
     {
@@ -229,7 +229,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8024",
       material: "Gold Oval Frame & Glass Disc",
       dimensions: "H 18\" x W 8\"",
-      image: "/assets/Wall & Pendant Lights/Oval Frame Textured Glass Disc Wall Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Oval Frame Textured Glass Disc Wall Light.webp",
       subCat: "wall-sconces",
     },
     {
@@ -238,7 +238,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8025",
       material: "Fluted Glass Dome Shade",
       dimensions: "Ø 8\" x H 10\"",
-      image: "/assets/Wall & Pendant Lights/Ribbed Glass Dome Wall Sconce.webp",
+      image: "/assets/Wall-Pendant-Lights/Ribbed Glass Dome Wall Sconce.webp",
       subCat: "wall-sconces",
     },
     {
@@ -247,7 +247,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8026",
       material: "Crafted Wood Ribs & Bulb",
       dimensions: "Ø 14\" Bowl",
-      image: "/assets/Wall & Pendant Lights/Round Wooden Cage Bowl Pendant Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Round Wooden Cage Bowl Pendant Light.webp",
       subCat: "pendants",
     },
     {
@@ -256,7 +256,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8027",
       material: "Floating Crystal Ring Shade",
       dimensions: "Ø 10\" Halo",
-      image: "/assets/Wall & Pendant Lights/Single Crystal Halo Ring Pendant Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Single Crystal Halo Ring Pendant Light.webp",
       subCat: "pendants",
     },
     {
@@ -265,7 +265,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8028",
       material: "Minimalist Brass & Glass Plate",
       dimensions: "Ø 10\" Disc",
-      image: "/assets/Wall & Pendant Lights/Single Glass Disc Brass Wall Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Single Glass Disc Brass Wall Light.webp",
       subCat: "wall-sconces",
     },
     {
@@ -274,7 +274,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8029",
       material: "Spiral Curved Crystal Blooms",
       dimensions: "H 18\" x W 8\"",
-      image: "/assets/Wall & Pendant Lights/Spiral Crystal Flower Wall Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Spiral Crystal Flower Wall Light.webp",
       subCat: "wall-sconces",
     },
     {
@@ -283,7 +283,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8030",
       material: "Triple Layered Crystal Prism",
       dimensions: "H 20\" x W 7\"",
-      image: "/assets/Wall & Pendant Lights/Three-Tier Crystal Column Wall Sconce.webp",
+      image: "/assets/Wall-Pendant-Lights/Three-Tier Crystal Column Wall Sconce.webp",
       subCat: "wall-sconces",
     },
     {
@@ -292,7 +292,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8031",
       material: "Dual Cone Crystals & Gold Bracket",
       dimensions: "H 16\" x W 8\"",
-      image: "/assets/Wall & Pendant Lights/Twin Crystal Cone Wall Sconce.webp",
+      image: "/assets/Wall-Pendant-Lights/Twin Crystal Cone Wall Sconce.webp",
       subCat: "wall-sconces",
     },
     {
@@ -301,7 +301,7 @@ export default function WallPendantLightsPage() {
       code: "AL-WP-8032",
       material: "Rustic Wooden Lantern Frame",
       dimensions: "H 14\" x W 10\"",
-      image: "/assets/Wall & Pendant Lights/Wooden Lantern Cage Pendant Light.webp",
+      image: "/assets/Wall-Pendant-Lights/Wooden Lantern Cage Pendant Light.webp",
       subCat: "pendants",
     },
   ];
@@ -312,8 +312,8 @@ export default function WallPendantLightsPage() {
       title="Wall & Pendant Lights"
       tagline="Artisanal glass, blown pendants and ambient wall sconces."
       description="Elevate your bedside, dining nook, corridor or feature wall with hand-blown glass island pendants and solid brass sconces."
-      heroImage="/banner/Wall & Pendant Lights.webp"
-      mobileHeroImage="/banner/Wall & Pendant Lights mob.webp"
+      heroImage="/banner/Wall-Pendant-Lights.webp"
+      mobileHeroImage="/banner/Wall-Pendant-Lights-mob.webp"
       badges={[
         { icon: "Sparkles", text: "Handblown Glass" },
         { icon: "UserCheck", text: "Solid Brass Fitting" },

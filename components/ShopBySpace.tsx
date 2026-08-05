@@ -33,7 +33,7 @@ export default function ShopBySpace() {
       tagline: "Ambient Warmth & Smart Mirrors",
       desc: "Whisper-quiet retractable ceiling fans, warm bedside sconces, and touch-sensor anti-fog LED vanity mirrors.",
       icon: BedDouble,
-      image: "/assets/Wall & Pendant Lights/Amber Glass Halo Wall Sconce.webp",
+      image: "/assets/Wall-Pendant-Lights/Amber Glass Halo Wall Sconce.webp",
       href: "/wall-pendant-lights",
       badge: "Comfort Focus",
     },

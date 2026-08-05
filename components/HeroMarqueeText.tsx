@@ -18,9 +18,9 @@ export default function HeroMarqueeText() {
       <div className="max-w-6xl mx-auto text-center relative z-10 space-y-3 py-2">
         {/* Main Headline Statement */}
         <h2 className="font-serif text-xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight">
-          Crafting Extraordinary Illumination For{" "}
+          Transform Your Spaces with{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#F5E0A3] to-[#B8860B] drop-shadow-[0_0_25px_rgba(212,175,55,0.35)]">
-            Extraordinary Residences
+            Premium Decorative Lighting.
           </span>
         </h2>
 

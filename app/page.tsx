@@ -8,6 +8,7 @@ import Hero from "@/components/Hero";
 import Collections from "@/components/Collections";
 import ShopBySpace from "@/components/ShopBySpace";
 import FeaturedBanner from "@/components/FeaturedBanner";
+import StudioShowcase from "@/components/StudioShowcase";
 import HeroTrustBar from "@/components/HeroTrustBar";
 
 import Testimonials from "@/components/Testimonials";
@@ -46,8 +47,11 @@ export default function Home() {
         {/* Shop by Space */}
         <ShopBySpace />
 
-        {/* Featured Collection: High-Ceiling Chandeliers */}
+        {/* Featured Collection: High-Ceiling Chandeliers & Before/After Transformations */}
         <FeaturedBanner onOpenConsultation={handleOpenConsultation} />
+
+        {/* Experience Studio Showcase: 4 Cards Section */}
+        <StudioShowcase onOpenConsultation={handleOpenConsultation} />
 
         {/* Customer Reviews & Testimonials */}
         <Testimonials />

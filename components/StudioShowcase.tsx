@@ -21,7 +21,7 @@ export default function StudioShowcase({ onOpenConsultation }: StudioShowcasePro
       shortTitle: "Luxury Decorative Lights Showroom",
       category: "Showroom",
       badge: "Showroom",
-      image: "/assets/Luxury Decorative Lights Showroom.webp",
+      image: "/assets/luxury_decorative_lights_showroom.webp",
     },
     {
       id: "exquisite-high-ceiling",
@@ -30,7 +30,7 @@ export default function StudioShowcase({ onOpenConsultation }: StudioShowcasePro
       shortTitle: "Exquisite High Ceiling Studio",
       category: "High Ceiling",
       badge: "High Ceiling",
-      image: "/assets/Exquisite High Ceiling Studio.webp",
+      image: "/assets/exquisite_high_ceiling_studio.webp",
     },
     {
       id: "architectural-studio",
@@ -39,7 +39,7 @@ export default function StudioShowcase({ onOpenConsultation }: StudioShowcasePro
       shortTitle: "Architectural Indoor & Outdoor Studio",
       category: "Architectural & Outdoor",
       badge: "Architectural",
-      image: "/assets/Architectural Indoor & Outdoor Studio.webp",
+      image: "/assets/architectural_indoor_outdoor_studio.webp",
     },
     {
       id: "exclusive-decorative",
@@ -48,7 +48,7 @@ export default function StudioShowcase({ onOpenConsultation }: StudioShowcasePro
       shortTitle: "Exclusive Decorative Lights",
       category: "Decorative Lights",
       badge: "Decorative",
-      image: "/assets/Exclusive Decorative Lights.webp",
+      image: "/assets/exclusive_decorative_lights.webp",
     },
   ];
 

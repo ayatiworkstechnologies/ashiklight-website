@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Sparkles, CheckCircle2, ChevronRight } from "lucide-react";
+import { Sparkles, ChevronRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa6";
 
 interface StudioShowcaseProps {
@@ -162,30 +162,9 @@ export default function StudioShowcase({
                 key={`details-${current.id}`}
                 className="relative z-10 space-y-4 animate-fade-in"
               >
-                <div className="space-y-2">
-                  <span className="text-xs font-bold text-[#D4AF37] uppercase tracking-widest bg-[#D4AF37]/15 px-3 py-1 rounded-md border border-[#D4AF37]/30 inline-block">
-                    {current.category}
-                  </span>
-                  <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-white leading-tight">
-                    {current.title}
-                  </h3>
-                  <p className="text-slate-300 text-xs sm:text-sm font-light leading-relaxed max-w-xl">
-                    {current.shortDesc}
-                  </p>
-                </div>
-
-                {/* Highlight Pills */}
-                <div className="flex flex-wrap gap-2 pt-1">
-                  {current.highlights.map((item, i) => (
-                    <div
-                      key={i}
-                      className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs text-slate-200 bg-black/70 backdrop-blur-md px-3 py-1.5 rounded-lg border border-[#D4AF37]/25"
-                    >
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#D4AF37]" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
+                <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-white leading-tight">
+                  {current.title}
+                </h3>
 
                 {/* Action CTA */}
                 <div className="pt-2">
@@ -241,9 +220,6 @@ export default function StudioShowcase({
 
                     {/* Content text */}
                     <div className="space-y-1 min-w-0">
-                      <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-wider block truncate">
-                        {item.category}
-                      </span>
                       <h4 className="font-serif text-sm sm:text-base font-semibold text-white truncate group-hover:text-[#D4AF37] transition-colors">
                         {item.shortTitle}
                       </h4>

@@ -21,7 +21,7 @@ export default function StudioShowcase({ onOpenConsultation }: StudioShowcasePro
       shortTitle: "Luxury Decorative Lights Showroom",
       category: "Showroom",
       badge: "Showroom",
-      image: "/assets/luxury_decorative_lights_showroom.webp",
+      image: "/assets/Luxury Decorative Lights Showroom.webp",
     },
     {
       id: "exquisite-high-ceiling",
@@ -30,7 +30,7 @@ export default function StudioShowcase({ onOpenConsultation }: StudioShowcasePro
       shortTitle: "Exquisite High Ceiling Studio",
       category: "High Ceiling",
       badge: "High Ceiling",
-      image: "/assets/exquisite_high_ceiling_studio.webp",
+      image: "/assets/Exquisite High Ceiling Studio.webp",
     },
     {
       id: "architectural-studio",
@@ -39,7 +39,7 @@ export default function StudioShowcase({ onOpenConsultation }: StudioShowcasePro
       shortTitle: "Architectural Indoor & Outdoor Studio",
       category: "Architectural & Outdoor",
       badge: "Architectural",
-      image: "/assets/architectural_indoor_outdoor_studio.webp",
+      image: "/assets/Architectural Indoor & Outdoor Studio.webp",
     },
     {
       id: "exclusive-decorative",
@@ -48,7 +48,7 @@ export default function StudioShowcase({ onOpenConsultation }: StudioShowcasePro
       shortTitle: "Exclusive Decorative Lights",
       category: "Decorative Lights",
       badge: "Decorative",
-      image: "/assets/exclusive_decorative_lights.webp",
+      image: "/assets/Exclusive Decorative Lights.webp",
     },
   ];
 
@@ -95,7 +95,9 @@ export default function StudioShowcase({ onOpenConsultation }: StudioShowcasePro
                 alt={current.title}
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 60vw"
+                quality={100}
+                unoptimized
+                sizes="100vw"
                 className="object-cover object-center scale-105 group-hover:scale-110 transition-transform duration-1000 ease-out animate-fade-in"
               />
 
@@ -165,7 +167,9 @@ export default function StudioShowcase({ onOpenConsultation }: StudioShowcasePro
                         src={item.image}
                         alt={item.title}
                         fill
-                        sizes="120px"
+                        quality={100}
+                        unoptimized
+                        sizes="300px"
                         className={`object-cover object-center transition-transform duration-500 ${
                           isSelected ? "scale-110" : "scale-100"
                         }`}

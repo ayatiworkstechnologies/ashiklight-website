@@ -124,6 +124,8 @@ export default function ShopBySpace() {
               alt={activeSpace.name}
               fill
               priority
+              quality={100}
+              unoptimized
               sizes="(max-width: 1024px) 100vw, 55vw"
               className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             />

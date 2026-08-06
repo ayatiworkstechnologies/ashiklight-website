@@ -116,6 +116,8 @@ export default function Collections({
                     src={item.image}
                     alt={item.name}
                     fill
+                    quality={100}
+                    unoptimized
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 25vw"
                     className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   />

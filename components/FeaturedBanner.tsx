@@ -21,8 +21,8 @@ const cards: BeforeAfterCard[] = [
   {
     id: 1,
     title: "Villa Facade Illumination",
-    beforeSrc: "/assets/be.png",
-    afterSrc: "/assets/af.png",
+    beforeSrc: "/assets/be.webp",
+    afterSrc: "/assets/af.webp",
     beforeAlt: "Villa Facade Before Lighting",
     afterAlt: "Villa Facade After Lighting",
   },

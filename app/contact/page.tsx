@@ -94,6 +94,17 @@ export default function ContactPage() {
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+            {/* Floating Bubble Pill Breadcrumb */}
+            <div className="flex justify-center mb-6" data-reveal="up">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#161616]/90 backdrop-blur-md border border-[#D4AF37]/35 text-xs text-slate-300 shadow-xl">
+                <Link href="/" className="hover:text-[#D4AF37] transition-colors duration-300">
+                  Home
+                </Link>
+                <ChevronRight className="w-3 h-3 text-slate-400" />
+                <span className="text-[#D4AF37] font-bold">Contact Us</span>
+              </div>
+            </div>
+
             {/* Header Title Block */}
             <div className="text-center max-w-3xl mx-auto mb-14 space-y-4" data-reveal="up">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#D4AF37]/15 text-[#D4AF37] text-xs font-bold uppercase tracking-[0.2em] border border-[#D4AF37]/30">

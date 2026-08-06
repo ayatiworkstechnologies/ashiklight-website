@@ -57,6 +57,15 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-6 space-y-6" data-reveal="left">
+                {/* Floating Bubble Pill Breadcrumb */}
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#161616]/90 backdrop-blur-md border border-[#D4AF37]/35 text-xs text-slate-300 shadow-xl">
+                  <Link href="/" className="hover:text-[#D4AF37] transition-colors duration-300">
+                    Home
+                  </Link>
+                  <ChevronRight className="w-3 h-3 text-slate-400" />
+                  <span className="text-[#D4AF37] font-bold">About Us</span>
+                </div>
+
                 <div className="inline-flex items-center gap-2 text-[#D4AF37] text-xs font-bold uppercase tracking-[0.2em]">
                   <span className="w-6 h-px bg-[#D4AF37]/40" />
                   ABOUT ASHIK LIGHTS

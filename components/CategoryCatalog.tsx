@@ -11,6 +11,7 @@ import ProductModal, { ProductModalData } from "@/components/ProductModal";
 import { VectorDiamondGrid, VectorLightRays } from "@/components/VectorAccents";
 import {
   ChevronRight,
+  ChevronDown,
   Filter,
   Heart,
   Sparkles,
@@ -145,8 +146,8 @@ export default function CategoryCatalog({
         <TopBanner />
         <Header />
 
-        {/* Category Hero Banner — Exact Homepage Hero Design */}
-        <section className="relative min-h-[60vh] lg:min-h-[70vh] flex items-center overflow-hidden bg-[#050505] border-b border-[#D4AF37]/25">
+        {/* Category Hero Banner — 400px Fixed Height Design */}
+        <section className="relative h-[400px] flex items-center overflow-hidden bg-[#050505] border-b border-[#D4AF37]/25">
           {/* Full Width Background Image — Bright & Unzoomed */}
           <div className="absolute inset-0 z-0">
             {/* Desktop Hero Banner */}
@@ -190,45 +191,67 @@ export default function CategoryCatalog({
             <span className="sparkle" />
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-10 sm:py-14 lg:py-20 w-full">
-            <div className="max-w-[85%] sm:max-w-xl lg:max-w-2xl space-y-4 sm:space-y-6">
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-6 sm:py-8 lg:py-10 w-full">
+            <div className="max-w-[85%] sm:max-w-xl lg:max-w-2xl space-y-3 sm:space-y-4">
+              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-[1.1]">
                 {title}
               </h1>
 
-              <p className="font-serif italic text-lg sm:text-xl text-[#D4AF37] font-medium">
+              <p className="font-serif italic text-base sm:text-lg text-[#D4AF37] font-medium">
                 &ldquo;{tagline}&rdquo;
               </p>
 
-              <p className="text-slate-300 text-sm sm:text-base font-light leading-relaxed max-w-lg">
+              <p className="text-slate-300 text-xs sm:text-sm font-light leading-relaxed max-w-lg">
                 {description}
               </p>
             </div>
           </div>
+
+          {/* Floating Bubble Pill Breadcrumb — Embedded inside Hero on Bottom Left */}
+          <div className="absolute bottom-4 left-4 sm:left-6 lg:left-12 z-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#050505]/85 backdrop-blur-md border border-[#D4AF37]/35 text-xs text-slate-300 shadow-xl">
+              <Link href="/" className="hover:text-[#D4AF37] transition-colors duration-300">
+                Home
+              </Link>
+              <ChevronRight className="w-3 h-3 text-slate-400" />
+              <Link href="/#collections" className="hover:text-[#D4AF37] transition-colors duration-300">
+                Collections
+              </Link>
+              <ChevronRight className="w-3 h-3 text-slate-400" />
+              <span className="text-[#D4AF37] font-bold">{title}</span>
+              {selectedSubCategory !== "all" && (
+                <>
+                  <ChevronRight className="w-3 h-3 text-slate-400" />
+                  <span className="text-slate-200 font-medium capitalize">
+                    {subCategories.find((s) => s.id === selectedSubCategory)?.label || selectedSubCategory}
+                  </span>
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* Premium Center-Aligned Animated Scroll Down Button (Icon-Only) */}
+          <button
+            type="button"
+            onClick={() => {
+              catalogRef.current?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 group cursor-pointer"
+            aria-label="Scroll down to catalog"
+          >
+            <div className="relative flex items-center justify-center">
+              {/* Outer Glowing Pulse Ring */}
+              <span className="absolute inset-0 rounded-full bg-[#D4AF37]/30 animate-ping duration-1000 pointer-events-none" />
+              
+              {/* Main Circle Icon Button with Smooth Bounce */}
+              <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#050505]/90 border border-[#D4AF37]/60 text-[#D4AF37] flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.35)] backdrop-blur-md transition-all duration-300 group-hover:bg-[#D4AF37] group-hover:text-black group-hover:scale-110 group-hover:shadow-[0_0_25px_rgba(212,175,55,0.7)] animate-bounce">
+                <ChevronDown className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
+              </div>
+            </div>
+          </button>
         </section>
 
-        {/* Breadcrumb — Positioned AFTER / AT BOTTOM OF HERO */}
-        <div className="bg-[#0E0E0E] border-b border-[#D4AF37]/25 py-3.5 px-4 sm:px-6 lg:px-12 text-xs text-slate-400 shadow-2xs">
-          <div className="max-w-7xl mx-auto flex items-center gap-2">
-            <Link href="/" className="hover:text-[#D4AF37] transition-colors duration-300">
-              Home
-            </Link>
-            <ChevronRight className="w-3 h-3 text-slate-400" />
-            <Link href="/#collections" className="hover:text-[#D4AF37] transition-colors duration-300">
-              Collections
-            </Link>
-            <ChevronRight className="w-3 h-3 text-slate-400" />
-            <span className="text-[#D4AF37] font-bold">{title}</span>
-            {selectedSubCategory !== "all" && (
-              <>
-                <ChevronRight className="w-3 h-3 text-slate-400" />
-                <span className="text-slate-300 font-medium capitalize">
-                  {subCategories.find((s) => s.id === selectedSubCategory)?.label || selectedSubCategory}
-                </span>
-              </>
-            )}
-          </div>
-        </div>
+
 
         {/* Main Catalog View: Left Filter + Right Product Grid */}
         <section ref={catalogRef} className="py-12 lg:py-16 bg-[#050505] scroll-mt-24">
